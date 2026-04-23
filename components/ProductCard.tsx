@@ -12,37 +12,46 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ name, description, href, image, features }) => {
   return (
-    <div className="flex flex-col lg:row items-center gap-12 p-8 md:p-12 bg-white rounded-[2rem] border border-surface-100 shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden group">
-      <div className="w-full lg:w-1/2 aspect-video bg-gradient-to-br from-surface-50 to-surface-100 rounded-2xl flex items-center justify-center relative overflow-hidden">
+    <div className="flex flex-col lg:flex-row items-center gap-12 p-8 md:p-12 glass rounded-[2.5rem] hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 overflow-hidden group border-white/40">
+      <div className="w-full lg:w-1/2 aspect-video bg-white/40 backdrop-blur-sm rounded-2xl flex items-center justify-center relative overflow-hidden border border-white/20 shadow-inner">
         {image ? (
-          <Image src={image} alt={name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+          <Image src={image} alt={name} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
         ) : (
-          <div className="text-surface-200 font-bold text-4xl select-none">{name}</div>
+          <div className="flex flex-col items-center">
+            <div className="text-primary/20 font-bold text-6xl select-none mb-4 group-hover:scale-110 transition-transform duration-500">{name.charAt(0)}</div>
+            <div className="text-surface-900 font-bold text-2xl opacity-40">{name}</div>
+          </div>
         )}
-        <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
       </div>
       
-      <div className="w-full lg:w-1/2">
-        <h3 className="text-3xl font-bold mb-4">{name}</h3>
-        <p className="text-secondary text-lg mb-8">
+      <div className="w-full lg:w-1/2 text-left">
+        <div className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest mb-4">
+          Proprietary Software
+        </div>
+        <h3 className="text-3xl md:text-4xl font-bold mb-6 text-surface-900 leading-tight">{name}</h3>
+        <p className="text-secondary text-lg mb-8 leading-relaxed">
           {description}
         </p>
         
-        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 mb-10">
           {features.map((feature, index) => (
-            <li key={index} className="flex items-center text-sm text-surface-900 font-medium">
-              <span className="w-5 h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center mr-3">
+            <div key={index} className="flex items-center text-sm text-surface-900 font-semibold group/item">
+              <span className="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center mr-3 shadow-md group-hover/item:scale-110 transition-transform">
                 <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                 </svg>
               </span>
               {feature}
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
         
-        <Button variant="primary" href={href}>
-          View Product
+        <Button variant="primary" href={href} className="group/btn">
+          Explore {name}
+          <svg className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7-7 7" />
+          </svg>
         </Button>
       </div>
     </div>

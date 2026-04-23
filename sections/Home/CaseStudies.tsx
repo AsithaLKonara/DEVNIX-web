@@ -24,7 +24,7 @@ const CaseStudies = () => {
   ];
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-transparent">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">Selected Work</h2>

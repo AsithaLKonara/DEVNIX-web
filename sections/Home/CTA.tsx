@@ -10,13 +10,13 @@ const CTA = () => {
 
       <div className="container mx-auto px-6 relative z-10 text-center">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 leading-tight">
+          <h2 className="text-4xl md:text-7xl font-bold text-white mb-8 leading-tight">
             Ready to Build Your <span className="text-surface-900/40">Next Big Thing?</span>
           </h2>
           <p className="text-white/80 text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
             Whether you’re a startup looking for an MVP or an enterprise needing a custom system, we’re here to help you scale.
           </p>
-          <div className="flex flex-col sm:row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+          <div className="flex flex-row items-center justify-center space-x-6">
             <Button variant="secondary" size="lg" href="/contact" className="!bg-white !text-primary hover:!bg-surface-50">
               Start a Project
             </Button>

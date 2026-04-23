@@ -18,16 +18,16 @@ const ProductsSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-surface-50">
+    <section className="py-24 bg-transparent">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:row items-end justify-between mb-16 gap-6">
+        <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
           <div className="max-w-2xl">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Products</h2>
             <p className="text-secondary text-lg">
               Beyond custom services, we build proprietary platforms that solve industry-specific challenges.
             </p>
           </div>
-          <a href="/products" className="text-primary font-bold hover:underline">View All Products →</a>
+          <a href="/products" className="text-primary font-bold hover:underline transition-all">View All Products →</a>
         </div>
 
         <div className="space-y-12">
