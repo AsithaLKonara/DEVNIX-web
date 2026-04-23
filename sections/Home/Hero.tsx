@@ -16,15 +16,15 @@ const Hero = () => {
               Trusted Software Partner
             </span>
           </div>
-          
+
           <h1 className="text-5xl md:text-8xl font-bold mb-8 leading-[1.1]">
             Building Scalable <span className="text-primary">Software Products</span> & Smart Solutions
           </h1>
-          
+
           <p className="text-xl md:text-2xl text-surface-900 mb-12 max-w-3xl mx-auto leading-relaxed opacity-90">
             We help startups and enterprises design, build, and launch reliable digital products that scale with your business.
           </p>
-          
+
           <div className="flex flex-row items-center justify-center space-x-6">
             <Button variant="primary" size="lg" href="/contact">
               Start a Project
