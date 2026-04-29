@@ -32,9 +32,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
-          <span className="text-2xl font-bold tracking-tight text-primary">
-            DevNix<span className="text-surface-900">.lk</span>
-          </span>
+          <img src="/logo/cover logo black transparent bg.png" alt="Xonit Logo" className="h-28 w-auto -my-10" />
         </Link>
 
         {/* Desktop Links */}

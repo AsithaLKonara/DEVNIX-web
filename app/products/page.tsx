@@ -29,7 +29,7 @@ const ProductsPage = () => {
       <div className="container mx-auto px-6 mb-24 text-center max-w-4xl">
         <h1 className="text-5xl md:text-7xl font-bold mb-8">Our Products</h1>
         <p className="text-secondary text-xl leading-relaxed">
-          Innovative software platforms built by DevNix to solve real-world industry challenges.
+          Innovative software platforms built by Xonit to solve real-world industry challenges.
         </p>
       </div>
 

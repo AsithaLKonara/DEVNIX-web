@@ -8,20 +8,18 @@ const AboutPage = () => {
         <div className="max-w-4xl mx-auto text-center mb-20">
           <h1 className="text-5xl md:text-7xl font-bold mb-8">Our Story</h1>
           <p className="text-secondary text-xl leading-relaxed">
-            Founded with a vision to revolutionize the digital landscape in Sri Lanka, DevNix has grown into a premier software development partner for businesses worldwide.
+            Founded with a vision to revolutionize the digital landscape in Sri Lanka, Xonit has grown into a premier software development partner for businesses worldwide.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-32">
-          <div className="aspect-square bg-surface-100 rounded-[3rem] overflow-hidden relative shadow-inner border border-surface-200">
-             <div className="absolute inset-0 flex items-center justify-center text-primary font-bold text-6xl opacity-10 select-none">
-               DEVNIX TEAM
-             </div>
+          <div className="aspect-square bg-surface-100 rounded-[3rem] overflow-hidden relative shadow-inner border border-surface-200 flex items-center justify-center">
+            <img src="/logo/logo.jpg" alt="Xonit Logo" className="w-full h-full object-cover" />
           </div>
           <div>
             <h2 className="text-4xl font-bold mb-8">Who We Are</h2>
             <p className="text-secondary text-lg mb-6 leading-relaxed">
-              At DevNix, we believe that great software is built on strong foundations. Our team of passionate developers, designers, and strategists work together to deliver exceptional digital products.
+              At Xonit, we believe that great software is built on strong foundations. Our team of passionate developers, designers, and strategists work together to deliver exceptional digital products.
             </p>
             <p className="text-secondary text-lg mb-10 leading-relaxed">
               We don’t just write code; we solve problems. Our approach is deeply rooted in understanding our clients' businesses and their users' needs.

@@ -6,24 +6,30 @@ interface ServiceCardProps {
   description: string;
   icon: React.ReactNode;
   href: string;
+  className?: string;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, href }) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, href, className = "" }) => {
   return (
-    <div className="p-8 bg-white rounded-2xl border border-surface-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
-      <div className="w-14 h-14 bg-primary/5 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-        {icon}
+    <div className={`p-8 glass rounded-3xl border border-white/5 hover:border-primary/50 transition-all duration-500 group relative overflow-hidden ${className}`}>
+      {/* Glow Effect */}
+      <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/10 rounded-full blur-[60px] group-hover:bg-primary/20 transition-colors"></div>
+      
+      <div className="relative z-10">
+        <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-2xl">
+          {icon}
+        </div>
+        <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-primary transition-colors">{title}</h3>
+        <p className="text-secondary text-base leading-relaxed mb-8 opacity-80 group-hover:opacity-100">
+          {description}
+        </p>
+        <Link href={href} className="text-white font-medium text-sm inline-flex items-center group-hover:text-primary transition-colors">
+          Explore Service
+          <svg className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </Link>
       </div>
-      <h3 className="text-xl font-bold mb-4">{title}</h3>
-      <p className="text-secondary text-sm leading-relaxed mb-6">
-        {description}
-      </p>
-      <Link href={href} className="text-primary font-semibold text-sm inline-flex items-center group-hover:translate-x-1 transition-transform">
-        Learn More
-        <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-        </svg>
-      </Link>
     </div>
   );
 };

@@ -9,11 +9,11 @@ const Footer = () => {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 md:col-span-1">
-            <Link href="/" className="text-2xl font-bold tracking-tight text-white mb-6 block">
-              DevNix<span className="text-primary">.lk</span>
+            <Link href="/" className="mb-6 block">
+              <img src="/logo/cover logo white transparent bg.png" alt="Xonit Logo" className="h-32 w-auto" />
             </Link>
             <p className="text-surface-200 text-sm leading-relaxed mb-6">
-              Building and deploying scalable software products and smart business solutions globally from Sri Lanka.
+              The Blueprint of Digital Excellence. Building and deploying scalable software products and smart business solutions globally from Sri Lanka.
             </p>
           </div>
 
@@ -40,7 +40,7 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-bold mb-6">Contact</h4>
             <ul className="space-y-4 text-sm text-surface-200">
-              <li>Email: info@devnix.lk</li>
+              <li>Email: info@xonit.space</li>
               <li>Location: Colombo, Sri Lanka</li>
             </ul>
           </div>
@@ -48,7 +48,7 @@ const Footer = () => {
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:row items-center justify-between">
           <p className="text-surface-200 text-sm mb-4 md:mb-0">
-            © {currentYear} DevNix.lk. All rights reserved.
+            © {currentYear} Xonit.space. All rights reserved.
           </p>
           <div className="flex space-x-6">
             <a href="#" className="text-surface-200 hover:text-primary transition-colors">Twitter</a>
