@@ -113,6 +113,14 @@ body {
   pointer-events: none;
 }
 
+.glow-blob {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, var(--glow-color, rgba(123, 164, 208, 0.1)), transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+}
+
 .video-bg {
   position: fixed;
   top: 50%;

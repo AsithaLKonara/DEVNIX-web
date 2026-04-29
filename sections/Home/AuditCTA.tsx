@@ -16,7 +16,8 @@ const AuditCTA = () => {
           className="relative glass rounded-[64px] p-12 md:p-20 text-center overflow-hidden border border-white/10"
         >
           {/* Accent Glow */}
-          <div className="absolute -top-20 -left-20 w-80 h-80 bg-primary/20 rounded-full blur-[100px] pointer-events-none" />
+          <div className="absolute -top-20 -left-20 w-80 h-80 pointer-events-none" 
+               style={{ background: 'radial-gradient(circle at center, rgba(123, 164, 208, 0.15), transparent 70%)' }} />
           
           <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
             <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-8">

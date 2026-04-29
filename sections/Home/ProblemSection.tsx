@@ -26,8 +26,11 @@ const ProblemSection = () => {
   return (
     <section className="py-24 relative bg-purple-500/[0.005]">
       {/* Background Gradient */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-aqua/[0.05] rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/[0.02] rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none" 
+           style={{ background: 'radial-gradient(circle at center, rgba(0, 242, 255, 0.05), transparent 70%)' }} />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] pointer-events-none" 
+           style={{ background: 'radial-gradient(circle at center, rgba(123, 164, 208, 0.03), transparent 70%)' }} />
+
       
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">

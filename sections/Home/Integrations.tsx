@@ -17,7 +17,8 @@ const Integrations = () => {
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Subtle Hierarchy Gradient */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-primary/[0.02] rounded-full blur-[80px] pointer-events-none" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] pointer-events-none" 
+           style={{ background: 'radial-gradient(ellipse at center, rgba(123, 164, 208, 0.03), transparent 70%)' }} />
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-black mb-4 tracking-tighter text-white font-display uppercase">

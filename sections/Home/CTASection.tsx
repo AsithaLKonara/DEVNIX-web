@@ -15,7 +15,8 @@ const CTASection = () => {
           className="relative glass rounded-[64px] p-16 md:p-24 text-center overflow-hidden border border-white/5"
         >
           {/* Background Glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-primary/20 rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none" 
+               style={{ background: 'radial-gradient(circle at center, rgba(123, 164, 208, 0.1), transparent 70%)' }} />
 
           <div className="relative z-10 max-w-3xl mx-auto">
             <h2 className="text-5xl md:text-7xl font-black mb-8 leading-[0.95] tracking-tighter text-white font-display">
