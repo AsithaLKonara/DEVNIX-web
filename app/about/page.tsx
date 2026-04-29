@@ -14,9 +14,12 @@ const AboutPage = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-32">
           <div className="aspect-square bg-surface-100 rounded-[3rem] overflow-hidden relative shadow-inner border border-surface-200">
-             <div className="absolute inset-0 flex items-center justify-center text-primary font-bold text-6xl opacity-10 select-none">
-               DEVNIX TEAM
-             </div>
+            <Image 
+              src="/logo/logo.jpg" 
+              alt="Xonit Vision" 
+              fill
+              className="object-cover"
+            />
           </div>
           <div>
             <h2 className="text-4xl font-bold mb-8">Who We Are</h2>

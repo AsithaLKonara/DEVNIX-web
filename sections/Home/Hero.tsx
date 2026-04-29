@@ -1,40 +1,92 @@
+'use client';
+
 import React from 'react';
-import Button from '@/components/Button';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center pt-20 pb-20 overflow-hidden bg-transparent">
-      {/* Background Shapes */}
-      <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-3xl"></div>
-
-      <div className="container mx-auto px-6 relative z-10 text-center">
-        <div className="max-w-4xl mx-auto">
-          <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-white/50 backdrop-blur-md border border-surface-200 shadow-sm mb-8 animate-fade-in">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-            <span className="text-xs font-bold uppercase tracking-wider text-surface-900">
-              Trusted Software Partner
+    <section className="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden text-center">
+      <div className="container mx-auto px-4 relative z-10 flex flex-col items-center">
+        <div className="max-w-4xl mx-auto flex flex-col items-center">
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="inline-flex items-center space-x-3 px-5 py-2 rounded-full glass border border-white/10 mb-8"
+          >
+            <span className="w-2 h-2 rounded-full bg-primary shadow-[0_0_10px_rgba(255,255,255,0.3)]"></span>
+            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-light/60">
+              Smart Systems for Growth
             </span>
-          </div>
+          </motion.div>
 
-          <h1 className="text-5xl md:text-8xl font-bold mb-8 leading-[1.1]">
-            Building Scalable <span className="text-primary">Software Products</span> & Smart Solutions
-          </h1>
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="text-6xl md:text-7xl font-black mb-6 leading-[0.95] tracking-tighter text-gradient text-glow font-display uppercase"
+          >
+            Increase Your Business <br className="hidden md:block" />
+            Revenue <span className="text-white/20">with Smart Systems.</span>
+          </motion.h1>
 
-          <p className="text-xl md:text-2xl text-surface-900 mb-12 max-w-3xl mx-auto leading-relaxed opacity-90">
-            We help startups and enterprises design, build, and launch reliable digital products that scale with your business.
-          </p>
+          {/* Subtext */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="text-xl md:text-2xl text-light/60 mb-12 max-w-2xl leading-relaxed font-medium"
+          >
+            We build automation systems that handle customers, operations, and growth—so you don’t have to.
+          </motion.p>
 
-          <div className="flex flex-row items-center justify-center space-x-6">
-            <Button variant="primary" size="lg" href="/contact">
-              Start a Project
-            </Button>
-            <Button variant="secondary" size="lg" href="/projects">
-              View Our Work
-            </Button>
-          </div>
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-6"
+          >
+            <Link
+              href="/contact"
+              className="group relative px-8 py-4 rounded-2xl bg-primary text-deep font-black uppercase tracking-widest text-sm transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(123,164,208,0.3)] active:scale-95"
+            >
+              Book Free Demo
+              <div className="absolute inset-0 rounded-2xl bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity animate-pulse" />
+            </Link>
+
+            <button className="flex items-center gap-3 px-8 py-4 rounded-2xl glass border border-white/5 text-light font-bold text-sm hover:bg-white/5 transition-all">
+              <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
+                <svg className="w-3 h-3 fill-current ml-1" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+              Watch Demo
+            </button>
+          </motion.div>
         </div>
       </div>
+
+      {/* Scroll Indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-20"
+      >
+        <div className="w-[1px] h-12 bg-gradient-to-b from-transparent to-white" />
+        <span className="text-[10px] font-black uppercase tracking-[0.5em] vertical-text">Scroll</span>
+      </motion.div>
+
+      <style jsx>{`
+        .vertical-text {
+          writing-mode: vertical-rl;
+          text-orientation: mixed;
+        }
+      `}</style>
     </section>
   );
 };

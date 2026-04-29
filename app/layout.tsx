@@ -1,23 +1,23 @@
 import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google";
+import { Plus_Jakarta_Sans, Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const inter = Inter({
-  variable: "--font-inter",
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
 });
 
-const poppins = Poppins({
-  variable: "--font-poppins",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "900"],
 });
 
 export const metadata: Metadata = {
-  title: "DevNix | Building Scalable Software Products",
-  description: "DevNix builds and deploys scalable software products and delivers custom solutions for businesses in Sri Lanka and globally.",
+  title: "Xonit | Smart Business Automation & Growth Systems",
+  description: "Xonit builds smart automation systems that handle customers, operations, and growth—so you don't have to. Specialized in Hotel Systems, WhatsApp Automation, and POS.",
 };
 
 export default function RootLayout({
@@ -28,11 +28,24 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${poppins.variable} h-full antialiased`}
+      className={`${jakarta.variable} ${outfit.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col selection:bg-primary/30 selection:text-primary">
+        <div className="noise-overlay" />
+        {/* Cinematic Background Layer */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="video-bg"
+        >
+          <source src="/video/0428(1).mp4" type="video/mp4" />
+        </video>
+        <div className="video-overlay" />
+        
         <Navbar />
-        <main className="flex-grow">
+        <main className="flex-grow relative z-10">
           {children}
         </main>
         <Footer />

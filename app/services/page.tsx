@@ -1,6 +1,9 @@
+'use client';
+
 import React from 'react';
+import { motion } from 'framer-motion';
 import ServiceCard from '@/components/ServiceCard';
-import CTA from '@/sections/Home/CTA';
+import CTASection from '@/sections/Home/CTASection';
 
 const ServicesPage = () => {
   const services = [
@@ -67,12 +70,36 @@ const ServicesPage = () => {
   ];
 
   return (
-    <div className="pt-32">
-      <div className="container mx-auto px-6 mb-24 text-center max-w-4xl">
-        <h1 className="text-5xl md:text-7xl font-bold mb-8">What We Do</h1>
-        <p className="text-secondary text-xl leading-relaxed">
-          We provide a comprehensive range of software development services to help businesses succeed in the digital era.
-        </p>
+    <div className="pt-40 pb-20">
+      <div className="container mx-auto px-6 mb-24 text-center max-w-4xl flex flex-col items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="inline-flex items-center space-x-3 px-5 py-2 rounded-full glass border border-white/10 mb-8"
+        >
+          <span className="w-2 h-2 rounded-full bg-primary shadow-[0_0_10px_#7BA4D0]"></span>
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-light/60">
+            Our Expertise
+          </span>
+        </motion.div>
+        
+        <motion.h1 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="text-6xl md:text-8xl font-black mb-8 leading-[0.95] tracking-tighter text-gradient text-glow font-display"
+        >
+          What We <span className="text-white/40">Provide.</span>
+        </motion.h1>
+        
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="text-xl text-light/60 max-w-2xl font-medium"
+        >
+          We provide a comprehensive range of software development services to help businesses succeed in the digital era through high-performance solutions.
+        </motion.p>
       </div>
 
       <div className="container mx-auto px-6 mb-24">
@@ -83,7 +110,7 @@ const ServicesPage = () => {
         </div>
       </div>
 
-      <CTA />
+      <CTASection />
     </div>
   );
 };

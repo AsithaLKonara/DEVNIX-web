@@ -1,47 +1,133 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #6366f1;
-  --color-primary-dark: #4f46e5;
-  --color-secondary: #64748b;
-  --color-accent: #f43f5e;
+  /* High-End Tech & Marketing Color System */
+  --color-primary: #7BA4D0; /* Sapphire */
+  --color-primary-dark: #2E5E99;
+  --color-aqua: #00F2FF;
+  --color-purple: #BC13FE;
+  --color-deep: #050505;
+  --color-accent: #2E5E99;
+  --color-light: #E7F0FA;
   
-  --color-surface-50: #f8fafc;
-  --color-surface-100: #f1f5f9;
-  --color-surface-200: #e2e8f0;
-  --color-surface-900: #0f172a;
-
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  /* Modern Tech Typography */
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
 
   --radius-xl: 1rem;
   --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes noise {
+    0%, 100% { transform: translate(0, 0); }
+    10% { transform: translate(-5%, -5%); }
+    20% { transform: translate(-10%, 5%); }
+    30% { transform: translate(5%, -10%); }
+    40% { transform: translate(-5%, 15%); }
+    50% { transform: translate(-10%, 5%); }
+    60% { transform: translate(15%, 0); }
+    70% { transform: translate(0, 10%); }
+    80% { transform: translate(-15%, 0); }
+    90% { transform: translate(10%, 5%); }
+  }
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #0f172a;
+  --background: #050505;
+  --foreground: #E7F0FA;
 }
 
 body {
-  background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8)), url('/images/sean-pollock-PhYq704ffdA-unsplash.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  letter-spacing: -0.01em;
+  overflow-x: hidden;
+  position: relative;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  color: var(--color-surface-900);
+/* Cinematic Grain Overlay */
+.noise-overlay {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/129566/noise.png");
+  opacity: .04;
+  z-index: 100;
+  pointer-events: none;
+  animation: noise 0.2s infinite;
 }
 
+/* Glass System */
 .glass {
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  background: rgba(5, 5, 5, 0.4);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(123, 164, 208, 0.15);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #E7F0FA 0%, #7BA4D0 50%, #00F2FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-purple {
+  background: linear-gradient(135deg, #E7F0FA 0%, #BC13FE 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Video Background Overlay */
+.video-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, 
+    rgba(5, 5, 5, 0.7) 0%, 
+    rgba(5, 5, 5, 0.5) 50%, 
+    rgba(5, 5, 5, 0.9) 100%
+  );
+  z-index: -1;
+  pointer-events: none;
+}
+
+.video-bg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -2;
+  transform: translate(-50%, -50%);
+  filter: brightness(0.4) contrast(1.1);
+}
+
+/* Custom Selection */
+::selection {
+  background: #7BA4D0;
+  color: #050505;
 }
