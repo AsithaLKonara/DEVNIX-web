@@ -1,0 +1,5 @@
+the ai chatbot need add limitation its talikng like chatgpt lets create and add comprehensive plaform focused lead convertable middle prompt to thatfor make it our lead coverting source with whatsapp integration 
+
+next increase the navbar logo size in 2x and decrease the navbar height in 30% add Home button to the navbar 
+
+in book a demo CTA form got completely white bg fix that
