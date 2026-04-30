@@ -33,19 +33,17 @@ const Navbar = () => {
         className="w-full h-16 md:h-20 flex items-center justify-between px-10 glass pointer-events-auto border-b border-white/10"
         style={{ borderRadius: 0 }}
       >
-        <div className="flex items-center relative h-full">
-          <Link href="/" className="absolute left-0 top-1/2 -translate-y-1/2 flex items-center">
-            <Image 
-              src="/logo/cover logo transparent bg.png" 
-              alt="Xonit Logo" 
-              width={400} 
-              height={160} 
-              className="h-28 md:h-32 w-auto object-contain drop-shadow-[0_0_20px_rgba(123,164,208,0.3)]"
+        <div className="flex items-center">
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo/Group 3.png"
+              alt="Xonit Logo"
+              width={200}
+              height={80}
+              className="h-10 md:h-7 w-auto object-contain drop-shadow-[0_0_20px_rgba(123,164,208,0.3)]"
               priority
             />
           </Link>
-          {/* Spacer to maintain layout with absolute logo */}
-          <div className="w-48 md:w-64"></div>
         </div>
 
         {/* Desktop Links */}
@@ -60,9 +58,9 @@ const Navbar = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all group-hover:w-full" />
             </Link>
           ))}
-          
-          <Link 
-            href="/contact" 
+
+          <Link
+            href="/contact"
             className="px-6 py-2.5 rounded-xl bg-primary text-deep text-[12px] font-black uppercase tracking-widest hover:scale-110 hover:shadow-[0_0_30px_rgba(123,164,208,0.5)] active:scale-95 transition-all duration-300"
           >
             Book Free Demo
@@ -71,7 +69,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <div className="md:hidden">
-          <button 
+          <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="text-white p-2"
           >
@@ -101,7 +99,7 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
-            <Link 
+            <Link
               href="/contact"
               onClick={() => setMobileMenuOpen(false)}
               className="w-full py-5 rounded-2xl bg-primary text-deep text-center font-black uppercase tracking-widest text-sm"
