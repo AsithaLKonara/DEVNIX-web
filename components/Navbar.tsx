@@ -18,6 +18,7 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
+    { name: 'Home', href: '/' },
     { name: 'Solutions', href: '/services' },
     { name: 'Systems', href: '/products' },
     { name: 'Results', href: '/projects' },
@@ -29,20 +30,22 @@ const Navbar = () => {
       <motion.div
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="w-full flex items-center justify-between px-10 py-6 glass pointer-events-auto border-b border-white/10"
+        className="w-full h-16 md:h-20 flex items-center justify-between px-10 glass pointer-events-auto border-b border-white/10"
         style={{ borderRadius: 0 }}
       >
-        <div className="flex items-center">
-          <Link href="/" className="flex items-center">
+        <div className="flex items-center relative h-full">
+          <Link href="/" className="absolute left-0 top-1/2 -translate-y-1/2 flex items-center">
             <Image 
               src="/logo/cover logo transparent bg.png" 
               alt="Xonit Logo" 
-              width={200} 
-              height={80} 
-              className="h-14 md:h-16 w-auto object-contain drop-shadow-[0_0_20px_rgba(123,164,208,0.3)]"
+              width={400} 
+              height={160} 
+              className="h-28 md:h-32 w-auto object-contain drop-shadow-[0_0_20px_rgba(123,164,208,0.3)]"
               priority
             />
           </Link>
+          {/* Spacer to maintain layout with absolute logo */}
+          <div className="w-48 md:w-64"></div>
         </div>
 
         {/* Desktop Links */}
