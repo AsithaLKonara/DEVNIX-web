@@ -36,7 +36,7 @@ const Navbar = () => {
         <div className="flex items-center">
           <Link href="/" className="flex items-center">
             <Image
-              src="/logo/Group 3.png"
+              src="/logo/group-3.png"
               alt="Xonit Logo"
               width={200}
               height={80}
