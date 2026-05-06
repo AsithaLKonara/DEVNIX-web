@@ -15,7 +15,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ name, description, href, imag
     <div className="flex flex-col lg:flex-row items-center gap-12 p-8 md:p-12 glass rounded-[2.5rem] hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 overflow-hidden group border-white/40">
       <div className="w-full lg:w-1/2 aspect-video bg-white/40 backdrop-blur-sm rounded-2xl flex items-center justify-center relative overflow-hidden border border-white/20 shadow-inner">
         {image ? (
-          <Image src={image} alt={name} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+          <Image src={image} alt={name} fill className="object-cover object-top group-hover:scale-110 transition-transform duration-700" />
         ) : (
           <div className="flex flex-col items-center">
             <div className="text-primary/20 font-bold text-6xl select-none mb-4 group-hover:scale-110 transition-transform duration-500">{name.charAt(0)}</div>
@@ -47,12 +47,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ name, description, href, imag
           ))}
         </div>
         
-        <Button variant="primary" href={href} className="group/btn">
-          Explore {name}
+        <a href={href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center font-medium transition-all duration-200 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 bg-primary text-white hover:bg-primary-dark focus:ring-primary shadow-lg hover:shadow-xl hover:-translate-y-0.5 px-6 py-3 text-base group/btn">
+          Watch Live
           <svg className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7-7 7" />
           </svg>
-        </Button>
+        </a>
       </div>
     </div>
   );

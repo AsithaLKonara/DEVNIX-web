@@ -1,54 +1,25 @@
 'use client';
 
-import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import CTASection from '@/sections/Home/CTASection';
 
 const ProjectsPage = () => {
   const projects = [
-    {
-      title: 'E-commerce Overhaul',
-      category: 'Web Development',
-      image: 'https://images.unsplash.com/photo-1557821552-17105176677c?w=800&auto=format&fit=crop&q=60',
-      description: 'A complete redesign and migration for a major retail brand, resulting in a 40% increase in conversion rates.',
-      tags: ['Next.js', 'Tailwind', 'Stripe'],
-    },
-    {
-      title: 'Fintech Mobile App',
-      category: 'Mobile Apps',
-      image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&auto=format&fit=crop&q=60',
-      description: 'A secure and intuitive mobile wallet for seamless digital payments and peer-to-peer transfers.',
-      tags: ['React Native', 'Firebase', 'Node.js'],
-    },
-    {
-      title: 'HealthCare SaaS',
-      category: 'SaaS Products',
-      image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&auto=format&fit=crop&q=60',
-      description: 'An enterprise-grade SaaS platform for hospital management and data analytics.',
-      tags: ['AWS', 'TypeScript', 'PostgreSQL'],
-    },
-    {
-      title: 'Education Portal',
-      category: 'Web Development',
-      image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&auto=format&fit=crop&q=60',
-      description: 'A multi-lingual learning platform serving thousands of students across Sri Lanka.',
-      tags: ['React', 'NestJS', 'Redis'],
-    },
-    {
-      title: 'Logistics Tracker',
-      category: 'Custom Systems',
-      image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&auto=format&fit=crop&q=60',
-      description: 'Real-time fleet tracking and optimization system for a national logistics provider.',
-      tags: ['Go', 'Docker', 'Google Maps API'],
-    },
-    {
-      title: 'Real Estate App',
-      category: 'Mobile Apps',
-      image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&auto=format&fit=crop&q=60',
-      description: 'A premium mobile experience for discovering and managing real estate listings.',
-      tags: ['Flutter', 'Supabase', 'Cloudinary'],
-    },
+    { title: 'Weddinglk', category: 'Directory Platform', href: 'https://wedding-lk.vercel.app/', image: '/projects/weddinglk.webp', description: 'A premium directory platform for wedding services, vendors, and couples.', tags: ['Next.js', 'Tailwind', 'Vercel'] },
+    { title: 'Task nest', category: 'Task Management', href: 'https://task-nest-gamma.vercel.app/', image: '/projects/task-nest.webp', description: 'An intuitive task management system built for teams to collaborate efficiently.', tags: ['React', 'Node.js', 'PostgreSQL'] },
+    { title: 'Classified ad web', category: 'Classified Ads', href: 'https://ai-powered-classified-ad-web.vercel.app/', image: '/projects/classified-ad.webp', description: 'AI-powered classified ad platform with smart categorization and search.', tags: ['Next.js', 'AI', 'Tailwind'] },
+    { title: 'Ride taxi web', category: 'Transport', href: 'https://ride-x-taxi-web.vercel.app/', image: '/projects/ride-taxi.webp', description: 'A modern ride-hailing and taxi booking web application.', tags: ['React', 'Maps API', 'Firebase'] },
+    { title: 'A zone CNC web', category: 'Corporate', href: 'https://a-zone-cnc-web.vercel.app/', image: '/projects/azone-cnc.webp', description: 'Corporate website for a CNC manufacturing and engineering company.', tags: ['Next.js', 'Framer Motion', 'Vercel'] },
+    { title: 'Smart LMS', category: 'EdTech SaaS', href: 'https://smart-lms-saas.vercel.app/', image: '/projects/smart-lms.webp', description: 'An interactive learning management system for schools and corporate training.', tags: ['React', 'NestJS', 'PostgreSQL'] },
+    { title: 'Smart Hotel 2', category: 'Hospitality SaaS', href: 'https://smart-hotel-2.vercel.app/', image: '/projects/smart-hotel-2.webp', description: 'A complete ecosystem for modern hospitality—from booking to billing.', tags: ['Next.js', 'TypeScript', 'Prisma'] },
+    { title: 'Car sale', category: 'Automotive', href: 'https://car-sale-web.vercel.app/', image: '/projects/car-sale.webp', description: 'A comprehensive automotive marketplace for buying and selling vehicles.', tags: ['React', 'Supabase', 'Tailwind'] },
+    { title: 'Ominichat', category: 'Communication', href: 'https://universal-chatbot-psi.vercel.app/', image: '/projects/ominichat.webp', description: 'Universal chatbot and communication platform for customer support.', tags: ['Next.js', 'OpenAI', 'WebSockets'] },
+    { title: 'Smart Store', category: 'E-commerce SaaS', href: 'https://smart-store-saas-demo.vercel.app/', image: '/projects/smart-store.webp', description: 'A powerful e-commerce platform for retail businesses to manage sales online.', tags: ['Next.js', 'Stripe', 'Prisma'] },
+    { title: 'Facade Center', category: 'Corporate', href: 'https://facade-web-red.vercel.app/', image: '/projects/facade-center.webp', description: 'Professional corporate website for facade and architectural services.', tags: ['React', 'Tailwind', 'Vercel'] },
+    { title: 'Smart Hotel 1', category: 'Hospitality', href: 'https://smarthotel-demo.vercel.app/', image: '/projects/smart-hotel-1.webp', description: 'Original hospitality management system with integrated booking engine.', tags: ['React', 'Node.js', 'MongoDB'] },
+    { title: 'Automate Lanka', category: 'Automation', href: 'https://autolanka-frontend-app.vercel.app/', image: '/projects/automate-lanka.webp', description: 'Business process automation platform tailored for Sri Lankan enterprises.', tags: ['Next.js', 'Tailwind', 'Supabase'] },
+    { title: 'POS System', category: 'Point of Sale', href: 'https://facade-pos-frontend.vercel.app/', image: '/projects/pos-system.webp', description: 'Cloud-based point-of-sale system designed for modern retail and restaurants.', tags: ['React', 'Redux', 'Node.js'] },
   ];
 
   return (
@@ -99,7 +70,7 @@ const ProjectsPage = () => {
                 <img 
                   src={project.image} 
                   alt={project.title} 
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60"
+                  className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110 opacity-60"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-deep/90 to-transparent" />
                 <div className="absolute top-6 left-6">
@@ -120,12 +91,12 @@ const ProjectsPage = () => {
                     </span>
                   ))}
                 </div>
-                <Link href="#" className="inline-flex items-center text-primary font-black uppercase tracking-widest text-[11px] group-hover:gap-3 transition-all">
-                  Case Study
+                <a href={project.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-primary font-black uppercase tracking-widest text-[11px] group-hover:gap-3 transition-all">
+                  Watch Live
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                </Link>
+                </a>
               </div>
             </motion.div>
           ))}

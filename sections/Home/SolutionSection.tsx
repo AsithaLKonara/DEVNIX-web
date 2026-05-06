@@ -2,31 +2,30 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Hotel, Bot, CreditCard, CheckCircle2 } from 'lucide-react';
-import Image from 'next/image';
+import { Hotel, GraduationCap, CreditCard, CheckCircle2 } from 'lucide-react';
 
 const SolutionSection = () => {
   const solutions = [
     {
-      title: "Hotel Management System",
+      title: "Smart LMS",
+      description: "An interactive learning management system for schools and corporate training with virtual classrooms.",
+      features: ["Live Streaming", "Quiz Engine", "Student Tracking"],
+      icon: <GraduationCap className="w-6 h-6" />,
+      image: "/projects/smart-lms.webp"
+    },
+    {
+      title: "Smart Hotel 2",
       description: "A complete ecosystem for modern hospitality—from booking to billing.",
       features: ["Real-time Bookings", "Inventory Sync", "Guest Management"],
       icon: <Hotel className="w-6 h-6" />,
-      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070&auto=format&fit=crop"
-    },
-    {
-      title: "WhatsApp Automation",
-      description: "AI-powered chatbots that handle inquiries and bookings 24/7.",
-      features: ["Auto-replies", "Lead Capture", "Session Handover"],
-      icon: <Bot className="w-6 h-6" />,
-      image: "https://images.unsplash.com/photo-1611746872915-64382b5c76da?q=80&w=2070&auto=format&fit=crop"
+      image: "/projects/smart-hotel-2.webp"
     },
     {
       title: "Smart POS System",
       description: "Speed up your sales with an intuitive, cloud-based billing system.",
       features: ["Sales Tracking", "Inventory Alerts", "Multiple Outlets"],
       icon: <CreditCard className="w-6 h-6" />,
-      image: "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?q=80&w=2070&auto=format&fit=crop"
+      image: "/projects/pos-system.webp"
     }
   ];
 

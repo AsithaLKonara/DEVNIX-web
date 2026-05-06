@@ -18,7 +18,8 @@ const Footer = () => {
     ],
     contact: [
       { name: 'hello@xonit.space', href: 'mailto:hello@xonit.space' },
-      { name: 'WhatsApp Support', href: '#' },
+      { name: '+94 77 050 6722', href: 'tel:+94770506722' },
+      { name: 'WhatsApp Support', href: 'https://wa.me/94770506722' },
       { name: 'Colombo, Sri Lanka', href: '#' },
     ]
   };
@@ -79,9 +80,9 @@ const Footer = () => {
             © {currentYear} Xonit. Systems of Excellence.
           </p>
           <div className="flex space-x-8">
-            <a href="#" className="text-light/20 hover:text-primary transition-colors text-xs font-bold uppercase tracking-widest">LinkedIn</a>
-            <a href="#" className="text-light/20 hover:text-primary transition-colors text-xs font-bold uppercase tracking-widest">Twitter</a>
-            <a href="#" className="text-light/20 hover:text-primary transition-colors text-xs font-bold uppercase tracking-widest">GitHub</a>
+            <a href="https://www.facebook.com/share/1BszvMAhV8/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="text-light/20 hover:text-primary transition-colors text-xs font-bold uppercase tracking-widest">Facebook</a>
+            <a href="https://www.tiktok.com/@xonit.space?_r=1&_t=ZS-967WbkiqDLN" target="_blank" rel="noopener noreferrer" className="text-light/20 hover:text-primary transition-colors text-xs font-bold uppercase tracking-widest">TikTok</a>
+            <a href="https://github.com/Xonit-Space" target="_blank" rel="noopener noreferrer" className="text-light/20 hover:text-primary transition-colors text-xs font-bold uppercase tracking-widest">GitHub</a>
           </div>
         </div>
       </div>

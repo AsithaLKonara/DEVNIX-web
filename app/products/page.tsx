@@ -4,24 +4,20 @@ import CTA from '@/sections/Home/CTA';
 
 const ProductsPage = () => {
   const products = [
-    {
-      name: 'SmartPOS',
-      description: 'A comprehensive cloud-based point-of-sale system designed for modern retail and restaurants. Features real-time inventory, multi-terminal support, and advanced analytics.',
-      href: '/contact',
-      features: ['Real-time Inventory', 'Multi-terminal Support', 'Offline Mode', 'Advanced Analytics', 'Customer Loyalty', 'Tax Compliance'],
-    },
-    {
-      name: 'LMS Pro',
-      description: 'An interactive learning management system for schools and corporate training. Includes live classrooms, quiz engines, and mobile app integration.',
-      href: '/contact',
-      features: ['Live Streaming', 'Quiz Engine', 'Student Tracking', 'Mobile App', 'Course Builder', 'Resource Library'],
-    },
-    {
-        name: 'HealthSync',
-        description: 'A specialized platform for clinic management and patient records. Secure, reliable, and compliant with health data standards.',
-        href: '/contact',
-        features: ['Appointment Booking', 'Patient Records', 'E-Prescription', 'Billing & Insurance', 'Secure Data Storage', 'Staff Scheduling'],
-      },
+    { name: 'Weddinglk', description: 'A premium directory platform for wedding services, vendors, and couples.', href: 'https://wedding-lk.vercel.app/', image: '/projects/weddinglk.webp', features: ['Directory Platform', 'Next.js', 'Tailwind', 'Vercel'] },
+    { name: 'Task nest', description: 'An intuitive task management system built for teams to collaborate efficiently.', href: 'https://task-nest-gamma.vercel.app/', image: '/projects/task-nest.webp', features: ['Task Management', 'React', 'Node.js', 'PostgreSQL'] },
+    { name: 'Classified ad web', description: 'AI-powered classified ad platform with smart categorization and search.', href: 'https://ai-powered-classified-ad-web.vercel.app/', image: '/projects/classified-ad.webp', features: ['Classified Ads', 'Next.js', 'AI', 'Tailwind'] },
+    { name: 'Ride taxi web', description: 'A modern ride-hailing and taxi booking web application.', href: 'https://ride-x-taxi-web.vercel.app/', image: '/projects/ride-taxi.webp', features: ['Transport', 'React', 'Maps API', 'Firebase'] },
+    { name: 'A zone CNC web', description: 'Corporate website for a CNC manufacturing and engineering company.', href: 'https://a-zone-cnc-web.vercel.app/', image: '/projects/azone-cnc.webp', features: ['Corporate', 'Next.js', 'Framer Motion', 'Vercel'] },
+    { name: 'Smart LMS', description: 'An interactive learning management system for schools and corporate training.', href: 'https://smart-lms-saas.vercel.app/', image: '/projects/smart-lms.webp', features: ['EdTech SaaS', 'React', 'NestJS', 'PostgreSQL'] },
+    { name: 'Smart Hotel 2', description: 'A complete ecosystem for modern hospitality—from booking to billing.', href: 'https://smart-hotel-2.vercel.app/', image: '/projects/smart-hotel-2.webp', features: ['Hospitality SaaS', 'Next.js', 'TypeScript', 'Prisma'] },
+    { name: 'Car sale', description: 'A comprehensive automotive marketplace for buying and selling vehicles.', href: 'https://car-sale-web.vercel.app/', image: '/projects/car-sale.webp', features: ['Automotive', 'React', 'Supabase', 'Tailwind'] },
+    { name: 'Ominichat', description: 'Universal chatbot and communication platform for customer support.', href: 'https://universal-chatbot-psi.vercel.app/', image: '/projects/ominichat.webp', features: ['Communication', 'Next.js', 'OpenAI', 'WebSockets'] },
+    { name: 'Smart Store', description: 'A powerful e-commerce platform for retail businesses to manage sales online.', href: 'https://smart-store-saas-demo.vercel.app/', image: '/projects/smart-store.webp', features: ['E-commerce SaaS', 'Next.js', 'Stripe', 'Prisma'] },
+    { name: 'Facade Center', description: 'Professional corporate website for facade and architectural services.', href: 'https://facade-web-red.vercel.app/', image: '/projects/facade-center.webp', features: ['Corporate', 'React', 'Tailwind', 'Vercel'] },
+    { name: 'Smart Hotel 1', description: 'Original hospitality management system with integrated booking engine.', href: 'https://smarthotel-demo.vercel.app/', image: '/projects/smart-hotel-1.webp', features: ['Hospitality', 'React', 'Node.js', 'MongoDB'] },
+    { name: 'Automate Lanka', description: 'Business process automation platform tailored for Sri Lankan enterprises.', href: 'https://autolanka-frontend-app.vercel.app/', image: '/projects/automate-lanka.webp', features: ['Automation', 'Next.js', 'Tailwind', 'Supabase'] },
+    { name: 'POS System', description: 'Cloud-based point-of-sale system designed for modern retail and restaurants.', href: 'https://facade-pos-frontend.vercel.app/', image: '/projects/pos-system.webp', features: ['Point of Sale', 'React', 'Redux', 'Node.js'] },
   ];
 
   return (

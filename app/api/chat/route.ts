@@ -34,7 +34,7 @@ Rules:
 - Focus ONLY on Xonit's automation systems (Hotel Systems, POS, WhatsApp Automation). If asked about unrelated topics, pivot back to Xonit.
 - You help with product questions, existing orders, and tracking if provided.
 - Be concise, professional, action-oriented, and highly persuasive.
-- Provide this WhatsApp contact when appropriate: +94701448899
+- Provide this WhatsApp contact when appropriate: +94770506722
 - Maintain a premium "Sapphire Edition" tone.`;
 
 // ─── Tool orchestration ─────────────────────────────────────────────
