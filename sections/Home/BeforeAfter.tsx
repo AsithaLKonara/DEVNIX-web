@@ -34,9 +34,9 @@ const BeforeAfter = () => {
           <p className="text-light/40 font-medium">The transformation from operational chaos to automated excellence.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5 rounded-[48px] overflow-hidden border border-white/5 shadow-2xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5 rounded-[32px] sm:rounded-[48px] overflow-hidden border border-white/5 shadow-2xl">
           {/* Before */}
-          <div className="p-12 md:p-16 bg-white/[0.02] flex flex-col items-center md:items-start">
+          <div className="p-6 sm:p-12 md:p-16 bg-white/[0.02] flex flex-col items-center md:items-start">
             <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-red-500/60 mb-10">Status: Inefficient</h3>
             <div className="space-y-8 w-full">
               {points.map((p, i) => (
@@ -49,7 +49,7 @@ const BeforeAfter = () => {
           </div>
 
           {/* After */}
-          <div className="p-12 md:p-16 bg-primary/[0.03] flex flex-col items-center md:items-start relative">
+          <div className="p-6 sm:p-12 md:p-16 bg-primary/[0.03] flex flex-col items-center md:items-start relative">
             {/* Glow */}
             <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
             

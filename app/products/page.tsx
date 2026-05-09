@@ -21,10 +21,16 @@ const ProductsPage = () => {
   ];
 
   return (
-    <div className="pt-32">
-      <div className="container mx-auto px-6 mb-24 text-center max-w-4xl">
-        <h1 className="text-5xl md:text-7xl font-bold mb-8">Our Products</h1>
-        <p className="text-secondary text-xl leading-relaxed">
+    <div className="pt-32 pb-12 relative overflow-hidden">
+      <div className="container mx-auto px-6 mb-24 text-center max-w-4xl flex flex-col items-center">
+        <div className="inline-flex items-center space-x-3 px-5 py-2 rounded-full glass border border-white/10 mb-8">
+          <span className="w-2 h-2 rounded-full bg-primary shadow-[0_0_10px_rgba(123,164,208,0.5)]"></span>
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-light/60">
+            Proprietary Systems
+          </span>
+        </div>
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-black mb-8 leading-[0.95] tracking-tighter text-gradient text-glow font-display uppercase">Our Products</h1>
+        <p className="text-light/60 text-lg md:text-xl leading-relaxed max-w-2xl font-medium">
           Innovative software platforms built by Xonit to solve real-world industry challenges.
         </p>
       </div>

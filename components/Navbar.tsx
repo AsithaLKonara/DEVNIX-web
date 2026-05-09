@@ -1,23 +1,14 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const navLinks = [
     { name: 'Home', href: '/' },
@@ -32,7 +23,7 @@ const Navbar = () => {
       <motion.div
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="w-full h-16 md:h-20 flex items-center justify-between px-10 glass pointer-events-auto border-b border-white/10"
+        className="w-full h-16 md:h-20 flex items-center justify-between px-6 md:px-10 glass pointer-events-auto border-b border-white/10"
         style={{ borderRadius: 0 }}
       >
         <div className="flex items-center">
@@ -76,14 +67,18 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Mobile Menu Button */}
         <div className="md:hidden">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="text-white p-2"
+            className="text-white p-2 focus:outline-none"
+            aria-label="Toggle Menu"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              {mobileMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
             </svg>
           </button>
         </div>
@@ -93,10 +88,10 @@ const Navbar = () => {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-x-0 top-[100px] glass p-10 flex flex-col space-y-8 md:hidden z-40 border-b border-white/10"
+            exit={{ opacity: 0, y: -10 }}
+            className="fixed inset-x-0 top-16 glass p-8 flex flex-col space-y-6 md:hidden z-40 border-b border-white/10 pointer-events-auto"
           >
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
@@ -105,7 +100,7 @@ const Navbar = () => {
                   key={link.name}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`text-lg font-black uppercase tracking-widest transition-colors ${
+                  className={`text-base font-black uppercase tracking-widest transition-colors ${
                     isActive ? 'text-primary' : 'text-white hover:text-primary'
                   }`}
                 >
@@ -116,7 +111,7 @@ const Navbar = () => {
             <Link
               href="/contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full py-5 rounded-2xl bg-primary text-deep text-center font-black uppercase tracking-widest text-sm"
+              className="w-full py-4 rounded-xl bg-primary text-deep text-center font-black uppercase tracking-widest text-xs"
             >
               Book Free Demo
             </Link>

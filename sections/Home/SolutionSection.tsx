@@ -46,7 +46,7 @@ const SolutionSection = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className={`flex flex-col ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-12 p-12 rounded-[48px] glass border border-white/5`}
+              className={`flex flex-col ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-6 sm:gap-12 p-6 sm:p-12 rounded-[32px] sm:rounded-[48px] glass border border-white/5`}
             >
               <div className="flex-1 space-y-6">
                 <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">

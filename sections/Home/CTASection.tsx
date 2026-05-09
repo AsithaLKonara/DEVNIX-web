@@ -12,14 +12,14 @@ const CTASection = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="relative glass rounded-[64px] p-16 md:p-24 text-center overflow-hidden border border-white/5"
+          className="relative glass rounded-[32px] md:rounded-[64px] p-6 sm:p-16 md:p-24 text-center overflow-hidden border border-white/5"
         >
           {/* Background Glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none" 
                style={{ background: 'radial-gradient(circle at center, rgba(123, 164, 208, 0.1), transparent 70%)' }} />
 
           <div className="relative z-10 max-w-3xl mx-auto">
-            <h2 className="text-5xl md:text-7xl font-black mb-8 leading-[0.95] tracking-tighter text-white font-display">
+            <h2 className="text-3xl sm:text-5xl md:text-7xl font-black mb-8 leading-[0.95] tracking-tighter text-white font-display">
               Ready to <br/>
               <span className="text-primary">Automate Your Growth?</span>
             </h2>

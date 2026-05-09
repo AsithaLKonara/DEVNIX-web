@@ -41,7 +41,7 @@ const FAQSection = () => {
             <div key={i} className="glass rounded-[32px] border border-white/5 overflow-hidden">
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full p-8 flex items-center justify-between text-left group"
+                className="w-full p-6 sm:p-8 flex items-center justify-between text-left group"
               >
                 <span className="text-lg font-black text-white uppercase tracking-tight group-hover:text-primary transition-colors">{faq.q}</span>
                 <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-light/40 group-hover:text-primary transition-all">
@@ -56,7 +56,7 @@ const FAQSection = () => {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                   >
-                    <div className="px-8 pb-8 text-light/60 font-medium leading-relaxed">
+                    <div className="px-6 pb-6 sm:px-8 sm:pb-8 text-light/60 font-medium leading-relaxed">
                       {faq.a}
                     </div>
                   </motion.div>

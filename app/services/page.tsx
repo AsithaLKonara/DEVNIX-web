@@ -70,7 +70,7 @@ const ServicesPage = () => {
   ];
 
   return (
-    <div className="pt-40 pb-20">
+    <div className="pt-32 sm:pt-40 pb-20 relative overflow-hidden">
       <div className="container mx-auto px-6 mb-24 text-center max-w-4xl flex flex-col items-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -87,7 +87,7 @@ const ServicesPage = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-6xl md:text-8xl font-black mb-8 leading-[0.95] tracking-tighter text-gradient text-glow font-display"
+          className="text-4xl sm:text-6xl md:text-8xl font-black mb-8 leading-[0.95] tracking-tighter text-gradient text-glow font-display uppercase"
         >
           What We <span className="text-white/40">Provide.</span>
         </motion.h1>

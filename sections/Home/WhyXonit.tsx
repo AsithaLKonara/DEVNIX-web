@@ -48,7 +48,7 @@ const WhyXonit = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
               viewport={{ once: true }}
-              className="relative p-10 glass rounded-[48px] border border-white/5 flex flex-col items-center text-center"
+              className="relative p-6 sm:p-10 glass rounded-[32px] sm:rounded-[48px] border border-white/5 flex flex-col items-center text-center"
             >
               <div className="w-16 h-16 rounded-3xl bg-primary/10 flex items-center justify-center text-primary mb-8">
                 {pill.icon}

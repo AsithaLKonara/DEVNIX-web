@@ -45,7 +45,7 @@ const ProblemSection = () => {
             <motion.div
               key={i}
               whileHover={{ y: -10, rotateX: 2, rotateY: 2 }}
-              className="p-10 rounded-[40px] glass-panel border border-white/5 group transition-all"
+              className="p-6 sm:p-10 rounded-[32px] sm:rounded-[40px] glass-panel border border-white/5 group transition-all"
             >
               <div className="w-16 h-16 rounded-3xl bg-white/5 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-primary/10 transition-all">
                 {prob.icon}

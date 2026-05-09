@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import { TrendingUp, Clock, Users, DollarSign } from 'lucide-react';
 
 const ROISection = () => {
@@ -37,12 +36,12 @@ const ROISection = () => {
           <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tighter text-white font-display uppercase leading-[0.95]">
             What This Means for <br className="hidden md:block"/><span className="text-primary">Your Business.</span>
           </h2>
-          <p className="text-aqua/40 text-lg font-medium italic">We don't sell features. We sell business outcomes that connect directly with your bottom line.</p>
+          <p className="text-aqua/40 text-lg font-medium italic">We don&apos;t sell features. We sell business outcomes that connect directly with your bottom line.</p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/5 rounded-[40px] overflow-hidden border border-white/5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/5 rounded-[32px] sm:rounded-[40px] overflow-hidden border border-white/5">
           {outcomes.map((out, i) => (
-            <div key={i} className="p-12 glass-panel group hover:bg-white/[0.05] transition-all">
+            <div key={i} className="p-6 sm:p-12 glass-panel group hover:bg-white/[0.05] transition-all">
               <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
                 {out.icon}
               </div>

@@ -44,7 +44,7 @@ const ProcessSection = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.2 }}
-                className="flex flex-col items-center text-center p-12 glass rounded-[48px] border border-white/5 group hover:border-primary/20 transition-all"
+                className="flex flex-col items-center text-center p-6 sm:p-12 glass rounded-[32px] sm:rounded-[48px] border border-white/5 group hover:border-primary/20 transition-all"
               >
                 <div className="w-16 h-16 rounded-full bg-deep border-4 border-white/5 flex items-center justify-center mb-8 shadow-2xl group-hover:border-primary/40 transition-all">
                   <span className="text-xl font-black text-primary">{step.num}</span>

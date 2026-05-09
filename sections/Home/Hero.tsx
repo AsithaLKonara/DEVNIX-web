@@ -27,7 +27,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-6xl md:text-7xl font-black mb-6 leading-[0.95] tracking-tighter text-gradient text-glow font-display uppercase"
+            className="text-4xl sm:text-5xl md:text-7xl font-black mb-6 leading-[0.95] tracking-tighter text-gradient text-glow font-display uppercase"
           >
             Increase Your Business <br className="hidden md:block" />
             Revenue <span className="text-white/20">with Smart Systems.</span>

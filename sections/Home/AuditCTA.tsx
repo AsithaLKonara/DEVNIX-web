@@ -13,7 +13,7 @@ const AuditCTA = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="relative glass rounded-[64px] p-12 md:p-20 text-center overflow-hidden border border-white/10"
+          className="relative glass rounded-[32px] md:rounded-[64px] p-6 sm:p-12 md:p-20 text-center overflow-hidden border border-white/10"
         >
           {/* Accent Glow */}
           <div className="absolute -top-20 -left-20 w-80 h-80 pointer-events-none" 
@@ -23,7 +23,7 @@ const AuditCTA = () => {
             <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-8">
               <SearchCode size={32} />
             </div>
-            <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tighter text-white font-display uppercase leading-[0.95]">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-black mb-6 tracking-tighter text-white font-display uppercase leading-[0.95]">
               Get a Free Business <br/> <span className="text-primary">Automation Audit.</span>
             </h2>
             <p className="text-light/60 text-lg mb-10 font-medium">

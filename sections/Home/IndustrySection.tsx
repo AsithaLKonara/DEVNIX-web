@@ -52,10 +52,10 @@ const IndustrySection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
               viewport={{ once: true }}
-              className="p-10 glass rounded-[40px] border border-white/5 group hover:border-primary/20 transition-all"
+              className="p-6 sm:p-10 glass rounded-[32px] sm:rounded-[40px] border border-white/5 group hover:border-primary/20 transition-all"
             >
-              <div className="flex items-start gap-8">
-                <div className="w-16 h-16 rounded-3xl bg-white/5 flex items-center justify-center text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-deep transition-all duration-500 shrink-0">
+              <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-6 sm:gap-8">
+                <div className="w-16 h-16 rounded-3xl bg-white/5 flex items-center justify-center text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-deep transition-all duration-500 shrink-0 mb-4 sm:mb-0">
                   {ind.icon}
                 </div>
                 <div>
