@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { io, Socket } from 'socket.io-client';
+import { useAuth } from '@/components/providers/AuthProvider';
 
 interface SocketContextType {
   socket: Socket | null;
@@ -30,11 +31,31 @@ export function SocketProvider({ children }: { children: React.ReactNode }) {
     { id: '2', type: 'success', message: 'Invoice #INV-2026-089 was paid.', read: false, createdAt: new Date(Date.now() - 3600000).toISOString() },
   ]);
 
+  const { user } = useAuth();
+
   useEffect(() => {
-    // In a real app, you'd pass the auth token here
-    const socketInstance = io(process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000', {
-      path: '/socket.io',
-      autoConnect: false, // Don't auto-connect until user is authenticated
+    // Only connect if user is logged in
+    if (!user) {
+      if (socket) {
+        socket.disconnect();
+        setSocket(null);
+        setIsConnected(false);
+      }
+      return;
+    }
+
+    const token = localStorage.getItem('xonit_space_auth_token');
+    if (!token) return;
+
+    // Connect to the /ws namespace as defined in the NestJS backend
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL?.replace('/api/v1', '') || 'http://localhost:5000';
+    
+    const socketInstance = io(`${baseUrl}/ws`, {
+      auth: {
+        token: `Bearer ${token}`
+      },
+      transports: ['websocket'],
+      autoConnect: true,
     });
 
     setSocket(socketInstance);
@@ -58,7 +79,6 @@ export function SocketProvider({ children }: { children: React.ReactNode }) {
     if (!process.env.NEXT_PUBLIC_API_URL) {
       setTimeout(() => setIsConnected(true), 1000);
       
-      // Simulate incoming live notification every 30 seconds
       const interval = setInterval(() => {
         const mockEvents = [
           { type: 'warning', message: 'Server CPU load is high (85%)' },
@@ -82,7 +102,7 @@ export function SocketProvider({ children }: { children: React.ReactNode }) {
     return () => {
       socketInstance.disconnect();
     };
-  }, []);
+  }, [user]);
 
   const addNotification = (notification: any) => {
     setNotifications((prev) => [notification, ...prev]);
