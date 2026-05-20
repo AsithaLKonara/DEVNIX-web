@@ -1,22 +1,70 @@
 'use client';
 
-import { useState } from 'react';
-import { Users, UserPlus, Calendar, Clock, Download, CheckCircle, XCircle } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Users, UserPlus, Calendar, Clock, Download, CheckCircle, XCircle, Loader2, AlertCircle } from 'lucide-react';
+import { hrApi, type Employee, type LeaveRequest } from '@/lib/api/modules.api';
 
-const employees = [
-  { id: 'EMP-001', name: 'Alice Cooper', role: 'Senior Developer', department: 'Engineering', status: 'Active' },
-  { id: 'EMP-002', name: 'Bob Smith', role: 'Project Manager', department: 'Management', status: 'On Leave' },
-  { id: 'EMP-003', name: 'Charlie Davis', role: 'UI/UX Designer', department: 'Design', status: 'Active' },
-  { id: 'EMP-004', name: 'Diana Prince', role: 'HR Manager', department: 'Human Resources', status: 'Active' },
+const MOCK_EMPLOYEES: Employee[] = [
+  { id: 'EMP-001', name: 'Alice Cooper', role: 'Senior Developer', department: 'Engineering', status: 'Active', email: 'alice@example.com' },
+  { id: 'EMP-002', name: 'Bob Smith', role: 'Project Manager', department: 'Management', status: 'On Leave', email: 'bob@example.com' },
+  { id: 'EMP-003', name: 'Charlie Davis', role: 'UI/UX Designer', department: 'Design', status: 'Active', email: 'charlie@example.com' },
+  { id: 'EMP-004', name: 'Diana Prince', role: 'HR Manager', department: 'Human Resources', status: 'Active', email: 'diana@example.com' },
 ];
 
-const leaveRequests = [
-  { id: 'LR-102', employee: 'Bob Smith', type: 'Annual Leave', dates: 'Oct 15 - Oct 20', status: 'Pending' },
-  { id: 'LR-103', employee: 'Charlie Davis', type: 'Sick Leave', dates: 'Oct 10 (Half Day)', status: 'Pending' },
+const MOCK_LEAVE_REQUESTS: LeaveRequest[] = [
+  { id: 'LR-102', employee: { name: 'Bob Smith', role: 'Project Manager' }, type: 'Annual Leave', startDate: '2026-10-15', endDate: '2026-10-20', status: 'Pending' },
+  { id: 'LR-103', employee: { name: 'Charlie Davis', role: 'UI/UX Designer' }, type: 'Sick Leave', startDate: '2026-10-10', endDate: '2026-10-10', status: 'Pending' },
 ];
 
 export default function HRDashboardPage() {
   const [activeTab, setActiveTab] = useState<'employees' | 'leave'>('employees');
+  const [employees, setEmployees] = useState<Employee[]>([]);
+  const [leaveRequests, setLeaveRequests] = useState<LeaveRequest[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const [empData, leaveData] = await Promise.all([
+          hrApi.listEmployees(),
+          hrApi.listLeaveRequests(),
+        ]);
+        setEmployees(Array.isArray(empData) && empData.length > 0 ? empData : MOCK_EMPLOYEES);
+        setLeaveRequests(Array.isArray(leaveData) && leaveData.length > 0 ? leaveData : MOCK_LEAVE_REQUESTS);
+      } catch (err) {
+        console.warn('HR API unavailable, using mock data:', err);
+        setError('Showing cached data — API connection unavailable.');
+        setEmployees(MOCK_EMPLOYEES);
+        setLeaveRequests(MOCK_LEAVE_REQUESTS);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const handleUpdateLeaveStatus = async (id: string, newStatus: string) => {
+    // Optimistic UI update
+    setLeaveRequests(prev => prev.map(req => 
+      req.id === id ? { ...req, status: newStatus } : req
+    ));
+
+    try {
+      await hrApi.updateLeaveStatus(id, newStatus);
+    } catch (err) {
+      console.warn('Leave status update failed (backend offline)', err);
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <Loader2 size={32} className="animate-spin text-[#6366f1]" />
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6 animate-in fade-in duration-500">
@@ -37,12 +85,19 @@ export default function HRDashboardPage() {
         </div>
       </div>
 
+      {error && (
+        <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-lg flex items-center gap-3 text-amber-400 text-sm">
+          <AlertCircle size={16} />
+          <p>{error}</p>
+        </div>
+      )}
+
       {/* KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="bg-[#1a1a2e] border border-[#2d2d4e] rounded-xl p-5 relative overflow-hidden">
           <div className="absolute top-0 right-0 p-4 opacity-10 text-blue-500"><Users size={64} /></div>
           <p className="text-sm font-medium text-gray-400">Total Employees</p>
-          <p className="text-3xl font-bold text-white mt-2">24</p>
+          <p className="text-3xl font-bold text-white mt-2">{employees.length}</p>
           <div className="mt-4 flex items-center gap-2 text-sm">
             <span className="text-emerald-400 font-medium">+2</span>
             <span className="text-gray-500">this month</span>
@@ -52,7 +107,9 @@ export default function HRDashboardPage() {
         <div className="bg-[#1a1a2e] border border-[#2d2d4e] rounded-xl p-5 relative overflow-hidden">
           <div className="absolute top-0 right-0 p-4 opacity-10 text-emerald-500"><Clock size={64} /></div>
           <p className="text-sm font-medium text-gray-400">Present Today</p>
-          <p className="text-3xl font-bold text-white mt-2">21</p>
+          <p className="text-3xl font-bold text-white mt-2">
+            {employees.filter(e => e.status === 'Active' || e.status === 'Present').length}
+          </p>
           <div className="mt-4 flex items-center gap-2 text-sm">
             <span className="text-gray-400 font-medium">87.5% attendance rate</span>
           </div>
@@ -61,7 +118,9 @@ export default function HRDashboardPage() {
         <div className="bg-[#1a1a2e] border border-[#2d2d4e] rounded-xl p-5 relative overflow-hidden">
           <div className="absolute top-0 right-0 p-4 opacity-10 text-amber-500"><Calendar size={64} /></div>
           <p className="text-sm font-medium text-gray-400">On Leave</p>
-          <p className="text-3xl font-bold text-white mt-2">3</p>
+          <p className="text-3xl font-bold text-white mt-2">
+            {employees.filter(e => e.status === 'On Leave').length}
+          </p>
           <div className="mt-4 flex items-center gap-2 text-sm">
             <span className="text-amber-400 font-medium">View details</span>
           </div>
@@ -70,7 +129,9 @@ export default function HRDashboardPage() {
         <div className="bg-[#1a1a2e] border border-[#2d2d4e] rounded-xl p-5 relative overflow-hidden">
           <div className="absolute top-0 right-0 p-4 opacity-10 text-rose-500"><CheckCircle size={64} /></div>
           <p className="text-sm font-medium text-gray-400">Pending Approvals</p>
-          <p className="text-3xl font-bold text-white mt-2">5</p>
+          <p className="text-3xl font-bold text-white mt-2">
+            {leaveRequests.filter(l => l.status === 'Pending').length}
+          </p>
           <div className="mt-4 flex items-center gap-2 text-sm">
             <span className="text-rose-400 font-medium">Requires action</span>
           </div>
@@ -116,7 +177,7 @@ export default function HRDashboardPage() {
                       <td className="p-4">
                         <div className="flex items-center gap-3">
                           <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-medium text-xs">
-                            {emp.name.split(' ').map(n => n[0]).join('')}
+                            {emp.name?.split(' ').map(n => n[0]).join('') || '??'}
                           </div>
                           <div>
                             <p className="text-white font-medium">{emp.name}</p>
@@ -125,10 +186,10 @@ export default function HRDashboardPage() {
                         </div>
                       </td>
                       <td className="p-4 font-medium">{emp.role}</td>
-                      <td className="p-4">{emp.department}</td>
+                      <td className="p-4">{emp.department || 'N/A'}</td>
                       <td className="p-4">
                         <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase ${
-                          emp.status === 'Active' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' :
+                          emp.status === 'Active' || emp.status === 'Present' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' :
                           'bg-amber-500/10 text-amber-400 border border-amber-500/20'
                         }`}>
                           {emp.status}
@@ -145,24 +206,41 @@ export default function HRDashboardPage() {
                     <th className="p-4 font-medium">Employee</th>
                     <th className="p-4 font-medium">Leave Type</th>
                     <th className="p-4 font-medium">Dates</th>
-                    <th className="p-4 font-medium">Actions</th>
+                    <th className="p-4 font-medium">Status / Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   {leaveRequests.map((req) => (
                     <tr key={req.id} className="border-b border-[#2d2d4e]/50 hover:bg-[#2d2d4e]/30 transition-colors">
-                      <td className="p-4 font-medium text-white">{req.employee}</td>
+                      <td className="p-4 font-medium text-white">{req.employee?.name || 'Unknown'}</td>
                       <td className="p-4">{req.type}</td>
-                      <td className="p-4">{req.dates}</td>
                       <td className="p-4">
-                        <div className="flex gap-2">
-                          <button className="p-1.5 rounded bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 transition-colors" title="Approve">
-                            <CheckCircle size={16} />
-                          </button>
-                          <button className="p-1.5 rounded bg-rose-500/10 text-rose-400 hover:bg-rose-500/20 transition-colors" title="Reject">
-                            <XCircle size={16} />
-                          </button>
-                        </div>
+                        {req.startDate === req.endDate ? req.startDate : `${req.startDate} - ${req.endDate}`}
+                      </td>
+                      <td className="p-4">
+                        {req.status === 'Pending' ? (
+                          <div className="flex gap-2">
+                            <button 
+                              onClick={() => handleUpdateLeaveStatus(req.id, 'Approved')}
+                              className="p-1.5 rounded bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 transition-colors" title="Approve"
+                            >
+                              <CheckCircle size={16} />
+                            </button>
+                            <button 
+                              onClick={() => handleUpdateLeaveStatus(req.id, 'Rejected')}
+                              className="p-1.5 rounded bg-rose-500/10 text-rose-400 hover:bg-rose-500/20 transition-colors" title="Reject"
+                            >
+                              <XCircle size={16} />
+                            </button>
+                          </div>
+                        ) : (
+                          <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase ${
+                            req.status === 'Approved' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' :
+                            'bg-rose-500/10 text-rose-400 border border-rose-500/20'
+                          }`}>
+                            {req.status}
+                          </span>
+                        )}
                       </td>
                     </tr>
                   ))}

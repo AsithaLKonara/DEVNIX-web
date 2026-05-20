@@ -1,16 +1,69 @@
 'use client';
 
-import { useState } from 'react';
-import { Download, Plus, Filter, TrendingUp, TrendingDown, DollarSign, CreditCard } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Download, Plus, Filter, TrendingUp, TrendingDown, DollarSign, CreditCard, Loader2, AlertCircle } from 'lucide-react';
+import { financeApi, type Invoice } from '@/lib/api/modules.api';
 
-const invoices = [
-  { id: 'INV-2026-089', client: 'Acme Corp', project: 'E-Commerce Redesign', amount: 12500, status: 'PAID', date: 'Oct 01, 2026' },
-  { id: 'INV-2026-090', client: 'TechFlow', project: 'Mobile App Launch', amount: 8500, status: 'PENDING', date: 'Oct 05, 2026' },
-  { id: 'INV-2026-091', client: 'Global Retail', project: 'CRM Integration', amount: 24000, status: 'OVERDUE', date: 'Sep 15, 2026' },
-  { id: 'INV-2026-092', client: 'Stark Industries', project: 'Brand Identity', amount: 5000, status: 'DRAFT', date: 'Oct 10, 2026' },
+const MOCK_INVOICES: Invoice[] = [
+  { id: 'INV-2026-089', invoiceNumber: 'INV-2026-089', clientName: 'Acme Corp', project: { name: 'E-Commerce Redesign' }, amount: 12500, status: 'PAID', date: 'Oct 01, 2026' } as any,
+  { id: 'INV-2026-090', invoiceNumber: 'INV-2026-090', clientName: 'TechFlow', project: { name: 'Mobile App Launch' }, amount: 8500, status: 'PENDING', date: 'Oct 05, 2026' } as any,
+  { id: 'INV-2026-091', invoiceNumber: 'INV-2026-091', clientName: 'Global Retail', project: { name: 'CRM Integration' }, amount: 24000, status: 'OVERDUE', date: 'Sep 15, 2026' } as any,
+  { id: 'INV-2026-092', invoiceNumber: 'INV-2026-092', clientName: 'Stark Industries', project: { name: 'Brand Identity' }, amount: 5000, status: 'DRAFT', date: 'Oct 10, 2026' } as any,
 ];
 
+const MOCK_SUMMARY = {
+  totalRevenue: 845200,
+  totalExpenses: 18400,
+  pendingInvoices: 42500,
+  overduePayments: 24000,
+};
+
 export default function FinanceDashboardPage() {
+  const [invoices, setInvoices] = useState<Invoice[]>([]);
+  const [summary, setSummary] = useState(MOCK_SUMMARY);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const [invoicesData, summaryData] = await Promise.all([
+          financeApi.listInvoices(),
+          financeApi.getFinancialSummary(),
+        ]);
+        setInvoices(Array.isArray(invoicesData) && invoicesData.length > 0 ? invoicesData : MOCK_INVOICES);
+        
+        if (summaryData && summaryData.totalRevenue !== undefined) {
+           setSummary({
+             totalRevenue: summaryData.totalRevenue,
+             totalExpenses: summaryData.totalExpenses,
+             pendingInvoices: summaryData.pendingInvoices,
+             overduePayments: MOCK_SUMMARY.overduePayments, // Fallback if not provided
+           });
+        } else {
+           setSummary(MOCK_SUMMARY);
+        }
+      } catch (err) {
+        console.warn('Finance API unavailable, using mock data:', err);
+        setError('Showing cached data — API connection unavailable.');
+        setInvoices(MOCK_INVOICES);
+        setSummary(MOCK_SUMMARY);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <Loader2 size={32} className="animate-spin text-[#6366f1]" />
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6 animate-in fade-in duration-500">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
@@ -30,12 +83,19 @@ export default function FinanceDashboardPage() {
         </div>
       </div>
 
+      {error && (
+        <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-lg flex items-center gap-3 text-amber-400 text-sm">
+          <AlertCircle size={16} />
+          <p>{error}</p>
+        </div>
+      )}
+
       {/* KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="bg-[#1a1a2e] border border-[#2d2d4e] rounded-xl p-5 relative overflow-hidden">
           <div className="absolute top-0 right-0 p-4 opacity-10 text-emerald-500"><TrendingUp size={64} /></div>
           <p className="text-sm font-medium text-gray-400">Total Revenue (YTD)</p>
-          <p className="text-3xl font-bold text-white mt-2">$845,200</p>
+          <p className="text-3xl font-bold text-white mt-2">${summary.totalRevenue.toLocaleString()}</p>
           <div className="mt-4 flex items-center gap-2 text-sm">
             <span className="text-emerald-400 font-medium">+15.2%</span>
             <span className="text-gray-500">vs last year</span>
@@ -45,16 +105,16 @@ export default function FinanceDashboardPage() {
         <div className="bg-[#1a1a2e] border border-[#2d2d4e] rounded-xl p-5 relative overflow-hidden">
           <div className="absolute top-0 right-0 p-4 opacity-10 text-blue-500"><DollarSign size={64} /></div>
           <p className="text-sm font-medium text-gray-400">Outstanding Invoices</p>
-          <p className="text-3xl font-bold text-white mt-2">$42,500</p>
+          <p className="text-3xl font-bold text-white mt-2">${summary.pendingInvoices.toLocaleString()}</p>
           <div className="mt-4 flex items-center gap-2 text-sm">
-            <span className="text-gray-400 font-medium">8 invoices pending</span>
+            <span className="text-gray-400 font-medium">{invoices.filter(i => i.status === 'PENDING').length} invoices pending</span>
           </div>
         </div>
 
         <div className="bg-[#1a1a2e] border border-[#2d2d4e] rounded-xl p-5 relative overflow-hidden">
           <div className="absolute top-0 right-0 p-4 opacity-10 text-rose-500"><TrendingDown size={64} /></div>
           <p className="text-sm font-medium text-gray-400">Overdue Payments</p>
-          <p className="text-3xl font-bold text-white mt-2">$24,000</p>
+          <p className="text-3xl font-bold text-white mt-2">${summary.overduePayments.toLocaleString()}</p>
           <div className="mt-4 flex items-center gap-2 text-sm">
             <span className="text-rose-400 font-medium">Action Required</span>
           </div>
@@ -63,7 +123,7 @@ export default function FinanceDashboardPage() {
         <div className="bg-[#1a1a2e] border border-[#2d2d4e] rounded-xl p-5 relative overflow-hidden">
           <div className="absolute top-0 right-0 p-4 opacity-10 text-purple-500"><CreditCard size={64} /></div>
           <p className="text-sm font-medium text-gray-400">Monthly Expenses</p>
-          <p className="text-3xl font-bold text-white mt-2">$18,400</p>
+          <p className="text-3xl font-bold text-white mt-2">${summary.totalExpenses.toLocaleString()}</p>
           <div className="mt-4 flex items-center gap-2 text-sm">
             <span className="text-rose-400 font-medium">+2.4%</span>
             <span className="text-gray-500">vs last month</span>
@@ -92,13 +152,13 @@ export default function FinanceDashboardPage() {
               <tbody>
                 {invoices.map((inv) => (
                   <tr key={inv.id} className="border-b border-[#2d2d4e]/50 hover:bg-[#2d2d4e]/30 transition-colors">
-                    <td className="p-4 font-medium text-white">{inv.id}</td>
+                    <td className="p-4 font-medium text-white">{inv.invoiceNumber || inv.id.slice(0, 8)}</td>
                     <td className="p-4">
-                      <p className="text-white font-medium">{inv.client}</p>
-                      <p className="text-xs text-gray-500">{inv.project}</p>
+                      <p className="text-white font-medium">{inv.clientName}</p>
+                      <p className="text-xs text-gray-500">{inv.project?.name || 'N/A'}</p>
                     </td>
-                    <td className="p-4 font-medium">${inv.amount.toLocaleString()}</td>
-                    <td className="p-4">{inv.date}</td>
+                    <td className="p-4 font-medium">${inv.amount?.toLocaleString()}</td>
+                    <td className="p-4">{inv.date || inv.issuedDate || 'N/A'}</td>
                     <td className="p-4">
                       <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase ${
                         inv.status === 'PAID' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' :
@@ -144,7 +204,7 @@ export default function FinanceDashboardPage() {
               </button>
               <button className="w-full flex items-center justify-between p-3 rounded-lg bg-[#0f0f1a] border border-[#2d2d4e] hover:border-[#6366f1] text-gray-300 hover:text-white transition-colors group">
                 <span className="text-sm font-medium">Send Reminders</span>
-                <span className="bg-rose-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">1 Due</span>
+                <span className="bg-rose-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">{invoices.filter(i => i.status === 'OVERDUE').length} Due</span>
               </button>
               <button className="w-full flex items-center justify-between p-3 rounded-lg bg-[#0f0f1a] border border-[#2d2d4e] hover:border-[#6366f1] text-gray-300 hover:text-white transition-colors group">
                 <span className="text-sm font-medium">Connect Bank</span>

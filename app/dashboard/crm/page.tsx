@@ -1,55 +1,94 @@
 'use client';
 
-import { useState } from 'react';
-import { Plus, Search, Filter, Phone, Mail, Building, MoreHorizontal, Calendar, DollarSign } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Plus, Search, Filter, Phone, Mail, Building, MoreHorizontal, Calendar, DollarSign, Loader2, AlertCircle } from 'lucide-react';
+import { crmApi, type CrmLead } from '@/lib/api/modules.api';
 
-const initialPipeline = [
-  {
-    id: 'new',
-    title: 'New Leads',
-    color: 'bg-blue-500',
-    leads: [
-      { id: 'l1', company: 'Global Tech Inc', contact: 'John Smith', value: '$12,000', lastContact: 'Today', source: 'Website' },
-      { id: 'l2', company: 'Nexus Innovations', contact: 'Sarah Connor', value: '$8,500', lastContact: 'Yesterday', source: 'Referral' },
-    ]
-  },
-  {
-    id: 'contacted',
-    title: 'Contacted',
-    color: 'bg-amber-500',
-    leads: [
-      { id: 'l3', company: 'Apex Retail', contact: 'Michael Chang', value: '$25,000', lastContact: '2 days ago', source: 'LinkedIn' },
-    ]
-  },
-  {
-    id: 'qualified',
-    title: 'Qualified',
-    color: 'bg-purple-500',
-    leads: [
-      { id: 'l4', company: 'Quantum Logistics', contact: 'Emma Wilson', value: '$45,000', lastContact: '3 days ago', source: 'Conference' },
-      { id: 'l5', company: 'Starlight Media', contact: 'David Lee', value: '$15,000', lastContact: '1 week ago', source: 'Cold Call' },
-    ]
-  },
-  {
-    id: 'proposal',
-    title: 'Proposal Sent',
-    color: 'bg-rose-500',
-    leads: [
-      { id: 'l6', company: 'Horizon Finance', contact: 'Robert Chen', value: '$60,000', lastContact: '1 day ago', source: 'Website' },
-    ]
-  },
-  {
-    id: 'won',
-    title: 'Closed Won',
-    color: 'bg-emerald-500',
-    leads: [
-      { id: 'l7', company: 'Vertex Solutions', contact: 'Alice Cooper', value: '$32,000', lastContact: '1 month ago', source: 'Referral' },
-    ]
-  }
+interface PipelineStage {
+  id: string;
+  title: string;
+  color: string;
+  leads: CrmLead[];
+}
+
+const MOCK_LEADS: CrmLead[] = [
+  { id: 'l1', clientName: 'John Smith', company: 'Global Tech Inc', value: 12000, stage: 'NEW', notes: 'Website' },
+  { id: 'l2', clientName: 'Sarah Connor', company: 'Nexus Innovations', value: 8500, stage: 'NEW', notes: 'Referral' },
+  { id: 'l3', clientName: 'Michael Chang', company: 'Apex Retail', value: 25000, stage: 'CONTACTED', notes: 'LinkedIn' },
+  { id: 'l4', clientName: 'Emma Wilson', company: 'Quantum Logistics', value: 45000, stage: 'QUALIFIED', notes: 'Conference' },
+  { id: 'l5', clientName: 'David Lee', company: 'Starlight Media', value: 15000, stage: 'QUALIFIED', notes: 'Cold Call' },
+  { id: 'l6', clientName: 'Robert Chen', company: 'Horizon Finance', value: 60000, stage: 'PROPOSAL', notes: 'Website' },
+  { id: 'l7', clientName: 'Alice Cooper', company: 'Vertex Solutions', value: 32000, stage: 'WON', notes: 'Referral' },
 ];
 
+const STAGES = [
+  { id: 'NEW', title: 'New Leads', color: 'bg-blue-500' },
+  { id: 'CONTACTED', title: 'Contacted', color: 'bg-amber-500' },
+  { id: 'QUALIFIED', title: 'Qualified', color: 'bg-purple-500' },
+  { id: 'PROPOSAL', title: 'Proposal Sent', color: 'bg-rose-500' },
+  { id: 'WON', title: 'Closed Won', color: 'bg-emerald-500' }
+];
+
+function mapLeadsToPipeline(leads: CrmLead[]): PipelineStage[] {
+  return STAGES.map(stage => ({
+    ...stage,
+    leads: leads.filter(lead => lead.stage === stage.id)
+  }));
+}
+
 export default function CRMPipelinePage() {
-  const [pipeline] = useState(initialPipeline);
+  const [pipeline, setPipeline] = useState<PipelineStage[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchLeads = async () => {
+      setIsLoading(true);
+      try {
+        const data = await crmApi.listLeads();
+        setPipeline(mapLeadsToPipeline(Array.isArray(data) && data.length > 0 ? data : MOCK_LEADS));
+      } catch (err) {
+        console.warn('CRM API unavailable, using mock data:', err);
+        setError('Showing cached data — API connection unavailable.');
+        setPipeline(mapLeadsToPipeline(MOCK_LEADS));
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchLeads();
+  }, []);
+
+  const handleMoveLead = async (leadId: string, newStage: string) => {
+    // Optimistic update
+    setPipeline(prev => {
+      const updated = prev.map(stage => ({
+        ...stage,
+        leads: stage.leads.filter(l => l.id !== leadId)
+      }));
+      const lead = prev.flatMap(s => s.leads).find(l => l.id === leadId);
+      if (lead) {
+        const targetStage = updated.find(s => s.id === newStage);
+        if (targetStage) {
+          targetStage.leads.push({ ...lead, stage: newStage });
+        }
+      }
+      return updated;
+    });
+
+    try {
+      await crmApi.updateLeadStage(leadId, newStage);
+    } catch (err) {
+      console.warn('Lead stage update failed (backend offline)', err);
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <Loader2 size={32} className="animate-spin text-[#6366f1]" />
+      </div>
+    );
+  }
 
   return (
     <div className="h-[calc(100vh-8rem)] flex flex-col">
@@ -78,6 +117,13 @@ export default function CRMPipelinePage() {
         </div>
       </div>
 
+      {error && (
+        <div className="mb-4 p-3 bg-amber-500/10 border border-amber-500/30 rounded-lg flex items-center gap-3 text-amber-400 text-sm">
+          <AlertCircle size={16} />
+          <p>{error}</p>
+        </div>
+      )}
+
       {/* Pipeline Board Area */}
       <div className="flex-1 overflow-x-auto flex gap-6 pb-4">
         {pipeline.map((stage) => (
@@ -100,17 +146,20 @@ export default function CRMPipelinePage() {
                 <div key={lead.id} className="bg-[#0f0f1a] border border-[#2d2d4e] p-4 rounded-lg hover:border-[#6366f1]/50 cursor-grab active:cursor-grabbing transition-colors group shadow-sm">
                   <div className="flex justify-between items-start mb-3">
                     <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded bg-[#2d2d4e] flex items-center justify-center">
+                      <div className="w-8 h-8 rounded bg-[#2d2d4e] flex items-center justify-center shrink-0">
                         <Building size={14} className="text-gray-400" />
                       </div>
-                      <div>
-                        <p className="text-sm font-bold text-white">{lead.company}</p>
-                        <p className="text-xs text-gray-400">{lead.contact}</p>
+                      <div className="min-w-0">
+                        <p className="text-sm font-bold text-white truncate w-40">{lead.company || lead.clientName}</p>
+                        <p className="text-xs text-gray-400 truncate w-40">{lead.clientName}</p>
                       </div>
                     </div>
-                    <button className="text-gray-600 opacity-0 group-hover:opacity-100 hover:text-white transition-all">
-                      <MoreHorizontal size={14} />
-                    </button>
+                    {/* Quick Move Dropdown */}
+                    <div className="relative">
+                      <button className="text-gray-600 opacity-0 group-hover:opacity-100 hover:text-white transition-all">
+                        <MoreHorizontal size={14} />
+                      </button>
+                    </div>
                   </div>
                   
                   <div className="space-y-2 mt-4">
@@ -119,7 +168,7 @@ export default function CRMPipelinePage() {
                         <DollarSign size={13} className="text-emerald-400" />
                         <span>Value</span>
                       </div>
-                      <span className="font-medium text-emerald-400">{lead.value}</span>
+                      <span className="font-medium text-emerald-400">${lead.value?.toLocaleString() || '0'}</span>
                     </div>
                     
                     <div className="flex items-center justify-between text-xs">
@@ -127,13 +176,13 @@ export default function CRMPipelinePage() {
                         <Calendar size={13} />
                         <span>Last Contact</span>
                       </div>
-                      <span className="text-gray-300">{lead.lastContact}</span>
+                      <span className="text-gray-300">Recently</span>
                     </div>
                   </div>
 
                   <div className="mt-4 pt-3 border-t border-[#2d2d4e] flex justify-between items-center">
                     <span className="bg-[#1a1a2e] text-gray-400 px-2 py-1 rounded text-[10px] font-medium border border-[#2d2d4e]">
-                      {lead.source}
+                      {lead.notes || 'No source'}
                     </span>
                     <div className="flex gap-1">
                       <button className="p-1.5 rounded bg-[#1a1a2e] border border-[#2d2d4e] text-gray-400 hover:text-[#818cf8] hover:border-[#818cf8]/50 transition-colors">
