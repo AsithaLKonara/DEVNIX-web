@@ -4,19 +4,25 @@ import { Bell, Search, Menu, X, CheckCircle, AlertCircle, Info, Check } from 'lu
 import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSocket } from '@/components/providers/SocketProvider';
+import { useAuth } from '@/components/providers/AuthProvider';
 
 export function Topbar({ onMenuClick }: { onMenuClick: () => void }) {
   const router = useRouter();
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
   const { notifications, isConnected, markAsRead } = useSocket();
+  const { user, logout } = useAuth();
   const notifRef = useRef<HTMLDivElement>(null);
 
   const unreadCount = notifications.filter(n => !n.read).length;
 
+  // Derive display values from auth context
+  const displayName = user?.name || 'Guest User';
+  const displayEmail = user?.email || 'guest@xonit.space';
+  const initials = displayName.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+
   const handleLogout = () => {
-    localStorage.removeItem('xonit_space_auth_token');
-    router.push('/login');
+    logout();
   };
 
   // Click outside to close dropdown
@@ -155,16 +161,16 @@ export function Topbar({ onMenuClick }: { onMenuClick: () => void }) {
             className="flex items-center gap-2 p-1 pr-2 rounded-full hover:bg-[#2d2d4e]/50 transition-colors focus:outline-none focus:ring-2 focus:ring-[#6366f1] focus:ring-offset-2 focus:ring-offset-[#1a1a2e]"
           >
             <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center text-white font-medium text-sm">
-              AL
+              {initials}
             </div>
-            <span className="hidden md:block text-sm font-medium text-white">Admin User</span>
+            <span className="hidden md:block text-sm font-medium text-white">{displayName}</span>
           </button>
 
           {showProfileMenu && (
             <div className="absolute right-0 mt-2 w-48 bg-[#1a1a2e] border border-[#2d2d4e] rounded-lg shadow-xl py-1 overflow-hidden z-50">
               <div className="px-4 py-2 border-b border-[#2d2d4e]">
-                <p className="text-sm text-white font-medium">Admin User</p>
-                <p className="text-xs text-gray-400 truncate">admin@xonit.space</p>
+                <p className="text-sm text-white font-medium">{displayName}</p>
+                <p className="text-xs text-gray-400 truncate">{displayEmail}</p>
               </div>
               <button 
                 className="w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-[#2d2d4e] hover:text-white transition-colors"
