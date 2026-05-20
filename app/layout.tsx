@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ChatWidget } from "@/components/ChatWidget";
+import { AuthProvider } from "@/components/providers/AuthProvider";
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
@@ -32,25 +33,27 @@ export default function RootLayout({
       className={`${jakarta.variable} ${outfit.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full flex flex-col selection:bg-primary/30 selection:text-primary">
-        <div className="noise-overlay" />
-        {/* Cinematic Background Layer */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="video-bg"
-        >
-          <source src="/video/0428(1).mp4" type="video/mp4" />
-        </video>
-        <div className="video-overlay" />
-        
-        <Navbar />
-        <main className="flex-grow relative z-10">
-          {children}
-        </main>
-        <Footer />
-        <ChatWidget />
+        <AuthProvider>
+          <div className="noise-overlay" />
+          {/* Cinematic Background Layer */}
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="video-bg"
+          >
+            <source src="/video/0428(1).mp4" type="video/mp4" />
+          </video>
+          <div className="video-overlay" />
+          
+          <Navbar />
+          <main className="flex-grow relative z-10">
+            {children}
+          </main>
+          <Footer />
+          <ChatWidget />
+        </AuthProvider>
       </body>
     </html>
   );
