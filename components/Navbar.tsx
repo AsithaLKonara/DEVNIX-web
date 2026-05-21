@@ -59,12 +59,26 @@ const Navbar = () => {
             );
           })}
 
-          <Link
-            href="/contact"
-            className="px-6 py-2.5 rounded-xl bg-primary text-deep text-[12px] font-black uppercase tracking-widest hover:scale-110 hover:shadow-[0_0_30px_rgba(123,164,208,0.5)] active:scale-95 transition-all duration-300"
-          >
-            Book Free Demo
-          </Link>
+          <div className="flex items-center space-x-4 ml-4 pl-4 border-l border-white/10">
+            <Link
+              href="/login"
+              className="text-[12px] font-bold text-white hover:text-primary transition-colors uppercase tracking-widest"
+            >
+              Sign In
+            </Link>
+            <Link
+              href="/register"
+              className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-[12px] font-bold uppercase tracking-widest hover:bg-white/10 transition-colors"
+            >
+              Sign Up
+            </Link>
+            <Link
+              href="/contact"
+              className="px-6 py-2.5 rounded-xl bg-primary text-deep text-[12px] font-black uppercase tracking-widest hover:scale-110 hover:shadow-[0_0_30px_rgba(123,164,208,0.5)] active:scale-95 transition-all duration-300 ml-4"
+            >
+              Book Free Demo
+            </Link>
+          </div>
         </div>
 
         <div className="md:hidden">
@@ -108,13 +122,29 @@ const Navbar = () => {
                 </Link>
               );
             })}
-            <Link
-              href="/contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full py-4 rounded-xl bg-primary text-deep text-center font-black uppercase tracking-widest text-xs"
-            >
-              Book Free Demo
-            </Link>
+            <div className="flex flex-col space-y-3 pt-4 border-t border-white/10">
+              <Link
+                href="/login"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full py-3 rounded-xl border border-white/10 text-white text-center font-bold uppercase tracking-widest text-xs"
+              >
+                Sign In
+              </Link>
+              <Link
+                href="/register"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full py-3 rounded-xl bg-white/10 text-white text-center font-bold uppercase tracking-widest text-xs"
+              >
+                Sign Up
+              </Link>
+              <Link
+                href="/contact"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full py-4 rounded-xl bg-primary text-deep text-center font-black uppercase tracking-widest text-xs mt-2"
+              >
+                Book Free Demo
+              </Link>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

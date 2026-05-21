@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Mail, Lock, User, ArrowRight, Loader2, AlertCircle, CheckCircle } from 'lucide-react';
+import { Mail, Lock, User, ArrowRight, Loader2, AlertCircle, CheckCircle, ShieldCheck } from 'lucide-react';
 import { useAuth } from '@/components/providers/AuthProvider';
 import { apiClient } from '@/lib/apiClient';
 
@@ -10,6 +10,7 @@ export default function RegisterPage() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [role, setRole] = useState('CUSTOMER');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
@@ -21,7 +22,17 @@ export default function RegisterPage() {
     setError(null);
 
     try {
-      const response = await apiClient.post('/auth/register', { name, email, password });
+      const parts = name.trim().split(' ');
+      const firstName = parts[0] || '';
+      const lastName = parts.slice(1).join(' ') || '';
+
+      const response = await apiClient.post('/auth/register', { 
+        email, 
+        password, 
+        firstName, 
+        lastName, 
+        role 
+      });
 
       if (response && (response as any).accessToken) {
         login((response as any).accessToken, (response as any).user);
@@ -43,8 +54,13 @@ export default function RegisterPage() {
           <div className="flex items-center justify-center w-16 h-16 bg-emerald-500/10 rounded-full border border-emerald-500/30 mx-auto mb-6">
             <CheckCircle size={32} className="text-emerald-400" />
           </div>
-          <h2 className="text-xl font-bold text-white mb-2">Check your inbox!</h2>
-          <p className="text-gray-400 text-sm">We've sent a verification link to <span className="text-white font-medium">{email}</span>. Please verify your account to continue.</p>
+          <h2 className="text-xl font-bold text-white mb-2">Request sent successfully!</h2>
+          <p className="text-gray-400 text-sm mb-4">
+            Your account request for the <span className="text-white font-medium">{role.replace(/_/g, ' ')}</span> role has been sent to our administrators for approval.
+          </p>
+          <p className="text-gray-400 text-sm">
+            We will notify you at <span className="text-white font-medium">{email}</span> once approved.
+          </p>
           <Link href="/login" className="inline-block mt-8 text-sm font-medium text-[#818cf8] hover:text-white transition-colors">
             Back to Login &rarr;
           </Link>
@@ -107,6 +123,28 @@ export default function RegisterPage() {
                   className="w-full bg-[#0f0f1a] border border-[#2d2d4e] text-white rounded-xl pl-10 pr-4 py-3 focus:outline-none focus:border-[#6366f1] focus:ring-1 focus:ring-[#6366f1] transition-all"
                   placeholder="you@example.com"
                 />
+              </div>
+            </div>
+
+            <div className="space-y-1">
+              <label className="text-sm font-medium text-gray-300 ml-1">Requested Role</label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-500">
+                  <ShieldCheck size={18} />
+                </div>
+                <select
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
+                  required
+                  className="w-full bg-[#0f0f1a] border border-[#2d2d4e] text-white rounded-xl pl-10 pr-4 py-3 focus:outline-none focus:border-[#6366f1] focus:ring-1 focus:ring-[#6366f1] transition-all appearance-none"
+                >
+                  <option value="CUSTOMER">Customer</option>
+                  <option value="EMPLOYEE">Employee</option>
+                  <option value="PROJECT_MANAGER">Project Manager</option>
+                  <option value="HR_MANAGER">HR Manager</option>
+                  <option value="ACCOUNTANT">Accountant</option>
+                  <option value="INFLUENCER">Influencer</option>
+                </select>
               </div>
             </div>
 

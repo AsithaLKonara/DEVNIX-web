@@ -18,6 +18,7 @@ export interface Invoice {
   clientName: string;
   amount: number;
   status: string;
+  date?: string;
   dueDate?: string;
   issuedDate?: string;
   project?: { name: string };
