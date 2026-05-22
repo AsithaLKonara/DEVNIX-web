@@ -85,7 +85,7 @@ export function Topbar({ onMenuClick }: { onMenuClick: () => void }) {
           </button>
 
           {showNotifications && (
-            <div className="absolute right-0 mt-2 w-80 bg-[#1a1a2e] border border-[#2d2d4e] rounded-xl shadow-2xl overflow-hidden z-50">
+            <div className="absolute right-0 mt-2 w-[calc(100vw-2rem)] sm:w-80 max-w-[340px] bg-[#1a1a2e] border border-[#2d2d4e] rounded-xl shadow-2xl overflow-hidden z-50">
               <div className="px-4 py-3 border-b border-[#2d2d4e] flex justify-between items-center bg-[#0f0f1a]">
                 <div className="flex items-center gap-2">
                   <h3 className="font-semibold text-white text-sm">Notifications</h3>

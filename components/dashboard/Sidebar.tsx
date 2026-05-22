@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { 
   LayoutDashboard, 
@@ -85,11 +86,15 @@ export function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (va
         ${isOpen ? 'translate-x-0' : '-translate-x-full'}
       `}>
         <div className="flex items-center justify-between h-16 px-6 border-b border-[#2d2d4e]">
-          <Link href="/dashboard" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded bg-gradient-to-br from-[#6366f1] to-[#8b5cf6] flex items-center justify-center">
-              <span className="text-white font-bold text-lg">X</span>
-            </div>
-            <span className="text-white font-bold text-xl tracking-tight">Xonit Space</span>
+          <Link href="/dashboard" className="flex items-center">
+            <Image
+              src="/logo/group-3.png"
+              alt="Xonit Logo"
+              width={160}
+              height={40}
+              className="h-8 w-auto object-contain drop-shadow-[0_0_20px_rgba(123,164,208,0.3)]"
+              priority
+            />
           </Link>
           <button onClick={() => setIsOpen(false)} className="lg:hidden text-gray-400 hover:text-white">
             <X size={20} />
@@ -118,6 +123,7 @@ export function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (va
                 <Link
                   key={item.name}
                   href={item.href}
+                  onClick={() => setIsOpen(false)}
                   className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors group
                     ${isActive 
                       ? 'bg-[#6366f1]/10 text-[#818cf8]' 
@@ -139,6 +145,7 @@ export function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (va
             return (
               <Link
                 href="/dashboard/settings"
+                onClick={() => setIsOpen(false)}
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors group
                   ${isSettingsActive 
                     ? 'bg-[#6366f1]/10 text-[#818cf8]' 

@@ -172,7 +172,7 @@ export default function FileManagementPage() {
                   ))}
                 </div>
               ) : (
-                <div className="border border-[#2d2d4e] rounded-xl overflow-hidden bg-[#0f0f1a]">
+                <div className="border border-[#2d2d4e] rounded-xl overflow-x-auto bg-[#0f0f1a]">
                   <table className="w-full text-left text-sm text-gray-300">
                     <thead className="bg-[#1a1a2e] text-gray-400 border-b border-[#2d2d4e]">
                       <tr>

@@ -342,7 +342,7 @@ export default function SettingsPage() {
                   <p className="text-xs text-gray-500 mt-1">Configure alerts, sound settings, and dynamic triggers across communication matrices.</p>
                 </div>
 
-                <div className="overflow-hidden border border-[#2d2d4e] rounded-xl bg-[#0f0f1a]/30">
+                <div className="overflow-x-auto border border-[#2d2d4e] rounded-xl bg-[#0f0f1a]/30">
                   <table className="w-full text-left text-sm text-gray-300">
                     <thead className="bg-[#0f0f1a] border-b border-[#2d2d4e] text-gray-400">
                       <tr>
