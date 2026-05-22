@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Users, UserPlus, Calendar, Clock, Download, CheckCircle, XCircle, Loader2, AlertCircle } from 'lucide-react';
 import { hrApi, type Employee, type LeaveRequest } from '@/lib/api/modules.api';
+import { DashboardSkeleton } from '@/components/dashboard/responsive/SkeletonLoaders';
 
 const MOCK_EMPLOYEES: Employee[] = [
   { id: 'EMP-001', name: 'Alice Cooper', role: 'Senior Developer', department: 'Engineering', status: 'Active', email: 'alice@example.com' },
@@ -59,11 +60,7 @@ export default function HRDashboardPage() {
   };
 
   if (isLoading) {
-    return (
-      <div className="flex items-center justify-center h-64">
-        <Loader2 size={32} className="animate-spin text-[#6366f1]" />
-      </div>
-    );
+    return <DashboardSkeleton />;
   }
 
   return (
@@ -162,90 +159,181 @@ export default function HRDashboardPage() {
           
           <div className="overflow-x-auto">
             {activeTab === 'employees' ? (
-              <table className="w-full text-left text-sm text-gray-300">
-                <thead className="bg-[#0f0f1a] text-gray-400 border-b border-[#2d2d4e]">
-                  <tr>
-                    <th className="p-4 font-medium">Employee</th>
-                    <th className="p-4 font-medium">Role</th>
-                    <th className="p-4 font-medium">Department</th>
-                    <th className="p-4 font-medium">Status</th>
-                  </tr>
-                </thead>
-                <tbody>
+              <>
+                {/* Desktop Employee Directory Table */}
+                <table className="w-full text-left text-sm text-gray-300 hidden md:table">
+                  <thead className="bg-[#0f0f1a] text-gray-400 border-b border-[#2d2d4e]">
+                    <tr>
+                      <th className="p-4 font-medium">Employee</th>
+                      <th className="p-4 font-medium">Role</th>
+                      <th className="p-4 font-medium">Department</th>
+                      <th className="p-4 font-medium">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {employees.map((emp) => (
+                      <tr key={emp.id} className="border-b border-[#2d2d4e]/50 hover:bg-[#2d2d4e]/30 transition-colors">
+                        <td className="p-4">
+                          <div className="flex items-center gap-3">
+                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-medium text-xs">
+                              {emp.name?.split(' ').map(n => n[0]).join('') || '??'}
+                            </div>
+                            <div>
+                              <p className="text-white font-medium">{emp.name}</p>
+                              <p className="text-xs text-gray-500">{emp.id}</p>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="p-4 font-medium">{emp.role}</td>
+                        <td className="p-4">{emp.department || 'N/A'}</td>
+                        <td className="p-4">
+                          <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase ${
+                            emp.status === 'Active' || emp.status === 'Present' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' :
+                            'bg-amber-500/10 text-amber-400 border border-amber-500/20'
+                          }`}>
+                            {emp.status}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+
+                {/* Mobile Employees Glass Cards */}
+                <div className="md:hidden block space-y-4 p-4">
                   {employees.map((emp) => (
-                    <tr key={emp.id} className="border-b border-[#2d2d4e]/50 hover:bg-[#2d2d4e]/30 transition-colors">
-                      <td className="p-4">
-                        <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-medium text-xs">
-                            {emp.name?.split(' ').map(n => n[0]).join('') || '??'}
-                          </div>
-                          <div>
-                            <p className="text-white font-medium">{emp.name}</p>
-                            <p className="text-xs text-gray-500">{emp.id}</p>
-                          </div>
+                    <div key={emp.id} className="bg-[#0f0f1a] border border-[#2d2d4e] rounded-xl p-4 flex flex-col gap-3">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-medium text-sm">
+                          {emp.name?.split(' ').map(n => n[0]).join('') || '??'}
                         </div>
-                      </td>
-                      <td className="p-4 font-medium">{emp.role}</td>
-                      <td className="p-4">{emp.department || 'N/A'}</td>
-                      <td className="p-4">
+                        <div>
+                          <p className="text-white font-medium">{emp.name}</p>
+                          <p className="text-xs text-gray-500">{emp.id}</p>
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-2 gap-2 text-xs border-t border-[#2d2d4e]/50 pt-3">
+                        <div>
+                          <span className="text-gray-500 block">Role</span>
+                          <span className="text-gray-300 font-medium">{emp.role}</span>
+                        </div>
+                        <div>
+                          <span className="text-gray-500 block">Department</span>
+                          <span className="text-gray-300 font-medium">{emp.department || 'N/A'}</span>
+                        </div>
+                      </div>
+                      <div className="flex justify-between items-center border-t border-[#2d2d4e]/50 pt-3 mt-1">
+                        <span className="text-xs text-gray-500">Status</span>
                         <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase ${
                           emp.status === 'Active' || emp.status === 'Present' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' :
                           'bg-amber-500/10 text-amber-400 border border-amber-500/20'
                         }`}>
                           {emp.status}
                         </span>
-                      </td>
-                    </tr>
+                      </div>
+                    </div>
                   ))}
-                </tbody>
-              </table>
+                </div>
+              </>
             ) : (
-              <table className="w-full text-left text-sm text-gray-300">
-                <thead className="bg-[#0f0f1a] text-gray-400 border-b border-[#2d2d4e]">
-                  <tr>
-                    <th className="p-4 font-medium">Employee</th>
-                    <th className="p-4 font-medium">Leave Type</th>
-                    <th className="p-4 font-medium">Dates</th>
-                    <th className="p-4 font-medium">Status / Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {leaveRequests.map((req) => (
-                    <tr key={req.id} className="border-b border-[#2d2d4e]/50 hover:bg-[#2d2d4e]/30 transition-colors">
-                      <td className="p-4 font-medium text-white">{req.employee?.name || 'Unknown'}</td>
-                      <td className="p-4">{req.type}</td>
-                      <td className="p-4">
-                        {req.startDate === req.endDate ? req.startDate : `${req.startDate} - ${req.endDate}`}
-                      </td>
-                      <td className="p-4">
-                        {req.status === 'Pending' ? (
-                          <div className="flex gap-2">
-                            <button 
-                              onClick={() => handleUpdateLeaveStatus(req.id, 'Approved')}
-                              className="p-1.5 rounded bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 transition-colors" title="Approve"
-                            >
-                              <CheckCircle size={16} />
-                            </button>
-                            <button 
-                              onClick={() => handleUpdateLeaveStatus(req.id, 'Rejected')}
-                              className="p-1.5 rounded bg-rose-500/10 text-rose-400 hover:bg-rose-500/20 transition-colors" title="Reject"
-                            >
-                              <XCircle size={16} />
-                            </button>
-                          </div>
-                        ) : (
-                          <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase ${
-                            req.status === 'Approved' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' :
-                            'bg-rose-500/10 text-rose-400 border border-rose-500/20'
-                          }`}>
-                            {req.status}
-                          </span>
-                        )}
-                      </td>
+              <>
+                {/* Desktop Leave Management Table */}
+                <table className="w-full text-left text-sm text-gray-300 hidden md:table">
+                  <thead className="bg-[#0f0f1a] text-gray-400 border-b border-[#2d2d4e]">
+                    <tr>
+                      <th className="p-4 font-medium">Employee</th>
+                      <th className="p-4 font-medium">Leave Type</th>
+                      <th className="p-4 font-medium">Dates</th>
+                      <th className="p-4 font-medium">Status / Actions</th>
                     </tr>
+                  </thead>
+                  <tbody>
+                    {leaveRequests.map((req) => (
+                      <tr key={req.id} className="border-b border-[#2d2d4e]/50 hover:bg-[#2d2d4e]/30 transition-colors">
+                        <td className="p-4 font-medium text-white">{req.employee?.name || 'Unknown'}</td>
+                        <td className="p-4">{req.type}</td>
+                        <td className="p-4">
+                          {req.startDate === req.endDate ? req.startDate : `${req.startDate} - ${req.endDate}`}
+                        </td>
+                        <td className="p-4">
+                          {req.status === 'Pending' ? (
+                            <div className="flex gap-2">
+                              <button 
+                                onClick={() => handleUpdateLeaveStatus(req.id, 'Approved')}
+                                className="p-1.5 rounded bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 transition-colors" title="Approve"
+                              >
+                                <CheckCircle size={16} />
+                              </button>
+                              <button 
+                                onClick={() => handleUpdateLeaveStatus(req.id, 'Rejected')}
+                                className="p-1.5 rounded bg-rose-500/10 text-rose-400 hover:bg-rose-500/20 transition-colors" title="Reject"
+                              >
+                                <XCircle size={16} />
+                              </button>
+                            </div>
+                          ) : (
+                            <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase ${
+                              req.status === 'Approved' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' :
+                              'bg-rose-500/10 text-rose-400 border border-rose-500/20'
+                            }`}>
+                              {req.status}
+                            </span>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+
+                {/* Mobile Leave Management Glass Cards */}
+                <div className="md:hidden block space-y-4 p-4">
+                  {leaveRequests.map((req) => (
+                    <div key={req.id} className="bg-[#0f0f1a] border border-[#2d2d4e] rounded-xl p-4 flex flex-col gap-3">
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <p className="text-white font-medium">{req.employee?.name || 'Unknown'}</p>
+                          <p className="text-xs text-gray-500">{req.employee?.role || 'Staff'}</p>
+                        </div>
+                        <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase border ${
+                          req.status === 'Approved' ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' :
+                          req.status === 'Rejected' ? 'bg-rose-500/10 text-rose-400 border-rose-500/20' :
+                          'bg-amber-500/10 text-amber-400 border-amber-500/20'
+                        }`}>
+                          {req.status}
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-2 gap-2 text-xs border-t border-[#2d2d4e]/50 pt-3">
+                        <div>
+                          <span className="text-gray-500 block">Leave Type</span>
+                          <span className="text-gray-300 font-medium">{req.type}</span>
+                        </div>
+                        <div>
+                          <span className="text-gray-500 block">Dates</span>
+                          <span className="text-gray-300 font-medium">
+                            {req.startDate === req.endDate ? req.startDate : `${req.startDate} - ${req.endDate}`}
+                          </span>
+                        </div>
+                      </div>
+                      {req.status === 'Pending' && (
+                        <div className="flex gap-3 border-t border-[#2d2d4e]/50 pt-3 mt-1">
+                          <button 
+                            onClick={() => handleUpdateLeaveStatus(req.id, 'Approved')}
+                            className="flex-1 py-3 rounded-lg bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 border border-emerald-500/20 flex items-center justify-center gap-2 text-xs font-bold transition-all min-h-[48px] cursor-pointer"
+                          >
+                            <CheckCircle size={16} /> Approve
+                          </button>
+                          <button 
+                            onClick={() => handleUpdateLeaveStatus(req.id, 'Rejected')}
+                            className="flex-1 py-3 rounded-lg bg-rose-500/10 text-rose-400 hover:bg-rose-500/20 border border-rose-500/20 flex items-center justify-center gap-2 text-xs font-bold transition-all min-h-[48px] cursor-pointer"
+                          >
+                            <XCircle size={16} /> Reject
+                          </button>
+                        </div>
+                      )}
+                    </div>
                   ))}
-                </tbody>
-              </table>
+                </div>
+              </>
             )}
           </div>
         </div>

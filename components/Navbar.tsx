@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
@@ -9,6 +9,18 @@ import { usePathname } from 'next/navigation';
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+
+  // Prevent scroll when mobile menu is active
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
 
   if (pathname?.startsWith('/dashboard')) {
     return null;
@@ -85,10 +97,11 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="md:hidden">
+        {/* Mobile Menu Toggle Button */}
+        <div className="md:hidden flex items-center">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="text-white p-2 focus:outline-none"
+            className="text-white p-3 min-w-[44px] min-h-[44px] flex items-center justify-center focus:outline-none cursor-pointer"
             aria-label="Toggle Menu"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -102,6 +115,19 @@ const Navbar = () => {
         </div>
       </motion.div>
 
+      {/* Backdrop for Mobile Menu Overlay */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setMobileMenuOpen(false)}
+            className="fixed inset-0 bg-black/60 backdrop-blur-md z-30 md:hidden pointer-events-auto"
+          />
+        )}
+      </AnimatePresence>
+
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
@@ -109,7 +135,7 @@ const Navbar = () => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="fixed inset-x-0 top-16 glass p-8 flex flex-col space-y-6 md:hidden z-40 border-b border-white/10 pointer-events-auto"
+            className="fixed inset-x-0 top-16 glass p-6 flex flex-col space-y-2 md:hidden z-40 border-b border-white/10 pointer-events-auto"
           >
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
@@ -118,8 +144,8 @@ const Navbar = () => {
                   key={link.name}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`text-base font-black uppercase tracking-widest transition-colors ${
-                    isActive ? 'text-primary' : 'text-white hover:text-primary'
+                  className={`flex items-center min-h-[48px] px-3 rounded-lg text-sm font-black uppercase tracking-widest transition-colors ${
+                    isActive ? 'text-primary bg-white/5' : 'text-white hover:text-primary hover:bg-white/5'
                   }`}
                 >
                   {link.name}
@@ -130,21 +156,21 @@ const Navbar = () => {
               <Link
                 href="/login"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full py-3 rounded-xl border border-white/10 text-white text-center font-bold uppercase tracking-widest text-xs"
+                className="w-full flex items-center justify-center min-h-[48px] rounded-xl border border-white/10 text-white text-center font-bold uppercase tracking-widest text-xs hover:bg-white/5 transition-all"
               >
                 Sign In
               </Link>
               <Link
                 href="/register"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full py-3 rounded-xl bg-white/10 text-white text-center font-bold uppercase tracking-widest text-xs"
+                className="w-full flex items-center justify-center min-h-[48px] rounded-xl bg-white/10 text-white text-center font-bold uppercase tracking-widest text-xs hover:bg-white/20 transition-all"
               >
                 Sign Up
               </Link>
               <Link
                 href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full py-4 rounded-xl bg-primary text-deep text-center font-black uppercase tracking-widest text-xs mt-2"
+                className="w-full flex items-center justify-center min-h-[52px] rounded-xl bg-primary text-deep text-center font-black uppercase tracking-widest text-xs mt-2 hover:opacity-90 active:scale-95 transition-all"
               >
                 Book Free Demo
               </Link>

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Plus, Search, Filter, Phone, Mail, Building, MoreHorizontal, Calendar, DollarSign, Loader2, AlertCircle } from 'lucide-react';
 import { crmApi, type CrmLead } from '@/lib/api/modules.api';
+import { DashboardSkeleton } from '@/components/dashboard/responsive/SkeletonLoaders';
 
 interface PipelineStage {
   id: string;
@@ -83,11 +84,7 @@ export default function CRMPipelinePage() {
   };
 
   if (isLoading) {
-    return (
-      <div className="flex items-center justify-center h-64">
-        <Loader2 size={32} className="animate-spin text-[#6366f1]" />
-      </div>
-    );
+    return <DashboardSkeleton />;
   }
 
   return (

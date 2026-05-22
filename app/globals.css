@@ -35,6 +35,10 @@
     80% { transform: translate(-15%, 0); }
     90% { transform: translate(10%, 5%); }
   }
+
+  @keyframes shimmer {
+    100% { transform: translateX(100%); }
+  }
 }
 
 :root {
@@ -136,4 +140,24 @@ body {
 ::selection {
   background: #7BA4D0;
   color: #050505;
+}
+
+/* Accessibility Focus States */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #7BA4D0;
+  outline-offset: 4px;
+}
+
+/* Reduced Motion Settings */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

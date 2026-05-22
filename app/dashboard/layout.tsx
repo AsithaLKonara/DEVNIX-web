@@ -8,6 +8,8 @@ import { usePathname } from 'next/navigation';
 import { useAuth } from '@/components/providers/AuthProvider';
 import { ShieldAlert, Loader2 } from 'lucide-react';
 import Link from 'next/link';
+import { MobileBottomNav } from '@/components/dashboard/responsive/MobileBottomNav';
+import { DashboardSkeleton } from '@/components/dashboard/responsive/SkeletonLoaders';
 
 // Strict Whitelist Mapping for Frontend RBAC
 const ROUTE_ROLE_MAP: Record<string, string[]> = {
@@ -43,12 +45,10 @@ export default function DashboardLayout({
         <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
           <Topbar onMenuClick={() => setSidebarOpen(true)} />
           
-          <main className="flex-1 overflow-y-auto overflow-x-hidden p-4 lg:p-8">
+          <main className="flex-1 overflow-y-auto overflow-x-hidden p-4 lg:p-8 pb-24 lg:pb-8">
             <div className="max-w-7xl mx-auto">
               {isLoading ? (
-                <div className="flex items-center justify-center min-h-[400px]">
-                  <Loader2 size={36} className="animate-spin text-[#6366f1]" />
-                </div>
+                <DashboardSkeleton />
               ) : !isAllowed ? (
                 <div className="flex flex-col items-center justify-center min-h-[400px] text-center p-6 bg-[#1a1a2e]/50 border border-rose-500/20 rounded-xl max-w-2xl mx-auto mt-12 animate-in fade-in duration-300">
                   <div className="w-16 h-16 rounded-full bg-rose-500/10 flex items-center justify-center text-rose-500 mb-6 border border-rose-500/20">
@@ -71,6 +71,9 @@ export default function DashboardLayout({
             </div>
           </main>
         </div>
+
+        {/* Mobile-first bottom navigation bar */}
+        <MobileBottomNav />
       </div>
     </SocketProvider>
   );

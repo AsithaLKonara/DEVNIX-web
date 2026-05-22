@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Plus, Ticket, Clock, CheckCircle, AlertCircle, Loader2, X } from 'lucide-react';
 import { apiClient } from '@/lib/apiClient';
+import { DashboardSkeleton } from '@/components/dashboard/responsive/SkeletonLoaders';
 
 interface SupportTicket {
   id: string;
@@ -75,9 +76,7 @@ export default function TicketsPage() {
 
   const filtered = filter === 'ALL' ? tickets : tickets.filter(t => t.status === filter);
 
-  if (isLoading) return (
-    <div className="flex items-center justify-center h-64"><Loader2 size={32} className="animate-spin text-[#6366f1]" /></div>
-  );
+  if (isLoading) return <DashboardSkeleton />;
 
   return (
     <div className="space-y-6 animate-in fade-in duration-500">

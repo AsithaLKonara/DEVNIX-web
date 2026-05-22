@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden text-center">
+    <section className="relative min-h-dvh flex items-center justify-center pt-32 pb-20 overflow-hidden text-center">
       <div className="container mx-auto px-4 relative z-10 flex flex-col items-center">
         <div className="max-w-4xl mx-auto flex flex-col items-center">
           {/* Badge */}
@@ -27,7 +27,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-4xl sm:text-5xl md:text-7xl font-black mb-6 leading-[0.95] tracking-tighter text-gradient text-glow font-display uppercase"
+            className="text-[clamp(2rem,7.5vw,5rem)] font-black mb-6 leading-[0.95] tracking-tighter text-gradient text-glow font-display uppercase"
           >
             Increase Your Business <br className="hidden md:block" />
             Revenue <span className="text-white/20">with Smart Systems.</span>
@@ -38,7 +38,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-xl md:text-2xl text-light/60 mb-12 max-w-2xl leading-relaxed font-medium"
+            className="text-[clamp(1rem,2.2vw,1.35rem)] text-light/60 mb-12 max-w-2xl leading-relaxed font-medium"
           >
             We build automation systems that handle customers, operations, and growth—so you don’t have to.
           </motion.p>

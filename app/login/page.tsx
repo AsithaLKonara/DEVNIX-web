@@ -135,7 +135,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 md:p-8 relative overflow-hidden bg-[#0a0714] text-white">
+    <div className="min-h-dvh flex items-center justify-center p-4 md:p-8 relative overflow-hidden bg-[#0a0714] text-white">
       {/* Background glowing gradients */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-indigo-500/10 rounded-full blur-[140px] -mr-96 -mt-96 pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-[140px] -ml-96 -mb-96 pointer-events-none"></div>

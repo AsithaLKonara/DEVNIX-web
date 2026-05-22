@@ -4,6 +4,7 @@ import { useState, useEffect, use } from 'react';
 import { Plus, MoreHorizontal, MessageSquare, Paperclip, Clock, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { projectsApi, type Task } from '@/lib/api/projects.api';
+import { DashboardSkeleton } from '@/components/dashboard/responsive/SkeletonLoaders';
 
 interface KanbanColumn {
   id: string;
@@ -116,28 +117,24 @@ export default function KanbanBoardPage({ params }: { params: Promise<{ id: stri
   };
 
   if (isLoading) {
-    return (
-      <div className="flex items-center justify-center h-64">
-        <Loader2 size={32} className="animate-spin text-[#6366f1]" />
-      </div>
-    );
+    return <DashboardSkeleton />;
   }
 
   return (
-    <div className="h-[calc(100vh-8rem)] flex flex-col">
-      <div className="flex items-center justify-between mb-6 shrink-0">
-        <div className="flex items-center gap-4">
-          <Link href="/dashboard/projects" className="text-gray-400 hover:text-white transition-colors text-sm">
+    <div className="h-[calc(100vh-12rem)] md:h-[calc(100vh-8rem)] flex flex-col">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 shrink-0">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-4">
+          <Link href="/dashboard/projects" className="text-gray-400 hover:text-white transition-colors text-sm whitespace-nowrap">
             ← Back to Projects
           </Link>
-          <div className="h-4 w-px bg-[#2d2d4e]"></div>
-          <h1 className="text-2xl font-bold text-white tracking-tight">{projectName}</h1>
-          <span className="bg-[#6366f1]/10 text-[#818cf8] px-2.5 py-1 rounded-full text-xs font-medium border border-[#6366f1]/20">
+          <div className="h-4 w-px bg-[#2d2d4e] hidden sm:block"></div>
+          <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-tight">{projectName}</h1>
+          <span className="bg-[#6366f1]/10 text-[#818cf8] px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-medium border border-[#6366f1]/20 whitespace-nowrap">
             Active
           </span>
         </div>
         
-        <div className="flex -space-x-2">
+        <div className="flex -space-x-2 self-end sm:self-auto">
           {[1, 2, 3, 4].map((i) => (
             <div key={i} className="w-8 h-8 rounded-full border-2 border-[#0f0f1a] bg-[#2d2d4e] flex items-center justify-center text-xs font-medium text-white z-10 hover:z-20 transform hover:scale-110 transition-all cursor-pointer">
               U{i}
@@ -150,9 +147,9 @@ export default function KanbanBoardPage({ params }: { params: Promise<{ id: stri
       </div>
 
       {/* Kanban Board Area */}
-      <div className="flex-1 overflow-x-auto flex gap-6 pb-4">
+      <div className="flex-1 overflow-x-auto flex gap-6 pb-4 snap-x snap-mandatory scroll-smooth w-full">
         {columns.map((col) => (
-          <div key={col.id} className="flex-shrink-0 w-80 flex flex-col bg-[#1a1a2e]/50 border border-[#2d2d4e] rounded-xl overflow-hidden">
+          <div key={col.id} className="flex-shrink-0 w-[85vw] sm:w-80 snap-center flex flex-col bg-[#1a1a2e]/50 border border-[#2d2d4e] rounded-xl overflow-hidden">
             <div className="p-4 flex items-center justify-between border-b border-[#2d2d4e] bg-[#1a1a2e]">
               <div className="flex items-center gap-2">
                 <h3 className="font-semibold text-white">{col.title}</h3>
@@ -196,7 +193,7 @@ export default function KanbanBoardPage({ params }: { params: Promise<{ id: stri
                       )}
                       {task.attachments > 0 && (
                         <div className="flex items-center gap-1 hover:text-white transition-colors">
-                          <Paperclip size={12} />
+                           <Paperclip size={12} />
                           <span>{task.attachments}</span>
                         </div>
                       )}
@@ -220,7 +217,7 @@ export default function KanbanBoardPage({ params }: { params: Promise<{ id: stri
         ))}
         
         {/* Add new column button */}
-        <div className="flex-shrink-0 w-80">
+        <div className="flex-shrink-0 w-[85vw] sm:w-80 snap-center">
           <button className="w-full h-14 flex items-center justify-center gap-2 text-sm font-medium text-gray-400 hover:text-white bg-[#1a1a2e]/30 hover:bg-[#1a1a2e] border border-dashed border-[#2d2d4e] hover:border-[#6366f1]/50 rounded-xl transition-all">
             <Plus size={16} />
             Add Column

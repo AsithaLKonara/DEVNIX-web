@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Plus, Loader2, AlertCircle, FolderOpen, ArrowRight, Users, Calendar } from 'lucide-react';
 import { projectsApi, type Project } from '@/lib/api/projects.api';
+import { DashboardSkeleton } from '@/components/dashboard/responsive/SkeletonLoaders';
 
 const STATUS_COLORS: Record<string, string> = {
   ACTIVE: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
@@ -43,11 +44,7 @@ export default function ProjectsPage() {
   }, []);
 
   if (isLoading) {
-    return (
-      <div className="flex items-center justify-center h-64">
-        <Loader2 size={32} className="animate-spin text-[#6366f1]" />
-      </div>
-    );
+    return <DashboardSkeleton />;
   }
 
   return (

@@ -49,7 +49,7 @@ export default function RegisterPage() {
 
   if (success) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-4">
+      <div className="min-h-dvh flex items-center justify-center p-4">
         <div className="bg-[#1a1a2e]/80 backdrop-blur-xl border border-[#2d2d4e] rounded-2xl p-10 text-center max-w-md w-full shadow-2xl">
           <div className="flex items-center justify-center w-16 h-16 bg-emerald-500/10 rounded-full border border-emerald-500/30 mx-auto mb-6">
             <CheckCircle size={32} className="text-emerald-400" />
@@ -70,7 +70,7 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
+    <div className="min-h-dvh flex items-center justify-center p-4 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#6366f1]/10 rounded-full blur-[120px] -mr-96 -mt-96 pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[100px] -ml-64 -mb-64 pointer-events-none"></div>
 

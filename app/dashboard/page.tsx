@@ -8,6 +8,7 @@ import { DeveloperDashboard } from '@/components/dashboard/roles/DeveloperDashbo
 import { CustomerDashboard } from '@/components/dashboard/roles/CustomerDashboard';
 import { HunterDashboard } from '@/components/dashboard/roles/HunterDashboard';
 import { Loader2 } from 'lucide-react';
+import { DashboardSkeleton } from '@/components/dashboard/responsive/SkeletonLoaders';
 
 // Dev Mode roles for override when backend is offline
 const ROLES = ['SUPER_ADMIN', 'ADMIN', 'PROJECT_MANAGER', 'EMPLOYEE', 'CUSTOMER', 'HUNTER', 'INFLUENCER'];
@@ -35,13 +36,8 @@ export default function DashboardOverview() {
   const { user, isLoading } = useAuth();
   const [devOverride, setDevOverride] = useState<string | null>(null);
 
-  // While auth is loading, show spinner
   if (isLoading) {
-    return (
-      <div className="flex items-center justify-center h-64">
-        <Loader2 size={32} className="animate-spin text-[#6366f1]" />
-      </div>
-    );
+    return <DashboardSkeleton />;
   }
 
   // The active role is either from the dev override or the authenticated user

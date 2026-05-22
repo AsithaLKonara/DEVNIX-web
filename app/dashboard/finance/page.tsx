@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Download, Plus, Filter, TrendingUp, TrendingDown, DollarSign, CreditCard, Loader2, AlertCircle } from 'lucide-react';
 import { financeApi, type Invoice } from '@/lib/api/modules.api';
 import { CashFlowChart } from '@/components/dashboard/charts/CashFlowChart';
+import { DashboardSkeleton } from '@/components/dashboard/responsive/SkeletonLoaders';
 
 const MOCK_INVOICES: Invoice[] = [
   { id: 'INV-2026-089', invoiceNumber: 'INV-2026-089', clientName: 'Acme Corp', project: { name: 'E-Commerce Redesign' }, amount: 12500, status: 'PAID', date: 'Oct 01, 2026' } as any,
@@ -58,11 +59,7 @@ export default function FinanceDashboardPage() {
   }, []);
 
   if (isLoading) {
-    return (
-      <div className="flex items-center justify-center h-64">
-        <Loader2 size={32} className="animate-spin text-[#6366f1]" />
-      </div>
-    );
+    return <DashboardSkeleton />;
   }
 
   return (
