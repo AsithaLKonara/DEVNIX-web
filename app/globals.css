@@ -161,3 +161,21 @@ textarea:focus-visible {
     scroll-behavior: auto !important;
   }
 }
+
+/* Bulletproof Sidebar Transforms (Bypassing Tailwind Cascade Quirks) */
+.sidebar-container {
+  transform: translateX(-100%);
+  /* Ensure smooth hardware acceleration on mobile */
+  will-change: transform;
+}
+
+.sidebar-container[data-open="true"] {
+  transform: translateX(0);
+}
+
+@media (min-width: 1024px) {
+  .sidebar-container {
+    /* Unconditionally sit in document flow on desktop */
+    transform: none !important;
+  }
+}

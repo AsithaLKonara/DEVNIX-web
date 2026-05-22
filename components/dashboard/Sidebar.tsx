@@ -86,13 +86,8 @@ export function Sidebar({ isOpen, onClose }: { isOpen: boolean, onClose: () => v
 
       {/* Sidebar */}
       <aside
-        className="fixed top-0 left-0 z-50 h-dvh w-64 bg-[#1a1a2e] border-r border-[#2d2d4e] flex flex-col pointer-events-auto lg:static lg:h-screen lg:translate-x-0"
-        style={{
-          // Use direct CSS transform — bypasses Tailwind v4 CSS variable cascade issues
-          // lg:static overrides `fixed` on desktop, making transform irrelevant there
-          transform: isOpen ? 'translateX(0)' : 'translateX(-100%)',
-          transition: 'transform 300ms ease-in-out',
-        }}
+        data-open={isOpen}
+        className="sidebar-container fixed top-0 left-0 z-50 h-dvh w-64 bg-[#1a1a2e] border-r border-[#2d2d4e] flex flex-col pointer-events-auto lg:static lg:h-screen lg:z-auto transition-transform duration-300 ease-in-out"
       >
         <div className="flex items-center justify-between h-16 px-5 border-b border-[#2d2d4e] shrink-0">
           <Link href="/dashboard" className="flex items-center shrink-0">

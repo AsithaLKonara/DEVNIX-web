@@ -52,14 +52,18 @@ export default function DashboardLayout({
 
   return (
     <SocketProvider>
-      {/*
-        Sidebar is rendered HERE — outside the overflow-x-hidden flex container.
-        iOS Safari intercepts touch events on fixed children inside overflow:hidden parents.
-        Placing it at the SocketProvider root avoids this entirely.
+      {/* 
+        Root dashboard layout container.
+        IMPORTANT: Do NOT add `overflow-hidden` to this root div.
+        If `overflow-hidden` is here, iOS Safari will intercept and block all touch events 
+        on the fixed Mobile Sidebar.
       */}
-      <Sidebar isOpen={sidebarOpen} onClose={closeSidebar} />
+      <div className="flex h-dvh lg:h-screen w-full bg-[#0f0f1a] font-sans text-slate-300">
+        
+        {/* Sidebar uses lg:static on desktop to sit side-by-side in this flex row */}
+        <Sidebar isOpen={sidebarOpen} onClose={closeSidebar} />
 
-      <div className="flex h-dvh lg:h-screen bg-[#0f0f1a] lg:overflow-hidden font-sans text-slate-300">
+        {/* Main Content Area — overflow is handled here to prevent iOS fixed positioning bugs */}
         <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
           <Topbar onMenuClick={openSidebar} />
           
