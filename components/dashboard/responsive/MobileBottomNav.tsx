@@ -50,7 +50,7 @@ export function MobileBottomNav() {
   ];
 
   return (
-    <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#16162a]/95 backdrop-blur-lg border-t border-[#2d2d4e] px-4 py-2 flex items-center justify-around shadow-[0_-8px_24px_rgba(0,0,0,0.5)]">
+    <div className="lg:hidden fixed bottom-0 left-0 right-0 z-30 bg-[#16162a]/95 backdrop-blur-lg border-t border-[#2d2d4e] px-4 py-2 flex items-center justify-around shadow-[0_-8px_24px_rgba(0,0,0,0.5)]">
       {bottomNavItems.map((item) => {
         const userRole = user?.role || 'ADMIN';
         const isAllowed = item.roles.includes(userRole);
@@ -64,7 +64,7 @@ export function MobileBottomNav() {
           <Link
             key={item.name}
             href={item.href}
-            className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-xl transition-all duration-200 ${
+            className={`flex flex-col items-center justify-center min-h-[44px] min-w-[44px] py-1 px-3 rounded-xl transition-all duration-200 ${
               isActive 
                 ? 'text-[#818cf8] bg-[#6366f1]/10 scale-105' 
                 : 'text-gray-400 hover:text-white'

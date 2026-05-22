@@ -64,44 +64,58 @@ const navItems = [
   },
 ];
 
-export function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (val: boolean) => void }) {
+export function Sidebar({ isOpen, onClose }: { isOpen: boolean, onClose: () => void }) {
   const pathname = usePathname();
   const { logout, user } = useAuth();
 
+
+
   return (
     <>
-      {/* Mobile overlay */}
+      {/* Mobile overlay — touching outside closes the drawer */}
       {isOpen && (
         <div 
-          className="fixed inset-0 z-40 bg-black/50 lg:hidden"
-          onClick={() => setIsOpen(false)}
+          className="fixed inset-0 z-40 bg-black/50 lg:hidden cursor-pointer pointer-events-auto"
+          style={{ touchAction: 'manipulation' }}
+          onPointerDown={(e) => {
+            e.stopPropagation();
+            onClose();
+          }}
         />
       )}
 
       {/* Sidebar */}
-      <aside className={`
-        fixed inset-y-0 left-0 z-50 w-64 bg-[#1a1a2e] border-r border-[#2d2d4e]
-        transform transition-transform duration-200 ease-in-out lg:translate-x-0 lg:static
-        flex flex-col h-screen
-        ${isOpen ? 'translate-x-0' : '-translate-x-full'}
-      `}>
-        <div className="relative flex items-center justify-between h-16 px-6 border-b border-[#2d2d4e]">
-          <Link href="/dashboard" className="flex items-center">
+      <aside
+        className="fixed top-0 left-0 z-50 h-dvh w-64 bg-[#1a1a2e] border-r border-[#2d2d4e] flex flex-col pointer-events-auto lg:static lg:h-screen lg:translate-x-0"
+        style={{
+          // Use direct CSS transform — bypasses Tailwind v4 CSS variable cascade issues
+          // lg:static overrides `fixed` on desktop, making transform irrelevant there
+          transform: isOpen ? 'translateX(0)' : 'translateX(-100%)',
+          transition: 'transform 300ms ease-in-out',
+        }}
+      >
+        <div className="flex items-center justify-between h-16 px-5 border-b border-[#2d2d4e] shrink-0">
+          <Link href="/dashboard" className="flex items-center shrink-0">
             <Image
               src="/logo/group-3.png"
               alt="Xonit Logo"
-              width={160}
-              height={40}
-              className="h-8 w-auto object-contain drop-shadow-[0_0_20px_rgba(123,164,208,0.3)]"
+              width={130}
+              height={32}
+              className="h-7 w-auto object-contain drop-shadow-[0_0_20px_rgba(123,164,208,0.3)] shrink-0"
               priority
             />
           </Link>
-          <button 
-            onClick={() => setIsOpen(false)} 
-            className="lg:hidden absolute right-4 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-white rounded-md hover:bg-[#2d2d4e]/50 transition-colors shrink-0 z-50 cursor-pointer pointer-events-auto"
+          <button
+            type="button"
+            style={{ touchAction: 'manipulation' }}
+            onPointerDown={(e) => {
+              e.stopPropagation();
+              onClose();
+            }}
+            className="lg:hidden flex items-center justify-center w-11 h-11 rounded-lg text-gray-400 hover:text-white hover:bg-[#2d2d4e]/50 transition-colors cursor-pointer pointer-events-auto"
             aria-label="Close sidebar"
           >
-            <X size={20} />
+            <X size={22} />
           </button>
         </div>
 
@@ -127,7 +141,7 @@ export function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (va
                 <Link
                   key={item.name}
                   href={item.href}
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => onClose()}
                   className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors group
                     ${isActive 
                       ? 'bg-[#6366f1]/10 text-[#818cf8]' 
@@ -149,7 +163,7 @@ export function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (va
             return (
               <Link
                 href="/dashboard/settings"
-                onClick={() => setIsOpen(false)}
+                onClick={() => onClose()}
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors group
                   ${isSettingsActive 
                     ? 'bg-[#6366f1]/10 text-[#818cf8]' 

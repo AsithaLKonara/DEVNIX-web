@@ -50,9 +50,10 @@ export function Topbar({ onMenuClick }: { onMenuClick: () => void }) {
       <div className="flex items-center gap-4">
         <button 
           onClick={onMenuClick}
-          className="lg:hidden p-2 text-gray-400 hover:text-white rounded-md hover:bg-[#2d2d4e]/50"
+          className="lg:hidden flex items-center justify-center w-11 h-11 text-gray-400 hover:text-white rounded-lg hover:bg-[#2d2d4e]/50 transition-colors"
+          aria-label="Open sidebar"
         >
-          <Menu size={20} />
+          <Menu size={22} />
         </button>
         
         <div className="hidden md:flex items-center gap-2 bg-[#0f0f1a] border border-[#2d2d4e] rounded-lg px-3 py-1.5 w-64 focus-within:border-[#6366f1] focus-within:ring-1 focus-within:ring-[#6366f1] transition-all">

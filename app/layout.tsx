@@ -22,6 +22,14 @@ export const metadata: Metadata = {
   description: "Xonit builds smart automation systems that handle customers, operations, and growth—so you don't have to. Specialized in Hotel Systems, WhatsApp Automation, and POS.",
 };
 
+import { Viewport } from "next";
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
