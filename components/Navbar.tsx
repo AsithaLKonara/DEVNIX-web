@@ -39,7 +39,7 @@ const Navbar = () => {
       <motion.div
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="w-full h-16 md:h-20 flex items-center justify-between px-6 md:px-10 glass pointer-events-auto border-b border-white/10"
+        className="w-full h-16 md:h-20 flex items-center justify-between px-6 md:px-10 glass pointer-events-auto border-b border-white/10 z-50"
         style={{ borderRadius: 0 }}
       >
         <div className="flex items-center">
@@ -47,9 +47,9 @@ const Navbar = () => {
             <Image
               src="/logo/group-3.png"
               alt="Xonit Logo"
-              width={200}
-              height={80}
-              className="h-10 md:h-7 w-auto object-contain drop-shadow-[0_0_20px_rgba(123,164,208,0.3)]"
+              width={180}
+              height={72}
+              className="h-9 md:h-6 w-auto object-contain drop-shadow-[0_0_20px_rgba(123,164,208,0.3)]"
               priority
             />
           </Link>
@@ -98,7 +98,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu Toggle Button */}
-        <div className="md:hidden flex items-center">
+        <div className="md:hidden flex items-center z-50">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="text-white p-3 min-w-[44px] min-h-[44px] flex items-center justify-center focus:outline-none cursor-pointer"
