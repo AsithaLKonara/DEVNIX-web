@@ -96,7 +96,11 @@ export function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (va
               priority
             />
           </Link>
-          <button onClick={() => setIsOpen(false)} className="lg:hidden text-gray-400 hover:text-white">
+          <button 
+            onClick={() => setIsOpen(false)} 
+            className="lg:hidden p-2 text-gray-400 hover:text-white rounded-md hover:bg-[#2d2d4e]/50 transition-colors shrink-0"
+            aria-label="Close sidebar"
+          >
             <X size={20} />
           </button>
         </div>
