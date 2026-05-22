@@ -92,14 +92,14 @@ export default function CRMPipelinePage() {
 
   return (
     <div className="h-[calc(100vh-8rem)] flex flex-col">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 shrink-0">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 shrink-0 w-full">
         <div>
           <h1 className="text-2xl font-bold text-white tracking-tight">Sales Pipeline</h1>
           <p className="text-gray-400 text-sm mt-1">Manage leads, track opportunities, and close deals.</p>
         </div>
         
-        <div className="flex gap-3">
-          <div className="flex items-center gap-2 bg-[#1a1a2e] border border-[#2d2d4e] rounded-lg px-3 py-2 w-64 focus-within:border-[#6366f1] transition-colors">
+        <div className="flex flex-col sm:flex-row w-full md:w-auto items-stretch sm:items-center gap-3">
+          <div className="flex items-center gap-2 bg-[#1a1a2e] border border-[#2d2d4e] rounded-lg px-3 py-2 w-full md:w-64 focus-within:border-[#6366f1] transition-colors">
             <Search size={16} className="text-gray-500" />
             <input 
               type="text" 
@@ -107,13 +107,15 @@ export default function CRMPipelinePage() {
               className="bg-transparent border-none outline-none text-sm text-white w-full"
             />
           </div>
-          <button className="flex items-center justify-center p-2 bg-[#1a1a2e] hover:bg-[#2d2d4e] border border-[#2d2d4e] text-gray-300 rounded-lg transition-colors">
-            <Filter size={18} />
-          </button>
-          <button className="flex items-center gap-2 bg-[#6366f1] hover:bg-[#4f46e5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
-            <Plus size={16} />
-            Add Lead
-          </button>
+          <div className="flex gap-3 w-full sm:w-auto">
+            <button className="flex-1 sm:flex-initial flex items-center justify-center p-2 bg-[#1a1a2e] hover:bg-[#2d2d4e] border border-[#2d2d4e] text-gray-300 rounded-lg transition-colors">
+              <Filter size={18} />
+            </button>
+            <button className="flex-[2] sm:flex-initial flex items-center justify-center gap-2 bg-[#6366f1] hover:bg-[#4f46e5] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors whitespace-nowrap">
+              <Plus size={16} />
+              Add Lead
+            </button>
+          </div>
         </div>
       </div>
 

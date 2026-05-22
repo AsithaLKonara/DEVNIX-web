@@ -109,8 +109,8 @@ export default function SettingsPage() {
 
       {/* Layout Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
-        {/* Navigation Sidebar */}
-        <div className="bg-[#1a1a2e] border border-[#2d2d4e] rounded-xl overflow-hidden p-2 space-y-1">
+        {/* Navigation Sidebar / Mobile Scroll Ribbon */}
+        <div className="bg-[#1a1a2e] border border-[#2d2d4e] rounded-xl p-2 flex flex-row lg:flex-col overflow-x-auto lg:overflow-visible gap-2 lg:gap-1 scrollbar-none shrink-0 w-full lg:w-auto">
           {[
             { id: 'profile', label: 'User Profile', icon: UserIcon },
             { id: 'security', label: 'Security & Access', icon: Shield },
@@ -126,14 +126,14 @@ export default function SettingsPage() {
                   setActiveTab(tab.id as TabType);
                   setSaveSuccess(null);
                 }}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all ${
+                className={`flex-1 min-w-[140px] sm:min-w-0 lg:w-full flex items-center justify-center lg:justify-start gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all whitespace-nowrap shrink-0 ${
                   isActive 
                     ? 'bg-gradient-to-r from-indigo-500/20 to-purple-500/10 border border-[#6366f1]/40 text-[#818cf8]' 
                     : 'text-gray-400 hover:text-white border border-transparent hover:bg-[#2d2d4e]/40'
                 }`}
               >
                 <Icon size={16} className={isActive ? 'text-[#818cf8]' : 'text-gray-400'} />
-                {tab.label}
+                <span>{tab.label}</span>
               </button>
             );
           })}

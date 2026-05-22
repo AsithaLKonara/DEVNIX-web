@@ -36,9 +36,9 @@ export default function ReferralDashboardPage() {
             <h2 className="text-3xl font-bold text-white mb-2">Invite & Earn</h2>
             <p className="text-gray-300 mb-6">Share your unique referral link. When a new client signs up and pays for a project, you get 10% of the project value straight to your bank account.</p>
             
-            <div className="flex items-center gap-3">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               <div className="flex items-center bg-[#0f0f1a] border border-[#2d2d4e] rounded-lg overflow-hidden flex-1 max-w-md">
-                <div className="px-4 py-3 bg-[#1a1a2e] border-r border-[#2d2d4e] text-gray-400">
+                <div className="px-4 py-3 bg-[#1a1a2e] border-r border-[#2d2d4e] text-gray-400 shrink-0">
                   <Share2 size={18} />
                 </div>
                 <input 
@@ -50,7 +50,7 @@ export default function ReferralDashboardPage() {
               </div>
               <button 
                 onClick={copyToClipboard}
-                className="flex items-center gap-2 bg-[#6366f1] hover:bg-[#4f46e5] text-white px-6 py-3 rounded-lg text-sm font-medium transition-colors whitespace-nowrap"
+                className="flex items-center justify-center gap-2 bg-[#6366f1] hover:bg-[#4f46e5] text-white px-6 py-3 rounded-lg text-sm font-medium transition-colors whitespace-nowrap w-full sm:w-auto"
               >
                 {copied ? <><Check size={18} /> Copied!</> : <><Copy size={18} /> Copy Link</>}
               </button>
