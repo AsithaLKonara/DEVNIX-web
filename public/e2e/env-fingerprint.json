@@ -1,0 +1,18 @@
+{
+  "capturedAt": "2026-05-22T00:32:27.559Z",
+  "hostname": "Asithas-Air",
+  "platform": "darwin",
+  "arch": "x64",
+  "cpuModel": "Intel(R) Core(TM) i5-5250U CPU @ 1.60GHz",
+  "cpuCores": 4,
+  "cpuSpeedMhz": 1600,
+  "totalRamGb": 8,
+  "freeRamGb": 0.02,
+  "loadAvg1m": 7.06,
+  "loadAvg5m": 8.52,
+  "nodeVersion": "v20.19.4",
+  "postgresVersion": "14.19",
+  "nextMode": "development-webpack",
+  "timezoneOffsetMin": -330,
+  "environmentHash": "84b6dfaa70e5df2a"
+}

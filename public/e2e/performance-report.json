@@ -1,0 +1,13 @@
+{
+  "dashboardLoadTimeMs": 3938,
+  "apiP95ResponseTimeMs": 191,
+  "websocketRoundtripMs": 72,
+  "networkStatus": "HEALTHY",
+  "thresholdChecks": {
+    "dashboardUnder3s": true,
+    "dashboardDevSloMs": 5000,
+    "dashboardProdSloMs": 3000,
+    "apiUnder800ms": true,
+    "websocketUnder500ms": true
+  }
+}

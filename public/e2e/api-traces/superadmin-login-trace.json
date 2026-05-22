@@ -1,0 +1,33 @@
+{
+  "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+  "spanId": "span-0002-e97e76cd",
+  "spanIndex": 2,
+  "timestamp": "2026-05-22T00:32:28.669Z",
+  "module": "auth",
+  "type": "api",
+  "method": "POST",
+  "endpoint": "/auth/login",
+  "input": {
+    "email": "superadmin@xonit.space",
+    "password": "[REDACTED]"
+  },
+  "output": {
+    "success": true,
+    "statusCode": 200,
+    "data": {
+      "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDM1NGViZS0xMjkzLTQyZWYtOWI4Yi0wNWJjZjRjOTI1NDEiLCJlbWFpbCI6InN1cGVyYWRtaW5AeG9uaXQuc3BhY2UiLCJyb2xlIjoiU1VQRVJfQURNSU4iLCJpYXQiOjE3Nzk0MDk5NDgsImV4cCI6MTc3OTQxMzU0OH0.uoMNNgSpNa4wQtnsujRKZOwkbctWj_88tcZW4LT8J_0",
+      "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDM1NGViZS0xMjkzLTQyZWYtOWI4Yi0wNWJjZjRjOTI1NDEiLCJlbWFpbCI6InN1cGVyYWRtaW5AeG9uaXQuc3BhY2UiLCJyb2xlIjoiU1VQRVJfQURNSU4iLCJpYXQiOjE3Nzk0MDk5NDgsImV4cCI6MTc4MDAxNDc0OH0.HHy78Y0JLpZgN3NTx9WK6Gsw9pW2qD-w-HkR2tHUi1c",
+      "user": {
+        "id": "64354ebe-1293-42ef-9b8b-05bcf4c92541",
+        "email": "superadmin@xonit.space",
+        "firstName": "Alex",
+        "lastName": "Vance",
+        "role": "SUPER_ADMIN"
+      }
+    }
+  },
+  "latency": 827,
+  "status": 200,
+  "success": true,
+  "dbStateHash": "e9b4a3345ea7092e2b13adaf930974f9ea05a7bd27e23ac4d1732da07f170a46"
+}

@@ -1,0 +1,13 @@
+{
+  "success": true,
+  "statusCode": 201,
+  "data": {
+    "id": "697c085c-0145-4ccd-8e46-af7d76332dd8",
+    "companyName": "Wayne Enterprises Global QA",
+    "contactName": "Lucius Fox E2E QA",
+    "contactEmail": "e2e-crm-client-1779409950410@wayne.corp",
+    "contactPhone": "+1-800-FOX",
+    "createdAt": "2026-05-22T00:32:30.426Z",
+    "updatedAt": "2026-05-22T00:32:30.426Z"
+  }
+}

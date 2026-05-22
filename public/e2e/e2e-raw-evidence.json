@@ -1,0 +1,1566 @@
+{
+  "timestamp": "2026-05-22T00:33:32.862Z",
+  "runTraceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+  "dbSnapshots": {
+    "before": {
+      "User": 5,
+      "Employee": 2,
+      "Customer": 11,
+      "Project": 9,
+      "Task": 10,
+      "SupportTicket": 7,
+      "Leave": 9,
+      "Attendance": 10,
+      "File": 9,
+      "Invoice": 9,
+      "Commission": 1,
+      "Salary": 1
+    },
+    "after": {
+      "User": 5,
+      "Employee": 2,
+      "Customer": 12,
+      "Project": 10,
+      "Task": 11,
+      "SupportTicket": 8,
+      "Leave": 10,
+      "Attendance": 11,
+      "File": 10,
+      "Invoice": 10,
+      "Commission": 1,
+      "Salary": 1
+    },
+    "diff": {
+      "User": 0,
+      "Employee": 0,
+      "Customer": 1,
+      "Project": 1,
+      "Task": 1,
+      "SupportTicket": 1,
+      "Leave": 1,
+      "Attendance": 1,
+      "File": 1,
+      "Invoice": 1,
+      "Commission": 0,
+      "Salary": 0
+    },
+    "beforeHash": "e9b4a3345ea7092e2b13adaf930974f9ea05a7bd27e23ac4d1732da07f170a46",
+    "afterHash": "c3e9a13f57c7b6d5b3548514e29ca213d7c51c8a858d85ea930e8d3b238ee19a"
+  },
+  "apiTraces": [
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0002-e97e76cd",
+      "spanIndex": 2,
+      "timestamp": "2026-05-22T00:32:28.669Z",
+      "module": "auth",
+      "type": "api",
+      "method": "POST",
+      "endpoint": "/auth/login",
+      "input": {
+        "email": "superadmin@xonit.space",
+        "password": "xonit123"
+      },
+      "output": {
+        "success": true,
+        "statusCode": 200,
+        "data": {
+          "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDM1NGViZS0xMjkzLTQyZWYtOWI4Yi0wNWJjZjRjOTI1NDEiLCJlbWFpbCI6InN1cGVyYWRtaW5AeG9uaXQuc3BhY2UiLCJyb2xlIjoiU1VQRVJfQURNSU4iLCJpYXQiOjE3Nzk0MDk5NDgsImV4cCI6MTc3OTQxMzU0OH0.uoMNNgSpNa4wQtnsujRKZOwkbctWj_88tcZW4LT8J_0",
+          "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDM1NGViZS0xMjkzLTQyZWYtOWI4Yi0wNWJjZjRjOTI1NDEiLCJlbWFpbCI6InN1cGVyYWRtaW5AeG9uaXQuc3BhY2UiLCJyb2xlIjoiU1VQRVJfQURNSU4iLCJpYXQiOjE3Nzk0MDk5NDgsImV4cCI6MTc4MDAxNDc0OH0.HHy78Y0JLpZgN3NTx9WK6Gsw9pW2qD-w-HkR2tHUi1c",
+          "user": {
+            "id": "64354ebe-1293-42ef-9b8b-05bcf4c92541",
+            "email": "superadmin@xonit.space",
+            "firstName": "Alex",
+            "lastName": "Vance",
+            "role": "SUPER_ADMIN"
+          }
+        }
+      },
+      "latency": 827,
+      "status": 200,
+      "success": true,
+      "dbStateHash": "e9b4a3345ea7092e2b13adaf930974f9ea05a7bd27e23ac4d1732da07f170a46"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0004-fd8cdf59",
+      "spanIndex": 4,
+      "timestamp": "2026-05-22T00:32:28.853Z",
+      "module": "auth",
+      "type": "api",
+      "method": "POST",
+      "endpoint": "/auth/login",
+      "input": {
+        "email": "pm@xonit.space",
+        "password": "xonit123"
+      },
+      "output": {
+        "success": true,
+        "statusCode": 200,
+        "data": {
+          "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiZGY3NTgyMy03ZGFhLTRiNjktODlkNi1iMWJkOWM0NjJiZGMiLCJlbWFpbCI6InBtQHhvbml0LnNwYWNlIiwicm9sZSI6IlBST0pFQ1RfTUFOQUdFUiIsImlhdCI6MTc3OTQwOTk0OCwiZXhwIjoxNzc5NDEzNTQ4fQ.DJj6jkBwsvpAwouMwmqXaZL6M2nw7CkxFWkgHM0i87Y",
+          "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiZGY3NTgyMy03ZGFhLTRiNjktODlkNi1iMWJkOWM0NjJiZGMiLCJlbWFpbCI6InBtQHhvbml0LnNwYWNlIiwicm9sZSI6IlBST0pFQ1RfTUFOQUdFUiIsImlhdCI6MTc3OTQwOTk0OCwiZXhwIjoxNzgwMDE0NzQ4fQ.JB6BaODdVGOPtS3lZQolbWaLPpzatRW-1oAqkYlWYng",
+          "user": {
+            "id": "bdf75823-7daa-4b69-89d6-b1bd9c462bdc",
+            "email": "pm@xonit.space",
+            "firstName": "Sarah",
+            "lastName": "Connor",
+            "role": "PROJECT_MANAGER"
+          }
+        }
+      },
+      "latency": 184,
+      "status": 200,
+      "success": true,
+      "dbStateHash": "e9b4a3345ea7092e2b13adaf930974f9ea05a7bd27e23ac4d1732da07f170a46"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0006-b03d9a94",
+      "spanIndex": 6,
+      "timestamp": "2026-05-22T00:32:29.005Z",
+      "module": "auth",
+      "type": "api",
+      "method": "POST",
+      "endpoint": "/auth/login",
+      "input": {
+        "email": "dev@xonit.space",
+        "password": "xonit123"
+      },
+      "output": {
+        "success": true,
+        "statusCode": 200,
+        "data": {
+          "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNmU0YTJmZC03NzRhLTQzMTMtYjNmNC0xM2Q2YTJjN2ZkMmEiLCJlbWFpbCI6ImRldkB4b25pdC5zcGFjZSIsInJvbGUiOiJFTVBMT1lFRSIsImlhdCI6MTc3OTQwOTk0OCwiZXhwIjoxNzc5NDEzNTQ4fQ.AmALGoD6p3CocxLNQ46YWYq27EeXlpLKikopHYyzDrY",
+          "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNmU0YTJmZC03NzRhLTQzMTMtYjNmNC0xM2Q2YTJjN2ZkMmEiLCJlbWFpbCI6ImRldkB4b25pdC5zcGFjZSIsInJvbGUiOiJFTVBMT1lFRSIsImlhdCI6MTc3OTQwOTk0OCwiZXhwIjoxNzgwMDE0NzQ4fQ.SJbYfzY5M5acDH4MBCoPEDoGyrVGDBHcGf2cPWrWyK0",
+          "user": {
+            "id": "16e4a2fd-774a-4313-b3f4-13d6a2c7fd2a",
+            "email": "dev@xonit.space",
+            "firstName": "Gordon",
+            "lastName": "Freeman",
+            "role": "EMPLOYEE"
+          }
+        }
+      },
+      "latency": 152,
+      "status": 200,
+      "success": true,
+      "dbStateHash": "e9b4a3345ea7092e2b13adaf930974f9ea05a7bd27e23ac4d1732da07f170a46"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0008-edce6f27",
+      "spanIndex": 8,
+      "timestamp": "2026-05-22T00:32:29.142Z",
+      "module": "auth",
+      "type": "api",
+      "method": "POST",
+      "endpoint": "/auth/login",
+      "input": {
+        "email": "client@xonit.space",
+        "password": "xonit123"
+      },
+      "output": {
+        "success": true,
+        "statusCode": 200,
+        "data": {
+          "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjOGI4ZjQxMi1lZjkwLTQyNjItOTQ5ZS01MjUxYjgwMmY1MTMiLCJlbWFpbCI6ImNsaWVudEB4b25pdC5zcGFjZSIsInJvbGUiOiJDVVNUT01FUiIsImlhdCI6MTc3OTQwOTk0OSwiZXhwIjoxNzc5NDEzNTQ5fQ.nwiF_ILFd--a4Qj8_W4La1amuC5iCa6SB5X2VcV2O4I",
+          "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjOGI4ZjQxMi1lZjkwLTQyNjItOTQ5ZS01MjUxYjgwMmY1MTMiLCJlbWFpbCI6ImNsaWVudEB4b25pdC5zcGFjZSIsInJvbGUiOiJDVVNUT01FUiIsImlhdCI6MTc3OTQwOTk0OSwiZXhwIjoxNzgwMDE0NzQ5fQ.CB3GDfq_to9VIBbpdwiCwAP1Mj2cL6cY1E4Rrvc6hEU",
+          "user": {
+            "id": "c8b8f412-ef90-4262-949e-5251b802f513",
+            "email": "client@xonit.space",
+            "firstName": "Bruce",
+            "lastName": "Wayne",
+            "role": "CUSTOMER"
+          }
+        }
+      },
+      "latency": 137,
+      "status": 200,
+      "success": true,
+      "dbStateHash": "e9b4a3345ea7092e2b13adaf930974f9ea05a7bd27e23ac4d1732da07f170a46"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0010-9b3d1b8b",
+      "spanIndex": 10,
+      "timestamp": "2026-05-22T00:32:29.333Z",
+      "module": "auth",
+      "type": "api",
+      "method": "POST",
+      "endpoint": "/auth/login",
+      "input": {
+        "email": "hunter@xonit.space",
+        "password": "xonit123"
+      },
+      "output": {
+        "success": true,
+        "statusCode": 200,
+        "data": {
+          "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5ZTg0OGY2ZS1jYTIwLTQ3YWUtOGI1Ny1iNWFmNGU1M2VjYjQiLCJlbWFpbCI6Imh1bnRlckB4b25pdC5zcGFjZSIsInJvbGUiOiJJTkZMVUVOQ0VSIiwiaWF0IjoxNzc5NDA5OTQ5LCJleHAiOjE3Nzk0MTM1NDl9.vyTdSIXwuCLjuVJz0M-X6USAZMGSwqsK8tyTQK9kE0k",
+          "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5ZTg0OGY2ZS1jYTIwLTQ3YWUtOGI1Ny1iNWFmNGU1M2VjYjQiLCJlbWFpbCI6Imh1bnRlckB4b25pdC5zcGFjZSIsInJvbGUiOiJJTkZMVUVOQ0VSIiwiaWF0IjoxNzc5NDA5OTQ5LCJleHAiOjE3ODAwMTQ3NDl9.h4e9ZFEa8MSdcpfdLuqs2bHmg2LKWezKQTCoYFpwNw4",
+          "user": {
+            "id": "9e848f6e-ca20-47ae-8b57-b5af4e53ecb4",
+            "email": "hunter@xonit.space",
+            "firstName": "John",
+            "lastName": "Wick",
+            "role": "INFLUENCER"
+          }
+        }
+      },
+      "latency": 191,
+      "status": 200,
+      "success": true,
+      "dbStateHash": "e9b4a3345ea7092e2b13adaf930974f9ea05a7bd27e23ac4d1732da07f170a46"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0012-ad817eb4",
+      "spanIndex": 12,
+      "timestamp": "2026-05-22T00:32:29.369Z",
+      "module": "auth",
+      "type": "api",
+      "method": "GET",
+      "endpoint": "/auth/profile",
+      "input": null,
+      "output": {
+        "success": true,
+        "statusCode": 200,
+        "data": {
+          "id": "64354ebe-1293-42ef-9b8b-05bcf4c92541",
+          "email": "superadmin@xonit.space",
+          "firstName": "Alex",
+          "lastName": "Vance",
+          "role": "SUPER_ADMIN",
+          "employeeProfile": null,
+          "createdAt": "2026-05-21T20:11:56.559Z"
+        }
+      },
+      "latency": 35,
+      "status": 200,
+      "success": true,
+      "dbStateHash": "e9b4a3345ea7092e2b13adaf930974f9ea05a7bd27e23ac4d1732da07f170a46"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0014-3c15ee7d",
+      "spanIndex": 14,
+      "timestamp": "2026-05-22T00:32:29.388Z",
+      "module": "auth",
+      "type": "api",
+      "method": "GET",
+      "endpoint": "/auth/profile",
+      "input": null,
+      "output": {
+        "success": true,
+        "statusCode": 200,
+        "data": {
+          "id": "bdf75823-7daa-4b69-89d6-b1bd9c462bdc",
+          "email": "pm@xonit.space",
+          "firstName": "Sarah",
+          "lastName": "Connor",
+          "role": "PROJECT_MANAGER",
+          "employeeProfile": {
+            "id": "f42a1783-b675-443c-a73d-5b313ca49071",
+            "userId": "bdf75823-7daa-4b69-89d6-b1bd9c462bdc",
+            "jobTitle": "Senior Project Manager",
+            "department": "Product Management",
+            "skills": [
+              "Agile",
+              "Scrum",
+              "Jira",
+              "Leadership"
+            ],
+            "experienceYears": 8,
+            "githubUrl": null,
+            "linkedinUrl": null,
+            "emergencyContact": null,
+            "createdAt": "2026-05-21T20:11:56.653Z",
+            "updatedAt": "2026-05-21T20:11:56.653Z",
+            "deletedAt": null
+          },
+          "createdAt": "2026-05-21T20:11:56.589Z"
+        }
+      },
+      "latency": 19,
+      "status": 200,
+      "success": true,
+      "dbStateHash": "e9b4a3345ea7092e2b13adaf930974f9ea05a7bd27e23ac4d1732da07f170a46"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0016-b385669c",
+      "spanIndex": 16,
+      "timestamp": "2026-05-22T00:32:29.401Z",
+      "module": "auth",
+      "type": "api",
+      "method": "GET",
+      "endpoint": "/auth/profile",
+      "input": null,
+      "output": {
+        "success": true,
+        "statusCode": 200,
+        "data": {
+          "id": "16e4a2fd-774a-4313-b3f4-13d6a2c7fd2a",
+          "email": "dev@xonit.space",
+          "firstName": "Gordon",
+          "lastName": "Freeman",
+          "role": "EMPLOYEE",
+          "employeeProfile": {
+            "id": "f2ad9bcb-3f40-48c3-8c59-5db65b2fe6f1",
+            "userId": "16e4a2fd-774a-4313-b3f4-13d6a2c7fd2a",
+            "jobTitle": "Lead Software Engineer",
+            "department": "Engineering",
+            "skills": [
+              "TypeScript",
+              "NestJS",
+              "Next.js",
+              "PostgreSQL",
+              "Docker"
+            ],
+            "experienceYears": 5,
+            "githubUrl": null,
+            "linkedinUrl": null,
+            "emergencyContact": null,
+            "createdAt": "2026-05-21T20:11:56.713Z",
+            "updatedAt": "2026-05-21T20:11:56.713Z",
+            "deletedAt": null
+          },
+          "createdAt": "2026-05-21T20:11:56.624Z"
+        }
+      },
+      "latency": 13,
+      "status": 200,
+      "success": true,
+      "dbStateHash": "e9b4a3345ea7092e2b13adaf930974f9ea05a7bd27e23ac4d1732da07f170a46"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0018-25da588c",
+      "spanIndex": 18,
+      "timestamp": "2026-05-22T00:32:29.494Z",
+      "module": "crm",
+      "type": "api",
+      "method": "POST",
+      "endpoint": "/crm/leads/36c8fd2f-a981-4271-b026-03bd749d5d6a/notes",
+      "input": {
+        "content": "<script>alert(\"XSS-ATTACK\")</script>"
+      },
+      "output": {
+        "success": true,
+        "statusCode": 201,
+        "data": {
+          "id": "f3353bbb-b6bb-4bd9-a959-8fed26203a87",
+          "leadId": "36c8fd2f-a981-4271-b026-03bd749d5d6a",
+          "content": "<script>alert(\"XSS-ATTACK\")</script>",
+          "createdById": "bdf75823-7daa-4b69-89d6-b1bd9c462bdc",
+          "createdAt": "2026-05-22T00:32:29.486Z",
+          "updatedAt": "2026-05-22T00:32:29.486Z"
+        }
+      },
+      "latency": 26,
+      "status": 201,
+      "success": true,
+      "dbStateHash": "e9b4a3345ea7092e2b13adaf930974f9ea05a7bd27e23ac4d1732da07f170a46"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0025-8070016d",
+      "spanIndex": 25,
+      "timestamp": "2026-05-22T00:32:30.441Z",
+      "module": "crm",
+      "type": "api",
+      "method": "POST",
+      "endpoint": "/crm/customers",
+      "input": {
+        "companyName": "Wayne Enterprises Global QA",
+        "contactName": "Lucius Fox E2E QA",
+        "contactEmail": "e2e-crm-client-1779409950410@wayne.corp",
+        "contactPhone": "+1-800-FOX"
+      },
+      "output": {
+        "success": true,
+        "statusCode": 201,
+        "data": {
+          "id": "697c085c-0145-4ccd-8e46-af7d76332dd8",
+          "companyName": "Wayne Enterprises Global QA",
+          "contactName": "Lucius Fox E2E QA",
+          "contactEmail": "e2e-crm-client-1779409950410@wayne.corp",
+          "contactPhone": "+1-800-FOX",
+          "createdAt": "2026-05-22T00:32:30.426Z",
+          "updatedAt": "2026-05-22T00:32:30.426Z"
+        }
+      },
+      "latency": 31,
+      "status": 201,
+      "success": true,
+      "dbStateHash": "e9b4a3345ea7092e2b13adaf930974f9ea05a7bd27e23ac4d1732da07f170a46"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0027-ad20d5d3",
+      "spanIndex": 27,
+      "timestamp": "2026-05-22T00:32:30.500Z",
+      "module": "crm",
+      "type": "api",
+      "method": "POST",
+      "endpoint": "/crm/leads",
+      "input": {
+        "title": "Global Satellite Defense Network QA",
+        "value": 95000,
+        "customerId": "697c085c-0145-4ccd-8e46-af7d76332dd8",
+        "stage": "NEW"
+      },
+      "output": {
+        "success": true,
+        "statusCode": 201,
+        "data": {
+          "id": "552e90cf-8f28-430f-a723-95367406d67c",
+          "title": "Global Satellite Defense Network QA",
+          "value": 95000,
+          "stage": "NEW",
+          "customerId": "697c085c-0145-4ccd-8e46-af7d76332dd8",
+          "assignedToId": null,
+          "createdAt": "2026-05-22T00:32:30.459Z",
+          "updatedAt": "2026-05-22T00:32:30.459Z",
+          "deletedAt": null
+        }
+      },
+      "latency": 59,
+      "status": 201,
+      "success": true,
+      "dbStateHash": "e9b4a3345ea7092e2b13adaf930974f9ea05a7bd27e23ac4d1732da07f170a46"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0029-e5c5d002",
+      "spanIndex": 29,
+      "timestamp": "2026-05-22T00:32:30.635Z",
+      "module": "crm",
+      "type": "api",
+      "method": "PATCH",
+      "endpoint": "/crm/leads/552e90cf-8f28-430f-a723-95367406d67c/stage?stage=WON",
+      "input": {},
+      "output": {
+        "success": true,
+        "statusCode": 200,
+        "data": {
+          "id": "552e90cf-8f28-430f-a723-95367406d67c",
+          "title": "Global Satellite Defense Network QA",
+          "value": 95000,
+          "stage": "WON",
+          "customerId": "697c085c-0145-4ccd-8e46-af7d76332dd8",
+          "assignedToId": null,
+          "createdAt": "2026-05-22T00:32:30.459Z",
+          "updatedAt": "2026-05-22T00:32:30.530Z",
+          "deletedAt": null
+        }
+      },
+      "latency": 135,
+      "status": 200,
+      "success": true,
+      "dbStateHash": "e9b4a3345ea7092e2b13adaf930974f9ea05a7bd27e23ac4d1732da07f170a46"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0031-d416870e",
+      "spanIndex": 31,
+      "timestamp": "2026-05-22T00:32:30.727Z",
+      "module": "projects",
+      "type": "api",
+      "method": "POST",
+      "endpoint": "/projects/1646aaf5-926b-45e1-9d9d-d568f4266af1/tasks",
+      "input": {
+        "title": "Implement Satellite Network Uplinks Protocol QA",
+        "description": "Zero-latency TCP socket synchronization.",
+        "priority": "HIGH",
+        "dueDate": "2026-05-27T00:32:30.639Z",
+        "assignedToId": "f2ad9bcb-3f40-48c3-8c59-5db65b2fe6f1"
+      },
+      "output": {
+        "success": true,
+        "statusCode": 201,
+        "data": {
+          "id": "cc317eca-e6cd-4484-bb89-947eaec5622f",
+          "projectId": "1646aaf5-926b-45e1-9d9d-d568f4266af1",
+          "title": "Implement Satellite Network Uplinks Protocol QA",
+          "description": "Zero-latency TCP socket synchronization.",
+          "status": "TODO",
+          "priority": "HIGH",
+          "estimationHours": null,
+          "loggedHours": 0,
+          "dueDate": "2026-05-27T00:32:30.639Z",
+          "assignedToId": "f2ad9bcb-3f40-48c3-8c59-5db65b2fe6f1",
+          "createdById": "bdf75823-7daa-4b69-89d6-b1bd9c462bdc",
+          "createdAt": "2026-05-22T00:32:30.712Z",
+          "updatedAt": "2026-05-22T00:32:30.712Z",
+          "deletedAt": null
+        }
+      },
+      "latency": 88,
+      "status": 201,
+      "success": true,
+      "dbStateHash": "e9b4a3345ea7092e2b13adaf930974f9ea05a7bd27e23ac4d1732da07f170a46"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0033-0bdcc94e",
+      "spanIndex": 33,
+      "timestamp": "2026-05-22T00:32:30.760Z",
+      "module": "projects",
+      "type": "api",
+      "method": "POST",
+      "endpoint": "/projects/tasks/cc317eca-e6cd-4484-bb89-947eaec5622f/comments",
+      "input": {
+        "content": "Starting socket configuration runs."
+      },
+      "output": {
+        "success": true,
+        "statusCode": 201,
+        "data": {
+          "id": "0429b420-e17b-46a9-9ef6-a90841ba1106",
+          "taskId": "cc317eca-e6cd-4484-bb89-947eaec5622f",
+          "userId": "16e4a2fd-774a-4313-b3f4-13d6a2c7fd2a",
+          "content": "Starting socket configuration runs.",
+          "createdAt": "2026-05-22T00:32:30.740Z",
+          "updatedAt": "2026-05-22T00:32:30.740Z"
+        }
+      },
+      "latency": 29,
+      "status": 201,
+      "success": true,
+      "dbStateHash": "e9b4a3345ea7092e2b13adaf930974f9ea05a7bd27e23ac4d1732da07f170a46"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0035-8e12759a",
+      "spanIndex": 35,
+      "timestamp": "2026-05-22T00:32:30.796Z",
+      "module": "projects",
+      "type": "api",
+      "method": "PATCH",
+      "endpoint": "/projects/tasks/cc317eca-e6cd-4484-bb89-947eaec5622f/status?status=REVIEW",
+      "input": {},
+      "output": {
+        "success": true,
+        "statusCode": 200,
+        "data": {
+          "id": "cc317eca-e6cd-4484-bb89-947eaec5622f",
+          "projectId": "1646aaf5-926b-45e1-9d9d-d568f4266af1",
+          "title": "Implement Satellite Network Uplinks Protocol QA",
+          "description": "Zero-latency TCP socket synchronization.",
+          "status": "REVIEW",
+          "priority": "HIGH",
+          "estimationHours": null,
+          "loggedHours": 0,
+          "dueDate": "2026-05-27T00:32:30.639Z",
+          "assignedToId": "f2ad9bcb-3f40-48c3-8c59-5db65b2fe6f1",
+          "createdById": "bdf75823-7daa-4b69-89d6-b1bd9c462bdc",
+          "createdAt": "2026-05-22T00:32:30.712Z",
+          "updatedAt": "2026-05-22T00:32:30.779Z",
+          "deletedAt": null
+        }
+      },
+      "latency": 34,
+      "status": 200,
+      "success": true,
+      "dbStateHash": "e9b4a3345ea7092e2b13adaf930974f9ea05a7bd27e23ac4d1732da07f170a46"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0037-73a48c9b",
+      "spanIndex": 37,
+      "timestamp": "2026-05-22T00:32:30.845Z",
+      "module": "hr",
+      "type": "api",
+      "method": "POST",
+      "endpoint": "/hr/attendance/clock-in",
+      "input": {},
+      "output": {
+        "success": true,
+        "statusCode": 201,
+        "data": {
+          "id": "f0ce09f3-2ee9-4375-ac28-3c1cbe4d1a3d",
+          "employeeId": "f2ad9bcb-3f40-48c3-8c59-5db65b2fe6f1",
+          "clockIn": "2026-05-22T00:32:30.838Z",
+          "clockOut": null,
+          "workHours": null,
+          "ipAddress": "::1",
+          "createdAt": "2026-05-22T00:32:30.839Z"
+        }
+      },
+      "latency": 49,
+      "status": 201,
+      "success": true,
+      "dbStateHash": "e9b4a3345ea7092e2b13adaf930974f9ea05a7bd27e23ac4d1732da07f170a46"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0039-d9b5074b",
+      "spanIndex": 39,
+      "timestamp": "2026-05-22T00:32:30.872Z",
+      "module": "hr",
+      "type": "api",
+      "method": "POST",
+      "endpoint": "/hr/attendance/clock-out",
+      "input": {},
+      "output": {
+        "success": true,
+        "statusCode": 201,
+        "data": {
+          "id": "f0ce09f3-2ee9-4375-ac28-3c1cbe4d1a3d",
+          "employeeId": "f2ad9bcb-3f40-48c3-8c59-5db65b2fe6f1",
+          "clockIn": "2026-05-22T00:32:30.838Z",
+          "clockOut": "2026-05-22T00:32:30.866Z",
+          "workHours": 0,
+          "ipAddress": "::1",
+          "createdAt": "2026-05-22T00:32:30.839Z"
+        }
+      },
+      "latency": 27,
+      "status": 201,
+      "success": true,
+      "dbStateHash": "e9b4a3345ea7092e2b13adaf930974f9ea05a7bd27e23ac4d1732da07f170a46"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0041-6aee5542",
+      "spanIndex": 41,
+      "timestamp": "2026-05-22T00:32:30.900Z",
+      "module": "hr",
+      "type": "api",
+      "method": "POST",
+      "endpoint": "/hr/leaves",
+      "input": {
+        "type": "ANNUAL",
+        "startDate": "2026-06-01T00:32:30.872Z",
+        "endDate": "2026-06-03T00:32:30.872Z",
+        "reason": "E2E Annual Leave QA"
+      },
+      "output": {
+        "success": true,
+        "statusCode": 201,
+        "data": {
+          "id": "8f00bbf7-c2d1-45e1-88c4-f8f3c3416468",
+          "employeeId": "f2ad9bcb-3f40-48c3-8c59-5db65b2fe6f1",
+          "type": "ANNUAL",
+          "status": "PENDING",
+          "startDate": "2026-06-01T00:32:30.872Z",
+          "endDate": "2026-06-03T00:32:30.872Z",
+          "reason": "E2E Annual Leave QA",
+          "approvedById": null,
+          "createdAt": "2026-05-22T00:32:30.892Z",
+          "updatedAt": "2026-05-22T00:32:30.892Z"
+        }
+      },
+      "latency": 28,
+      "status": 201,
+      "success": true,
+      "dbStateHash": "e9b4a3345ea7092e2b13adaf930974f9ea05a7bd27e23ac4d1732da07f170a46"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0043-96dc342f",
+      "spanIndex": 43,
+      "timestamp": "2026-05-22T00:32:30.933Z",
+      "module": "hr",
+      "type": "api",
+      "method": "PATCH",
+      "endpoint": "/hr/leaves/8f00bbf7-c2d1-45e1-88c4-f8f3c3416468/approve?status=APPROVED",
+      "input": {},
+      "output": {
+        "success": true,
+        "statusCode": 200,
+        "data": {
+          "id": "8f00bbf7-c2d1-45e1-88c4-f8f3c3416468",
+          "employeeId": "f2ad9bcb-3f40-48c3-8c59-5db65b2fe6f1",
+          "type": "ANNUAL",
+          "status": "APPROVED",
+          "startDate": "2026-06-01T00:32:30.872Z",
+          "endDate": "2026-06-03T00:32:30.872Z",
+          "reason": "E2E Annual Leave QA",
+          "approvedById": "64354ebe-1293-42ef-9b8b-05bcf4c92541",
+          "createdAt": "2026-05-22T00:32:30.892Z",
+          "updatedAt": "2026-05-22T00:32:30.928Z"
+        }
+      },
+      "latency": 33,
+      "status": 200,
+      "success": true,
+      "dbStateHash": "e9b4a3345ea7092e2b13adaf930974f9ea05a7bd27e23ac4d1732da07f170a46"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0045-39207711",
+      "spanIndex": 45,
+      "timestamp": "2026-05-22T00:32:30.952Z",
+      "module": "finance",
+      "type": "api",
+      "method": "POST",
+      "endpoint": "/finance/invoices",
+      "input": {
+        "projectId": "1646aaf5-926b-45e1-9d9d-d568f4266af1",
+        "invoiceNumber": "INV-E2E-QA-1779409950934",
+        "dueDate": "2026-06-06T00:32:30.934Z",
+        "subtotal": 10000,
+        "tax": 1000,
+        "discount": 500
+      },
+      "output": {
+        "success": true,
+        "statusCode": 201,
+        "data": {
+          "id": "4a21fe77-3d83-414f-aeb0-3d8374630ed2",
+          "projectId": "1646aaf5-926b-45e1-9d9d-d568f4266af1",
+          "invoiceNumber": "INV-E2E-QA-1779409950934",
+          "issueDate": "2026-05-22T00:32:30.943Z",
+          "dueDate": "2026-06-06T00:32:30.934Z",
+          "subtotal": 10000,
+          "tax": 1000,
+          "discount": 500,
+          "total": 10500,
+          "status": "DRAFT",
+          "pdfUrl": null,
+          "createdAt": "2026-05-22T00:32:30.943Z",
+          "updatedAt": "2026-05-22T00:32:30.943Z"
+        }
+      },
+      "latency": 18,
+      "status": 201,
+      "success": true,
+      "dbStateHash": "e9b4a3345ea7092e2b13adaf930974f9ea05a7bd27e23ac4d1732da07f170a46"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0047-fe693064",
+      "spanIndex": 47,
+      "timestamp": "2026-05-22T00:32:31.012Z",
+      "module": "finance",
+      "type": "api",
+      "method": "POST",
+      "endpoint": "/finance/payments",
+      "input": {
+        "invoiceId": "4a21fe77-3d83-414f-aeb0-3d8374630ed2",
+        "amount": 10500,
+        "method": "STRIPE",
+        "transactionId": "tx_stripe_qa_1779409950952"
+      },
+      "output": {
+        "success": true,
+        "statusCode": 201,
+        "data": {
+          "id": "d01ef134-d2ef-435d-91d2-9a4822615e94",
+          "invoiceId": "4a21fe77-3d83-414f-aeb0-3d8374630ed2",
+          "amount": 10500,
+          "method": "STRIPE",
+          "transactionId": "tx_stripe_qa_1779409950952",
+          "status": "SUCCESS",
+          "paymentDate": "2026-05-22T00:32:30.978Z",
+          "createdAt": "2026-05-22T00:32:30.978Z"
+        }
+      },
+      "latency": 60,
+      "status": 201,
+      "success": true,
+      "dbStateHash": "e9b4a3345ea7092e2b13adaf930974f9ea05a7bd27e23ac4d1732da07f170a46"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0049-c21bf1b8",
+      "spanIndex": 49,
+      "timestamp": "2026-05-22T00:32:31.064Z",
+      "module": "finance",
+      "type": "api",
+      "method": "GET",
+      "endpoint": "/finance/commissions",
+      "input": null,
+      "output": {
+        "success": true,
+        "statusCode": 200,
+        "data": [
+          {
+            "id": "3ed9bfe4-415d-424d-84a3-5e75a8a12860",
+            "hunterId": "9e848f6e-ca20-47ae-8b57-b5af4e53ecb4",
+            "amount": 530,
+            "ratePercentage": 10,
+            "status": "PENDING",
+            "projectId": "1c6ebe97-5f1e-4cfd-ad7d-495b091266cd",
+            "paymentId": "4ed34665-88ad-4226-b782-4289e5d87118",
+            "createdAt": "2026-05-21T20:11:57.319Z",
+            "hunter": {
+              "firstName": "John",
+              "lastName": "Wick",
+              "email": "hunter@xonit.space"
+            },
+            "payment": {
+              "id": "4ed34665-88ad-4226-b782-4289e5d87118",
+              "invoiceId": "b6e2a7d4-05df-46b9-9d4d-a08fa323fec9",
+              "amount": 5300,
+              "method": "STRIPE",
+              "transactionId": "ch_stripe_mock_2026_998822",
+              "status": "SUCCESS",
+              "paymentDate": "2026-05-21T20:11:57.281Z",
+              "createdAt": "2026-05-21T20:11:57.281Z",
+              "invoice": {
+                "id": "b6e2a7d4-05df-46b9-9d4d-a08fa323fec9",
+                "projectId": "1c6ebe97-5f1e-4cfd-ad7d-495b091266cd",
+                "invoiceNumber": "INV-2026-001",
+                "issueDate": "2026-05-21T20:11:57.230Z",
+                "dueDate": "2026-06-04T20:11:57.226Z",
+                "subtotal": 5000,
+                "tax": 500,
+                "discount": 200,
+                "total": 5300,
+                "status": "PAID",
+                "pdfUrl": null,
+                "createdAt": "2026-05-21T20:11:57.230Z",
+                "updatedAt": "2026-05-21T20:11:57.310Z"
+              }
+            }
+          }
+        ]
+      },
+      "latency": 43,
+      "status": 200,
+      "success": true,
+      "dbStateHash": "e9b4a3345ea7092e2b13adaf930974f9ea05a7bd27e23ac4d1732da07f170a46"
+    }
+  ],
+  "websocketEvents": [
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0019-926382bd",
+      "spanIndex": 19,
+      "timestamp": "2026-05-22T00:32:29.575Z",
+      "module": "realtime",
+      "type": "websocket",
+      "event": "connect",
+      "role": "PM",
+      "data": {
+        "status": "connected"
+      },
+      "durationMs": null,
+      "dbStateHash": "e9b4a3345ea7092e2b13adaf930974f9ea05a7bd27e23ac4d1732da07f170a46"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0020-59fc7d71",
+      "spanIndex": 20,
+      "timestamp": "2026-05-22T00:32:29.578Z",
+      "module": "realtime",
+      "type": "websocket",
+      "event": "connect",
+      "role": "Employee",
+      "data": {
+        "status": "connected"
+      },
+      "durationMs": null,
+      "dbStateHash": "e9b4a3345ea7092e2b13adaf930974f9ea05a7bd27e23ac4d1732da07f170a46"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0021-2c65f35e",
+      "spanIndex": 21,
+      "timestamp": "2026-05-22T00:32:30.307Z",
+      "module": "realtime",
+      "type": "websocket",
+      "event": "connect",
+      "role": "Employee",
+      "data": {
+        "status": "connected"
+      },
+      "durationMs": null,
+      "dbStateHash": "e9b4a3345ea7092e2b13adaf930974f9ea05a7bd27e23ac4d1732da07f170a46"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0022-15826149",
+      "spanIndex": 22,
+      "timestamp": "2026-05-22T00:32:30.334Z",
+      "module": "realtime",
+      "type": "websocket",
+      "event": "chat_history",
+      "role": "Employee",
+      "data": {
+        "count": 10
+      },
+      "durationMs": null,
+      "dbStateHash": "e9b4a3345ea7092e2b13adaf930974f9ea05a7bd27e23ac4d1732da07f170a46"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0023-8e7b4dbc",
+      "spanIndex": 23,
+      "timestamp": "2026-05-22T00:32:30.406Z",
+      "module": "realtime",
+      "type": "websocket",
+      "event": "new_message",
+      "role": "Employee",
+      "data": {
+        "id": "4e0a96a2-e867-4f97-83bf-3917434cb2c6",
+        "senderId": "bdf75823-7daa-4b69-89d6-b1bd9c462bdc",
+        "content": "QA-OS Realtime Message Roundtrip check",
+        "createdAt": "2026-05-22T00:32:30.391Z",
+        "sender": {
+          "id": "bdf75823-7daa-4b69-89d6-b1bd9c462bdc",
+          "firstName": "Sarah",
+          "lastName": "Connor",
+          "role": "PROJECT_MANAGER"
+        }
+      },
+      "durationMs": 72,
+      "dbStateHash": "e9b4a3345ea7092e2b13adaf930974f9ea05a7bd27e23ac4d1732da07f170a46"
+    }
+  ],
+  "chaosEvents": [
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0050-fb749a04",
+      "spanIndex": 50,
+      "timestamp": "2026-05-22T00:32:31.076Z",
+      "type": "chaos",
+      "chaosType": "DB_TRANSACTION_ROLLBACK",
+      "target": "Invoice",
+      "details": "Attempting duplicate primary-key INSERT inside transaction boundary",
+      "severity": "WARNING"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0051-a9b0a351",
+      "spanIndex": 51,
+      "timestamp": "2026-05-22T00:32:31.085Z",
+      "type": "chaos",
+      "chaosType": "DB_ROLLBACK_VERIFIED",
+      "target": "Invoice",
+      "details": "Transaction aborted and rolled back successfully: null value in column \"projectId\" of relation \"Invoice\" violates not-null constraint",
+      "severity": "INFO"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0052-882ed1a7",
+      "spanIndex": 52,
+      "timestamp": "2026-05-22T00:32:31.100Z",
+      "type": "chaos",
+      "chaosType": "ROW_LOCK_CONTENTION",
+      "target": "CrmLead",
+      "details": "Concurrent SELECT FOR UPDATE locks — stochastic hold time: 381ms",
+      "severity": "WARNING"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0053-695de741",
+      "spanIndex": 53,
+      "timestamp": "2026-05-22T00:32:31.510Z",
+      "type": "chaos",
+      "chaosType": "ROW_LOCK_SUCCESS",
+      "target": "CrmLead",
+      "details": "Lock resolved cleanly after 381ms hold. No deadlock.",
+      "severity": "INFO"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0054-dc8d11b0",
+      "spanIndex": 54,
+      "timestamp": "2026-05-22T00:32:31.511Z",
+      "type": "chaos",
+      "chaosType": "CONCURRENT_USER_STRESS",
+      "target": "AuthProfile",
+      "details": "Blasting 42 parallel GET /auth/profile requests",
+      "severity": "WARNING"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0055-442ce489",
+      "spanIndex": 55,
+      "timestamp": "2026-05-22T00:32:32.537Z",
+      "type": "chaos",
+      "chaosType": "CONCURRENT_USER_STRESS_OUTCOME",
+      "target": "AuthProfile",
+      "details": "42-user storm: avg=876ms p95=978ms failures=0",
+      "severity": "INFO"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0056-5f399801",
+      "spanIndex": 56,
+      "timestamp": "2026-05-22T00:32:32.538Z",
+      "type": "chaos",
+      "chaosType": "API_FUZZING_NEGATIVE_BUDGET",
+      "target": "Invoice",
+      "details": "Attempting negative billing creation",
+      "severity": "WARNING"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0057-6ff8664c",
+      "spanIndex": 57,
+      "timestamp": "2026-05-22T00:32:32.573Z",
+      "type": "chaos",
+      "chaosType": "FUZZING_REJECTED_SUCCESS",
+      "target": "Invoice",
+      "details": "Rejected negative total — Request failed with status code 403",
+      "severity": "INFO"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0058-861ca6d0",
+      "spanIndex": 58,
+      "timestamp": "2026-05-22T00:32:32.573Z",
+      "type": "chaos",
+      "chaosType": "API_FUZZING_OVERFLOW_PAYLOAD",
+      "target": "CrmCustomers",
+      "details": "Attempting 94KB overflow payload",
+      "severity": "WARNING"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0059-00c5acd6",
+      "spanIndex": 59,
+      "timestamp": "2026-05-22T00:32:32.600Z",
+      "type": "chaos",
+      "chaosType": "FUZZING_OVERFLOW_REJECTED",
+      "target": "Customer",
+      "details": "Rejected 94KB payload — Request failed with status code 400",
+      "severity": "INFO"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0060-b7dba9ca",
+      "spanIndex": 60,
+      "timestamp": "2026-05-22T00:32:32.600Z",
+      "type": "chaos",
+      "chaosType": "RBAC_BYPASS_TOKEN_REUSE",
+      "target": "SalaryPayments",
+      "details": "Attempting Influencer access on HR payroll endpoints",
+      "severity": "WARNING"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0061-45b6d56c",
+      "spanIndex": 61,
+      "timestamp": "2026-05-22T00:32:32.631Z",
+      "type": "chaos",
+      "chaosType": "RBAC_REJECTED_SUCCESS",
+      "target": "HR",
+      "details": "Blocked RBAC escalation — Request failed with status code 403",
+      "severity": "INFO"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0062-a43b9631",
+      "spanIndex": 62,
+      "timestamp": "2026-05-22T00:33:32.576Z",
+      "type": "chaos",
+      "chaosType": "STOCHASTIC_MULTI_FAULT",
+      "target": "System",
+      "details": "Running composite fault scenario: partial_outage_simulation",
+      "severity": "WARNING"
+    },
+    {
+      "traceId": "62abda86-f94c-4b9d-81f9-f91b1cc724ee",
+      "spanId": "span-0063-fbe058fb",
+      "spanIndex": 63,
+      "timestamp": "2026-05-22T00:33:32.836Z",
+      "type": "chaos",
+      "chaosType": "STOCHASTIC_MULTI_FAULT_COMPLETE",
+      "target": "System",
+      "details": "Composite fault scenario \"partial_outage_simulation\" resolved without systemic crash.",
+      "severity": "INFO"
+    }
+  ],
+  "consoleLogs": [
+    {
+      "timestamp": "2026-05-22T00:32:27.542Z",
+      "level": "info",
+      "message": "=================================================="
+    },
+    {
+      "timestamp": "2026-05-22T00:32:27.557Z",
+      "level": "info",
+      "message": "🧠 XONIT QA-OS v2 BOOTSTRAP — RunTraceId: 62abda86-f94c-4b9d-81f9-f91b1cc724ee"
+    },
+    {
+      "timestamp": "2026-05-22T00:32:27.557Z",
+      "level": "info",
+      "message": "=================================================="
+    },
+    {
+      "timestamp": "2026-05-22T00:32:27.625Z",
+      "level": "info",
+      "message": "🖥️ Env Fingerprint: [84b6dfaa70e5df2a] 4× CPU | 8GB RAM | Node v20.19.4 | PG 14.19"
+    },
+    {
+      "timestamp": "2026-05-22T00:32:27.627Z",
+      "level": "info",
+      "message": "✅ Environment fingerprint stable across runs: [84b6dfaa70e5df2a]"
+    },
+    {
+      "timestamp": "2026-05-22T00:32:27.630Z",
+      "level": "info",
+      "message": "BaselineManager initialised — store: /Users/asithalakmal/.gemini/antigravity-ide/brain/77a53ba5-888e-421a-9eb0-95e2ebce2726/baselines"
+    },
+    {
+      "timestamp": "2026-05-22T00:32:27.632Z",
+      "level": "info",
+      "message": "📌 Loaded frozen baseline v1 — frozen: 2026-05-22T00:28:02.031Z | hash: 7f87f630cee6…"
+    },
+    {
+      "timestamp": "2026-05-22T00:32:27.633Z",
+      "level": "info",
+      "message": "Starting deterministic E2E orchestration sequence..."
+    },
+    {
+      "timestamp": "2026-05-22T00:32:27.839Z",
+      "level": "info",
+      "message": "DB snapshot [before] captured — Hash: e9b4a3345ea7092e… (traceId: 62abda86…)"
+    },
+    {
+      "timestamp": "2026-05-22T00:32:27.840Z",
+      "level": "info",
+      "message": "Starting scenario: \"Authentication & Role Mapping\""
+    },
+    {
+      "timestamp": "2026-05-22T00:32:29.401Z",
+      "level": "info",
+      "message": "✅ Scenario PASSED: \"Authentication & Role Mapping\" (1560ms)"
+    },
+    {
+      "timestamp": "2026-05-22T00:32:29.401Z",
+      "level": "info",
+      "message": "Starting scenario: \"Prisma & Relational Database Integrity\""
+    },
+    {
+      "timestamp": "2026-05-22T00:32:29.442Z",
+      "level": "info",
+      "message": "✅ Scenario PASSED: \"Prisma & Relational Database Integrity\" (41ms)"
+    },
+    {
+      "timestamp": "2026-05-22T00:32:29.442Z",
+      "level": "info",
+      "message": "Starting scenario: \"API Penetration & Security Controls\""
+    },
+    {
+      "timestamp": "2026-05-22T00:32:29.522Z",
+      "level": "info",
+      "message": "✅ Scenario PASSED: \"API Penetration & Security Controls\" (80ms)"
+    },
+    {
+      "timestamp": "2026-05-22T00:32:29.522Z",
+      "level": "info",
+      "message": "Starting scenario: \"WebSocket Realtime Messaging & Event Delivery\""
+    },
+    {
+      "timestamp": "2026-05-22T00:32:30.409Z",
+      "level": "info",
+      "message": "✅ Scenario PASSED: \"WebSocket Realtime Messaging & Event Delivery\" (887ms)"
+    },
+    {
+      "timestamp": "2026-05-22T00:32:30.409Z",
+      "level": "info",
+      "message": "Starting scenario: \"CRM Lead Conversion & Automated Project Creation\""
+    },
+    {
+      "timestamp": "2026-05-22T00:32:30.638Z",
+      "level": "info",
+      "message": "✅ Scenario PASSED: \"CRM Lead Conversion & Automated Project Creation\" (229ms)"
+    },
+    {
+      "timestamp": "2026-05-22T00:32:30.638Z",
+      "level": "info",
+      "message": "Starting scenario: \"Project Board Management & Kanban Sprint Execution\""
+    },
+    {
+      "timestamp": "2026-05-22T00:32:30.796Z",
+      "level": "info",
+      "message": "✅ Scenario PASSED: \"Project Board Management & Kanban Sprint Execution\" (158ms)"
+    },
+    {
+      "timestamp": "2026-05-22T00:32:30.796Z",
+      "level": "info",
+      "message": "Starting scenario: \"Human Resources (HRM) Attendance & Leave Management\""
+    },
+    {
+      "timestamp": "2026-05-22T00:32:30.934Z",
+      "level": "info",
+      "message": "✅ Scenario PASSED: \"Human Resources (HRM) Attendance & Leave Management\" (138ms)"
+    },
+    {
+      "timestamp": "2026-05-22T00:32:30.934Z",
+      "level": "info",
+      "message": "Starting scenario: \"Finance, Stripe Payment & Referral Payout Releases\""
+    },
+    {
+      "timestamp": "2026-05-22T00:32:31.064Z",
+      "level": "info",
+      "message": "✅ Scenario PASSED: \"Finance, Stripe Payment & Referral Payout Releases\" (130ms)"
+    },
+    {
+      "timestamp": "2026-05-22T00:32:31.065Z",
+      "level": "info",
+      "message": "Starting scenario: \"Support Desk Help Ticket Lifecycle\""
+    },
+    {
+      "timestamp": "2026-05-22T00:32:31.070Z",
+      "level": "info",
+      "message": "✅ Scenario PASSED: \"Support Desk Help Ticket Lifecycle\" (5ms)"
+    },
+    {
+      "timestamp": "2026-05-22T00:32:31.070Z",
+      "level": "info",
+      "message": "Starting scenario: \"Secure Files Management & S3 R2 Metadata Storage\""
+    },
+    {
+      "timestamp": "2026-05-22T00:32:31.075Z",
+      "level": "info",
+      "message": "✅ Scenario PASSED: \"Secure Files Management & S3 R2 Metadata Storage\" (5ms)"
+    },
+    {
+      "timestamp": "2026-05-22T00:32:31.076Z",
+      "level": "info",
+      "message": "⚡ Triggering Phase 2 Chaos Simulation Storms directly during scenarios..."
+    },
+    {
+      "timestamp": "2026-05-22T00:32:31.076Z",
+      "level": "warning",
+      "message": "⚠️ Chaos Injector ACTIVATED — stochastic mode. Fault schedule: [CLEAN, CLEAN, LATENCY_HIGH, LATENCY_HIGH, LATENCY_LOW, LATENCY_HIGH, LATENCY_SPIKE, LATENCY_HIGH, CLEAN, LATENCY_LOW, LATENCY_SPIKE, LATENCY_LOW, LATENCY_HIGH, CLEAN, CLEAN, LATENCY_HIGH, LATENCY_HIGH, LATENCY_LOW, LATENCY_HIGH, CLEAN, CLEAN, CLEAN, LATENCY_HIGH, CLEAN, LATENCY_LOW, LATENCY_LOW, LATENCY_LOW, DROP, LATENCY_HIGH, CLEAN, CLEAN, DROP, LATENCY_SPIKE, LATENCY_LOW, LATENCY_HIGH, LATENCY_HIGH, CLEAN, CLEAN, LATENCY_HIGH, CLEAN, CLEAN, LATENCY_HIGH, LATENCY_HIGH, LATENCY_SPIKE, LATENCY_LOW, CLEAN, CLEAN, DROP, LATENCY_HIGH, LATENCY_HIGH, CLEAN, LATENCY_HIGH, DROP, CLEAN, LATENCY_SPIKE, LATENCY_SPIKE, CLEAN, LATENCY_HIGH, LATENCY_LOW, LATENCY_HIGH, LATENCY_LOW, LATENCY_LOW, LATENCY_LOW, LATENCY_SPIKE, LATENCY_SPIKE, CLEAN, CLEAN, LATENCY_LOW, CLEAN, LATENCY_SPIKE, CLEAN, LATENCY_HIGH, LATENCY_HIGH, LATENCY_HIGH, LATENCY_HIGH, LATENCY_SPIKE, LATENCY_HIGH, CLEAN, CLEAN, CLEAN, LATENCY_LOW, LATENCY_HIGH, CLEAN, LATENCY_SPIKE, LATENCY_HIGH, LATENCY_SPIKE, DROP, LATENCY_LOW, LATENCY_HIGH, LATENCY_SPIKE, CLEAN, LATENCY_SPIKE, LATENCY_HIGH, LATENCY_LOW, CLEAN, LATENCY_SPIKE, LATENCY_HIGH, CLEAN, CLEAN, CLEAN]"
+    },
+    {
+      "timestamp": "2026-05-22T00:32:31.076Z",
+      "level": "info",
+      "message": "🔥 [DB CHAOS] Initiating Database Chaos Engine..."
+    },
+    {
+      "timestamp": "2026-05-22T00:32:31.085Z",
+      "level": "info",
+      "message": "✅ DB Rollback verified: Conflict prevented duplicate entries. (null value in column \"projectId\" of relation \"Invoice\" violates not-null constraint)"
+    },
+    {
+      "timestamp": "2026-05-22T00:32:31.100Z",
+      "level": "info",
+      "message": "🔥 [DB CHAOS] Row Lock Contention (hold: 381ms)..."
+    },
+    {
+      "timestamp": "2026-05-22T00:32:31.124Z",
+      "level": "info",
+      "message": "Client 1 acquired lock on CrmLead row: 36c8fd2f-a981-4271-b026-03bd749d5d6a"
+    },
+    {
+      "timestamp": "2026-05-22T00:32:31.508Z",
+      "level": "info",
+      "message": "Client 1 released lock. Client 2 should resolve."
+    },
+    {
+      "timestamp": "2026-05-22T00:32:31.510Z",
+      "level": "info",
+      "message": "✅ Concurrency row-locking verified (no deadlock)."
+    },
+    {
+      "timestamp": "2026-05-22T00:32:31.510Z",
+      "level": "info",
+      "message": "🔥 [USER CHAOS] Concurrent Storm — 42 parallel requests (stochastic)..."
+    },
+    {
+      "timestamp": "2026-05-22T00:32:32.537Z",
+      "level": "info",
+      "message": "⚡ Storm [42 users]: Avg=876ms P95=978ms Failures=0/42"
+    },
+    {
+      "timestamp": "2026-05-22T00:32:32.538Z",
+      "level": "info",
+      "message": "🔥 [API ABUSE] Fuzzing & Authorization Boundary Penetration..."
+    },
+    {
+      "timestamp": "2026-05-22T00:32:32.571Z",
+      "level": "info",
+      "message": "✅ Fuzzing blocked: Correctly rejected negative values (HTTP 403)"
+    },
+    {
+      "timestamp": "2026-05-22T00:32:32.599Z",
+      "level": "info",
+      "message": "✅ Fuzzing blocked: Correctly rejected overflow payload (HTTP 400)"
+    },
+    {
+      "timestamp": "2026-05-22T00:32:32.623Z",
+      "level": "info",
+      "message": "✅ Access blocked: RBAC boundary enforced (HTTP 403)"
+    },
+    {
+      "timestamp": "2026-05-22T00:32:32.631Z",
+      "level": "info",
+      "message": "✅ Chaos Injector DEACTIVATED."
+    },
+    {
+      "timestamp": "2026-05-22T00:32:32.633Z",
+      "level": "info",
+      "message": "Starting scenario: \"Browser Interface, Form Submits & UI Visual Validations\""
+    },
+    {
+      "timestamp": "2026-05-22T00:32:32.635Z",
+      "level": "info",
+      "message": "Launching Puppeteer headlessly..."
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.527Z",
+      "level": "info",
+      "message": "✅ Scenario PASSED: \"Browser Interface, Form Submits & UI Visual Validations\" (59893ms)"
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.573Z",
+      "level": "info",
+      "message": "DB snapshot [after] captured — Hash: c3e9a13f57c7b6d5… (traceId: 62abda86…)"
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.573Z",
+      "level": "info",
+      "message": "E2E Orchestrator execution finalized successfully."
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.573Z",
+      "level": "warning",
+      "message": "⚠️ Chaos Injector ACTIVATED — stochastic mode. Fault schedule: [LATENCY_LOW, CLEAN, LATENCY_SPIKE, LATENCY_HIGH, DROP, CLEAN, LATENCY_LOW, LATENCY_HIGH, LATENCY_LOW, LATENCY_SPIKE, LATENCY_HIGH, LATENCY_LOW, LATENCY_HIGH, CLEAN, LATENCY_LOW, LATENCY_HIGH, LATENCY_LOW, LATENCY_HIGH, LATENCY_SPIKE, LATENCY_LOW, LATENCY_SPIKE, CLEAN, LATENCY_LOW, LATENCY_LOW, CLEAN, CLEAN, LATENCY_HIGH, CLEAN, LATENCY_LOW, CLEAN, CLEAN, LATENCY_HIGH, LATENCY_SPIKE, LATENCY_HIGH, LATENCY_HIGH, LATENCY_LOW, LATENCY_SPIKE, LATENCY_HIGH, LATENCY_HIGH, LATENCY_SPIKE, CLEAN, LATENCY_LOW, CLEAN, CLEAN, CLEAN, CLEAN, LATENCY_LOW, LATENCY_HIGH, LATENCY_LOW, LATENCY_LOW, CLEAN, LATENCY_LOW, DROP, LATENCY_SPIKE, LATENCY_LOW, LATENCY_SPIKE, LATENCY_HIGH, LATENCY_SPIKE, CLEAN, CLEAN, LATENCY_HIGH, LATENCY_HIGH, DROP, LATENCY_LOW, LATENCY_HIGH, LATENCY_LOW, LATENCY_LOW, LATENCY_LOW, CLEAN, DROP, LATENCY_LOW, LATENCY_HIGH, LATENCY_LOW, LATENCY_LOW, LATENCY_LOW, LATENCY_HIGH, DROP, LATENCY_SPIKE, CLEAN, CLEAN, LATENCY_HIGH, LATENCY_HIGH, LATENCY_SPIKE, CLEAN, LATENCY_LOW, CLEAN, CLEAN, CLEAN, CLEAN, LATENCY_LOW, LATENCY_SPIKE, LATENCY_SPIKE, LATENCY_HIGH, LATENCY_SPIKE, LATENCY_LOW, LATENCY_LOW, LATENCY_HIGH, LATENCY_LOW, LATENCY_SPIKE, LATENCY_HIGH]"
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.576Z",
+      "level": "info",
+      "message": "🔥 [STOCHASTIC MULTI-FAULT] Scenario: \"partial_outage_simulation\""
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.836Z",
+      "level": "info",
+      "message": "✅ Multi-fault \"partial_outage_simulation\" — 5/15 requests simulated as dropped."
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.836Z",
+      "level": "info",
+      "message": "✅ Chaos Injector DEACTIVATED."
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.837Z",
+      "level": "info",
+      "message": "Computing Z-score regression drifts (direction-aware, proportional stdDev)..."
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.837Z",
+      "level": "info",
+      "message": "\"Authentication & Role Mapping\": 1560ms | μ=1324ms | σ=265ms | Z=0.89 | Threshold=±2.0σ"
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.837Z",
+      "level": "info",
+      "message": "\"Prisma & Relational Database Integrity\": 41ms | μ=103ms | σ=100ms | Z=-0.62 | Threshold=±2.0σ"
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.837Z",
+      "level": "info",
+      "message": "\"API Penetration & Security Controls\": 80ms | μ=214ms | σ=100ms | Z=-1.34 | Threshold=±2.0σ"
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.837Z",
+      "level": "info",
+      "message": "\"WebSocket Realtime Messaging & Event Delivery\": 887ms | μ=1081ms | σ=497ms | Z=-0.39 | Threshold=±2.0σ"
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.837Z",
+      "level": "info",
+      "message": "\"CRM Lead Conversion & Automated Project Creation\": 229ms | μ=320ms | σ=119ms | Z=-0.76 | Threshold=±2.0σ"
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.837Z",
+      "level": "info",
+      "message": "\"Project Board Management & Kanban Sprint Execution\": 158ms | μ=253ms | σ=100ms | Z=-0.95 | Threshold=±2.0σ"
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.837Z",
+      "level": "info",
+      "message": "\"Human Resources (HRM) Attendance & Leave Management\": 138ms | μ=307ms | σ=100ms | Z=-1.69 | Threshold=±2.0σ"
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.837Z",
+      "level": "info",
+      "message": "\"Finance, Stripe Payment & Referral Payout Releases\": 130ms | μ=301ms | σ=100ms | Z=-1.71 | Threshold=±2.0σ"
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.837Z",
+      "level": "info",
+      "message": "\"Support Desk Help Ticket Lifecycle\": 5ms | μ=91ms | σ=100ms | Z=-0.86 | Threshold=±2.0σ"
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.837Z",
+      "level": "info",
+      "message": "\"Secure Files Management & S3 R2 Metadata Storage\": 5ms | μ=18ms | σ=100ms | Z=-0.13 | Threshold=±2.0σ"
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.837Z",
+      "level": "info",
+      "message": "\"Browser Interface, Form Submits & UI Visual Validations\": 59893ms | μ=53257ms | σ=7989ms | Z=0.83 | Threshold=±2.0σ"
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.837Z",
+      "level": "info",
+      "message": "\"Dashboard Load Time\": 3938ms | μ=3691ms | σ=554ms | Z=0.45 | Threshold=±2.0σ"
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.837Z",
+      "level": "info",
+      "message": "\"API P95 Response Time\": 191ms | μ=292ms | σ=100ms | Z=-1.01 | Threshold=±2.0σ"
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.837Z",
+      "level": "info",
+      "message": "\"WebSocket Message Transit\": 72ms | μ=53ms | σ=100ms | Z=0.19 | Threshold=±2.0σ"
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.839Z",
+      "level": "info",
+      "message": "Rolling history persisted (6/10 runs)."
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.841Z",
+      "level": "info",
+      "message": "📌 Frozen baseline v1 diff: 0 regressions | 10 improvements | 4 stable"
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.859Z",
+      "level": "info",
+      "message": "📐 Computing evidence-derived probabilistic confidence score..."
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.860Z",
+      "level": "info",
+      "message": "Evidence Completeness: 100.0% (scenarios: 100% | traces: 22/14)"
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.860Z",
+      "level": "info",
+      "message": "Confidence Score Model (Phase E — Evidence-Derived):"
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.860Z",
+      "level": "info",
+      "message": "  Weights: Func=40% Data=30% Perf=20% Sec=10%"
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.860Z",
+      "level": "info",
+      "message": "  - Functional Integrity  (40%): 100.00%"
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.860Z",
+      "level": "info",
+      "message": "  - Data Integrity        (30%): 100.00%"
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.860Z",
+      "level": "info",
+      "message": "  - Performance Stability (20%): 100.00%"
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.860Z",
+      "level": "info",
+      "message": "  - Security Stability    (10%): 100.00%"
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.861Z",
+      "level": "info",
+      "message": "  Evidence Completeness: 100.0% | Uncertainty: ±0.5pp | N=6 runs"
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.861Z",
+      "level": "info",
+      "message": "  >> CONFIDENCE: 100% ±0.5pp (99.5–100%)"
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.861Z",
+      "level": "info",
+      "message": "Executing Decision Engine CI Gatekeeper check..."
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.862Z",
+      "level": "info",
+      "message": "CI GATE CHECK RESULTS: Status: [PASS] - Gate Passed: true"
+    },
+    {
+      "timestamp": "2026-05-22T00:33:32.862Z",
+      "level": "info",
+      "message": " ✅ ALL CI INTEGRATION GATES COMPLIANT."
+    }
+  ],
+  "screenshots": [
+    {
+      "id": "01-public-website",
+      "label": "Public Landing Page",
+      "relPath": "/e2e/screenshots/01-public-website.webp",
+      "absolutePath": "/Users/asithalakmal/.gemini/antigravity-ide/brain/77a53ba5-888e-421a-9eb0-95e2ebce2726/screenshots/01-public-website.webp",
+      "timestamp": "2026-05-22T00:32:42.908Z"
+    },
+    {
+      "id": "02-contact-page",
+      "label": "Contact Form",
+      "relPath": "/e2e/screenshots/02-contact-page.webp",
+      "absolutePath": "/Users/asithalakmal/.gemini/antigravity-ide/brain/77a53ba5-888e-421a-9eb0-95e2ebce2726/screenshots/02-contact-page.webp",
+      "timestamp": "2026-05-22T00:32:49.094Z"
+    },
+    {
+      "id": "03-login-filled",
+      "label": "Authentication Signin",
+      "relPath": "/e2e/screenshots/03-login-filled.webp",
+      "absolutePath": "/Users/asithalakmal/.gemini/antigravity-ide/brain/77a53ba5-888e-421a-9eb0-95e2ebce2726/screenshots/03-login-filled.webp",
+      "timestamp": "2026-05-22T00:32:56.177Z"
+    },
+    {
+      "id": "04-dashboard-loaded",
+      "label": "Dashboard Home",
+      "relPath": "/e2e/screenshots/04-dashboard-loaded.webp",
+      "absolutePath": "/Users/asithalakmal/.gemini/antigravity-ide/brain/77a53ba5-888e-421a-9eb0-95e2ebce2726/screenshots/04-dashboard-loaded.webp",
+      "timestamp": "2026-05-22T00:33:01.793Z"
+    },
+    {
+      "id": "05-crm-board",
+      "label": "Sales CRM Board",
+      "relPath": "/e2e/screenshots/05-crm-board.webp",
+      "absolutePath": "/Users/asithalakmal/.gemini/antigravity-ide/brain/77a53ba5-888e-421a-9eb0-95e2ebce2726/screenshots/05-crm-board.webp",
+      "timestamp": "2026-05-22T00:33:07.868Z"
+    },
+    {
+      "id": "06-projects-list",
+      "label": "Projects Index",
+      "relPath": "/e2e/screenshots/06-projects-list.webp",
+      "absolutePath": "/Users/asithalakmal/.gemini/antigravity-ide/brain/77a53ba5-888e-421a-9eb0-95e2ebce2726/screenshots/06-projects-list.webp",
+      "timestamp": "2026-05-22T00:33:13.026Z"
+    },
+    {
+      "id": "07-hr-manager",
+      "label": "HR Management",
+      "relPath": "/e2e/screenshots/07-hr-manager.webp",
+      "absolutePath": "/Users/asithalakmal/.gemini/antigravity-ide/brain/77a53ba5-888e-421a-9eb0-95e2ebce2726/screenshots/07-hr-manager.webp",
+      "timestamp": "2026-05-22T00:33:17.873Z"
+    },
+    {
+      "id": "08-finance-ledger",
+      "label": "Finance Ledger",
+      "relPath": "/e2e/screenshots/08-finance-ledger.webp",
+      "absolutePath": "/Users/asithalakmal/.gemini/antigravity-ide/brain/77a53ba5-888e-421a-9eb0-95e2ebce2726/screenshots/08-finance-ledger.webp",
+      "timestamp": "2026-05-22T00:33:22.145Z"
+    },
+    {
+      "id": "09-support-desk",
+      "label": "Help Desk Ticket System",
+      "relPath": "/e2e/screenshots/09-support-desk.webp",
+      "absolutePath": "/Users/asithalakmal/.gemini/antigravity-ide/brain/77a53ba5-888e-421a-9eb0-95e2ebce2726/screenshots/09-support-desk.webp",
+      "timestamp": "2026-05-22T00:33:26.540Z"
+    },
+    {
+      "id": "10-realtime-chat",
+      "label": "Realtime Chat Roster",
+      "relPath": "/e2e/screenshots/10-realtime-chat.webp",
+      "absolutePath": "/Users/asithalakmal/.gemini/antigravity-ide/brain/77a53ba5-888e-421a-9eb0-95e2ebce2726/screenshots/10-realtime-chat.webp",
+      "timestamp": "2026-05-22T00:33:31.668Z"
+    }
+  ],
+  "seoStats": {
+    "title": "Xonit | Smart Business Automation & Growth Systems",
+    "metaDescription": "Xonit builds smart automation systems that handle customers, operations, and growth—so you don't have to. Specialized in Hotel Systems, WhatsApp Automation, and POS.",
+    "h1Count": 1,
+    "pageLoadTimeMs": 3938
+  }
+}

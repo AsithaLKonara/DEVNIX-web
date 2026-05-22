@@ -1,0 +1,16 @@
+{
+  "success": true,
+  "statusCode": 200,
+  "data": {
+    "id": "8f00bbf7-c2d1-45e1-88c4-f8f3c3416468",
+    "employeeId": "f2ad9bcb-3f40-48c3-8c59-5db65b2fe6f1",
+    "type": "ANNUAL",
+    "status": "APPROVED",
+    "startDate": "2026-06-01T00:32:30.872Z",
+    "endDate": "2026-06-03T00:32:30.872Z",
+    "reason": "E2E Annual Leave QA",
+    "approvedById": "64354ebe-1293-42ef-9b8b-05bcf4c92541",
+    "createdAt": "2026-05-22T00:32:30.892Z",
+    "updatedAt": "2026-05-22T00:32:30.928Z"
+  }
+}

@@ -168,7 +168,7 @@ export default function CRMPipelinePage() {
                         <DollarSign size={13} className="text-emerald-400" />
                         <span>Value</span>
                       </div>
-                      <span className="font-medium text-emerald-400">${lead.value?.toLocaleString() || '0'}</span>
+                      <span className="font-medium text-emerald-400">LKR {lead.value?.toLocaleString() || '0'}</span>
                     </div>
                     
                     <div className="flex items-center justify-between text-xs">
@@ -181,8 +181,12 @@ export default function CRMPipelinePage() {
                   </div>
 
                   <div className="mt-4 pt-3 border-t border-[#2d2d4e] flex justify-between items-center">
-                    <span className="bg-[#1a1a2e] text-gray-400 px-2 py-1 rounded text-[10px] font-medium border border-[#2d2d4e]">
-                      {lead.notes || 'No source'}
+                    <span className="bg-[#1a1a2e] text-gray-400 px-2 py-1 rounded text-[10px] font-medium border border-[#2d2d4e] truncate w-24 block">
+                      {typeof lead.notes === 'string'
+                        ? lead.notes
+                        : Array.isArray(lead.notes) && (lead.notes as any[]).length > 0
+                          ? (lead.notes as any[])[0].content
+                          : 'No source'}
                     </span>
                     <div className="flex gap-1">
                       <button className="p-1.5 rounded bg-[#1a1a2e] border border-[#2d2d4e] text-gray-400 hover:text-[#818cf8] hover:border-[#818cf8]/50 transition-colors">

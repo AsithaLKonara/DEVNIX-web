@@ -10,6 +10,10 @@ const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
+  if (pathname?.startsWith('/dashboard')) {
+    return null;
+  }
+
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'Solutions', href: '/services' },

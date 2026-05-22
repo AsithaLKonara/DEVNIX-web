@@ -1,5 +1,7 @@
 'use client';
 
+import { RevenueOverviewChart } from '@/components/dashboard/charts/RevenueOverviewChart';
+
 export function AdminDashboard() {
   return (
     <div className="space-y-6 animate-in fade-in duration-500">
@@ -9,10 +11,10 @@ export function AdminDashboard() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
-          { label: 'Total Revenue', value: '$245,800', change: '+18.2%', isPositive: true },
+          { label: 'Total Revenue', value: 'LKR 245,800', change: '+18.2%', isPositive: true },
           { label: 'Active Projects', value: '42', change: '+5', isPositive: true },
           { label: 'Total Employees', value: '28', change: '0', isPositive: true },
-          { label: 'Pending Invoices', value: '$12,400', change: '-$2,100', isPositive: true },
+          { label: 'Pending Invoices', value: 'LKR 12,400', change: '-LKR 2,100', isPositive: true },
         ].map((stat, i) => (
           <div key={i} className="bg-[#1a1a2e] border border-[#2d2d4e] rounded-xl p-5 hover:border-[#6366f1]/50 transition-colors">
             <p className="text-sm font-medium text-gray-400">{stat.label}</p>
@@ -29,10 +31,10 @@ export function AdminDashboard() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-[#1a1a2e] border border-[#2d2d4e] rounded-xl p-6 min-h-[300px]">
+        <div className="bg-[#1a1a2e] border border-[#2d2d4e] rounded-xl p-6 min-h-[300px] flex flex-col">
           <h3 className="font-semibold text-white mb-4">Revenue Overview</h3>
-          <div className="flex items-center justify-center h-[200px] border border-dashed border-[#2d2d4e] rounded-lg">
-            <p className="text-gray-500 text-sm">Chart Placeholder</p>
+          <div className="flex-1 min-h-[200px]">
+            <RevenueOverviewChart />
           </div>
         </div>
         <div className="bg-[#1a1a2e] border border-[#2d2d4e] rounded-xl p-6 min-h-[300px]">

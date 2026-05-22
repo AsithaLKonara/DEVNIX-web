@@ -1,0 +1,14 @@
+{
+  "success": true,
+  "statusCode": 201,
+  "data": {
+    "id": "d01ef134-d2ef-435d-91d2-9a4822615e94",
+    "invoiceId": "4a21fe77-3d83-414f-aeb0-3d8374630ed2",
+    "amount": 10500,
+    "method": "STRIPE",
+    "transactionId": "tx_stripe_qa_1779409950952",
+    "status": "SUCCESS",
+    "paymentDate": "2026-05-22T00:32:30.978Z",
+    "createdAt": "2026-05-22T00:32:30.978Z"
+  }
+}

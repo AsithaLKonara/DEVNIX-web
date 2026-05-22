@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Download, Plus, Filter, TrendingUp, TrendingDown, DollarSign, CreditCard, Loader2, AlertCircle } from 'lucide-react';
 import { financeApi, type Invoice } from '@/lib/api/modules.api';
+import { CashFlowChart } from '@/components/dashboard/charts/CashFlowChart';
 
 const MOCK_INVOICES: Invoice[] = [
   { id: 'INV-2026-089', invoiceNumber: 'INV-2026-089', clientName: 'Acme Corp', project: { name: 'E-Commerce Redesign' }, amount: 12500, status: 'PAID', date: 'Oct 01, 2026' } as any,
@@ -95,7 +96,7 @@ export default function FinanceDashboardPage() {
         <div className="bg-[#1a1a2e] border border-[#2d2d4e] rounded-xl p-5 relative overflow-hidden">
           <div className="absolute top-0 right-0 p-4 opacity-10 text-emerald-500"><TrendingUp size={64} /></div>
           <p className="text-sm font-medium text-gray-400">Total Revenue (YTD)</p>
-          <p className="text-3xl font-bold text-white mt-2">${summary.totalRevenue.toLocaleString()}</p>
+          <p className="text-3xl font-bold text-white mt-2">LKR {summary.totalRevenue.toLocaleString()}</p>
           <div className="mt-4 flex items-center gap-2 text-sm">
             <span className="text-emerald-400 font-medium">+15.2%</span>
             <span className="text-gray-500">vs last year</span>
@@ -105,7 +106,7 @@ export default function FinanceDashboardPage() {
         <div className="bg-[#1a1a2e] border border-[#2d2d4e] rounded-xl p-5 relative overflow-hidden">
           <div className="absolute top-0 right-0 p-4 opacity-10 text-blue-500"><DollarSign size={64} /></div>
           <p className="text-sm font-medium text-gray-400">Outstanding Invoices</p>
-          <p className="text-3xl font-bold text-white mt-2">${summary.pendingInvoices.toLocaleString()}</p>
+          <p className="text-3xl font-bold text-white mt-2">LKR {summary.pendingInvoices.toLocaleString()}</p>
           <div className="mt-4 flex items-center gap-2 text-sm">
             <span className="text-gray-400 font-medium">{invoices.filter(i => i.status === 'PENDING').length} invoices pending</span>
           </div>
@@ -114,7 +115,7 @@ export default function FinanceDashboardPage() {
         <div className="bg-[#1a1a2e] border border-[#2d2d4e] rounded-xl p-5 relative overflow-hidden">
           <div className="absolute top-0 right-0 p-4 opacity-10 text-rose-500"><TrendingDown size={64} /></div>
           <p className="text-sm font-medium text-gray-400">Overdue Payments</p>
-          <p className="text-3xl font-bold text-white mt-2">${summary.overduePayments.toLocaleString()}</p>
+          <p className="text-3xl font-bold text-white mt-2">LKR {summary.overduePayments.toLocaleString()}</p>
           <div className="mt-4 flex items-center gap-2 text-sm">
             <span className="text-rose-400 font-medium">Action Required</span>
           </div>
@@ -123,7 +124,7 @@ export default function FinanceDashboardPage() {
         <div className="bg-[#1a1a2e] border border-[#2d2d4e] rounded-xl p-5 relative overflow-hidden">
           <div className="absolute top-0 right-0 p-4 opacity-10 text-purple-500"><CreditCard size={64} /></div>
           <p className="text-sm font-medium text-gray-400">Monthly Expenses</p>
-          <p className="text-3xl font-bold text-white mt-2">${summary.totalExpenses.toLocaleString()}</p>
+          <p className="text-3xl font-bold text-white mt-2">LKR {summary.totalExpenses.toLocaleString()}</p>
           <div className="mt-4 flex items-center gap-2 text-sm">
             <span className="text-rose-400 font-medium">+2.4%</span>
             <span className="text-gray-500">vs last month</span>
@@ -157,7 +158,7 @@ export default function FinanceDashboardPage() {
                       <p className="text-white font-medium">{inv.clientName}</p>
                       <p className="text-xs text-gray-500">{inv.project?.name || 'N/A'}</p>
                     </td>
-                    <td className="p-4 font-medium">${inv.amount?.toLocaleString()}</td>
+                    <td className="p-4 font-medium">LKR {inv.amount?.toLocaleString()}</td>
                     <td className="p-4">{inv.date || inv.issuedDate || 'N/A'}</td>
                     <td className="p-4">
                       <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase ${
@@ -178,19 +179,19 @@ export default function FinanceDashboardPage() {
 
         {/* Quick Actions & Summary */}
         <div className="space-y-6">
-          <div className="bg-[#1a1a2e] border border-[#2d2d4e] rounded-xl p-6">
+          <div className="bg-[#1a1a2e] border border-[#2d2d4e] rounded-xl p-6 flex flex-col">
             <h3 className="font-semibold text-white mb-4">Cash Flow (30 Days)</h3>
-            <div className="flex items-center justify-center h-[180px] border border-dashed border-[#2d2d4e] rounded-lg">
-              <p className="text-gray-500 text-sm">Chart Placeholder</p>
+            <div className="min-h-[160px] flex-1">
+              <CashFlowChart />
             </div>
             <div className="mt-4 grid grid-cols-2 gap-4">
               <div>
                 <p className="text-xs text-gray-500">Money In</p>
-                <p className="text-lg font-bold text-emerald-400">$65,000</p>
+                <p className="text-lg font-bold text-emerald-400">LKR 65,000</p>
               </div>
               <div>
                 <p className="text-xs text-gray-500">Money Out</p>
-                <p className="text-lg font-bold text-rose-400">$18,400</p>
+                <p className="text-lg font-bold text-rose-400">LKR 18,400</p>
               </div>
             </div>
           </div>

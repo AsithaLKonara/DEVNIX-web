@@ -1,0 +1,8 @@
+{
+  "chatNamespace": "/chat",
+  "notificationsNamespace": "/ws",
+  "connectionStatus": "SUCCESSFUL",
+  "roundtripLatencyMs": 63,
+  "redisPubSubActive": true,
+  "onlinePresenceBroadcast": true
+}

@@ -13,21 +13,59 @@ import {
   X,
   UserCheck,
   Megaphone,
-  Bell
+  Bell,
+  LogOut
 } from 'lucide-react';
+import { useAuth } from '@/components/providers/AuthProvider';
 
 const navItems = [
-  { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-  { name: 'Projects', href: '/dashboard/projects', icon: Briefcase },
-  { name: 'CRM', href: '/dashboard/crm', icon: Users },
-  { name: 'Finance', href: '/dashboard/finance', icon: CreditCard },
-  { name: 'HR', href: '/dashboard/hr', icon: UserCheck },
-  { name: 'Referrals', href: '/dashboard/referrals', icon: Megaphone },
-  { name: 'Files', href: '/dashboard/files', icon: FileText },
+  { 
+    name: 'Dashboard', 
+    href: '/dashboard', 
+    icon: LayoutDashboard,
+    roles: ['SUPER_ADMIN', 'ADMIN', 'PROJECT_MANAGER', 'EMPLOYEE', 'CUSTOMER', 'HUNTER', 'INFLUENCER'] 
+  },
+  { 
+    name: 'Projects', 
+    href: '/dashboard/projects', 
+    icon: Briefcase,
+    roles: ['SUPER_ADMIN', 'ADMIN', 'PROJECT_MANAGER', 'EMPLOYEE'] 
+  },
+  { 
+    name: 'CRM', 
+    href: '/dashboard/crm', 
+    icon: Users,
+    roles: ['SUPER_ADMIN', 'ADMIN', 'PROJECT_MANAGER'] 
+  },
+  { 
+    name: 'Finance', 
+    href: '/dashboard/finance', 
+    icon: CreditCard,
+    roles: ['SUPER_ADMIN', 'ADMIN'] 
+  },
+  { 
+    name: 'HR', 
+    href: '/dashboard/hr', 
+    icon: UserCheck,
+    roles: ['SUPER_ADMIN', 'ADMIN', 'PROJECT_MANAGER'] 
+  },
+  { 
+    name: 'Referrals', 
+    href: '/dashboard/referrals', 
+    icon: Megaphone,
+    roles: ['SUPER_ADMIN', 'ADMIN', 'HUNTER', 'INFLUENCER'] 
+  },
+  { 
+    name: 'Files', 
+    href: '/dashboard/files', 
+    icon: FileText,
+    roles: ['SUPER_ADMIN', 'ADMIN', 'PROJECT_MANAGER', 'EMPLOYEE', 'CUSTOMER'] 
+  },
 ];
 
 export function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (val: boolean) => void }) {
   const pathname = usePathname();
+  const { logout, user } = useAuth();
 
   return (
     <>
@@ -59,34 +97,67 @@ export function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (va
         </div>
 
         <nav className="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
-          {navItems.map((item) => {
-            const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
+          {(() => {
+            const isSettingsActive = pathname === '/dashboard/settings' || pathname.startsWith('/dashboard/settings/');
+            
+            // Check if any specific sub-item (excluding root Dashboard) is active
+            const isAnyOtherActive = navItems
+              .filter((item) => item.href !== '/dashboard')
+              .some((item) => pathname === item.href || pathname.startsWith(`${item.href}/`)) || isSettingsActive;
+
+            return navItems.map((item) => {
+              const userRole = user?.role || 'ADMIN';
+              const isAllowed = item.roles.includes(userRole);
+              if (!isAllowed) return null;
+
+              const isActive = item.href === '/dashboard'
+                ? pathname === '/dashboard' || (!isAnyOtherActive && pathname.startsWith('/dashboard/'))
+                : pathname === item.href || pathname.startsWith(`${item.href}/`);
+
+              return (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors group
+                    ${isActive 
+                      ? 'bg-[#6366f1]/10 text-[#818cf8]' 
+                      : 'text-[#a1a1b5] hover:bg-[#2d2d4e]/50 hover:text-white'
+                    }
+                  `}
+                >
+                  <item.icon size={20} className={isActive ? 'text-[#818cf8]' : 'text-gray-400 group-hover:text-white'} />
+                  <span className="font-medium text-sm">{item.name}</span>
+                </Link>
+              );
+            });
+          })()}
+        </nav>
+
+        <div className="p-4 border-t border-[#2d2d4e] flex flex-col gap-2">
+          {(() => {
+            const isSettingsActive = pathname === '/dashboard/settings' || pathname.startsWith('/dashboard/settings/');
             return (
               <Link
-                key={item.name}
-                href={item.href}
+                href="/dashboard/settings"
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors group
-                  ${isActive 
+                  ${isSettingsActive 
                     ? 'bg-[#6366f1]/10 text-[#818cf8]' 
                     : 'text-[#a1a1b5] hover:bg-[#2d2d4e]/50 hover:text-white'
                   }
                 `}
               >
-                <item.icon size={20} className={isActive ? 'text-[#818cf8]' : 'text-gray-400 group-hover:text-white'} />
-                <span className="font-medium text-sm">{item.name}</span>
+                <Settings size={20} className={isSettingsActive ? 'text-[#818cf8]' : 'text-gray-400 group-hover:text-white'} />
+                <span className="font-medium text-sm">Settings</span>
               </Link>
             );
-          })}
-        </nav>
-
-        <div className="p-4 border-t border-[#2d2d4e]">
-          <Link
-            href="/dashboard/settings"
-            className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#a1a1b5] hover:bg-[#2d2d4e]/50 hover:text-white transition-colors group"
+          })()}
+          <button
+            onClick={logout}
+            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-rose-400 hover:bg-rose-500/10 transition-colors group text-left cursor-pointer border-none outline-none"
           >
-            <Settings size={20} className="text-gray-400 group-hover:text-white" />
-            <span className="font-medium text-sm">Settings</span>
-          </Link>
+            <LogOut size={20} className="text-rose-400 group-hover:text-rose-300" />
+            <span className="font-medium text-sm">Log Out</span>
+          </button>
         </div>
       </aside>
     </>

@@ -12,8 +12,8 @@ export function HunterDashboard() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {[
-          { label: 'Total Earnings', value: '$4,250', color: 'text-emerald-400' },
-          { label: 'Pending Payout', value: '$1,000', color: 'text-amber-400' },
+          { label: 'Total Earnings', value: 'LKR 4,250', color: 'text-emerald-400' },
+          { label: 'Pending Payout', value: 'LKR 1,000', color: 'text-amber-400' },
           { label: 'Active Referrals', value: '3', color: 'text-blue-400' },
         ].map((stat, i) => (
           <div key={i} className="bg-[#1a1a2e] border border-[#2d2d4e] rounded-xl p-5 text-center">
@@ -40,8 +40,8 @@ export function HunterDashboard() {
               <tr className="border-b border-[#2d2d4e]/50 hover:bg-[#2d2d4e]/30">
                 <td className="p-3 font-medium text-white">Acme Corp</td>
                 <td className="p-3"><span className="bg-emerald-500/10 text-emerald-400 px-2 py-1 rounded-full text-xs">Project Active</span></td>
-                <td className="p-3">$10,000</td>
-                <td className="p-3 text-emerald-400 font-medium">$1,000</td>
+                <td className="p-3">LKR 10,000</td>
+                <td className="p-3 text-emerald-400 font-medium">LKR 1,000</td>
                 <td className="p-3"><span className="text-amber-400">Pending</span></td>
               </tr>
               <tr className="border-b border-[#2d2d4e]/50 hover:bg-[#2d2d4e]/30">
@@ -54,8 +54,8 @@ export function HunterDashboard() {
               <tr className="hover:bg-[#2d2d4e]/30">
                 <td className="p-3 font-medium text-white">Global Retail</td>
                 <td className="p-3"><span className="bg-emerald-500/10 text-emerald-400 px-2 py-1 rounded-full text-xs">Completed</span></td>
-                <td className="p-3">$32,500</td>
-                <td className="p-3 text-emerald-400 font-medium">$3,250</td>
+                <td className="p-3">LKR 32,500</td>
+                <td className="p-3 text-emerald-400 font-medium">LKR 3,250</td>
                 <td className="p-3"><span className="text-emerald-400">Paid out</span></td>
               </tr>
             </tbody>

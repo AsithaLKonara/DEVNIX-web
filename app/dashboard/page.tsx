@@ -10,7 +10,7 @@ import { HunterDashboard } from '@/components/dashboard/roles/HunterDashboard';
 import { Loader2 } from 'lucide-react';
 
 // Dev Mode roles for override when backend is offline
-const ROLES = ['SUPER_ADMIN', 'ADMIN', 'PROJECT_MANAGER', 'EMPLOYEE', 'CUSTOMER', 'HUNTER'];
+const ROLES = ['SUPER_ADMIN', 'ADMIN', 'PROJECT_MANAGER', 'EMPLOYEE', 'CUSTOMER', 'HUNTER', 'INFLUENCER'];
 
 function RoleDashboard({ role }: { role: string }) {
   switch (role) {
@@ -24,6 +24,7 @@ function RoleDashboard({ role }: { role: string }) {
     case 'CUSTOMER':
       return <CustomerDashboard />;
     case 'HUNTER':
+    case 'INFLUENCER':
       return <HunterDashboard />;
     default:
       return <AdminDashboard />;

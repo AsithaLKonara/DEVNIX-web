@@ -4,7 +4,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { apiClient } from '@/lib/apiClient';
 
-interface User {
+export interface User {
   id: string;
   email: string;
   name: string;
@@ -44,11 +44,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const token = localStorage.getItem('xonit_space_auth_token');
       if (!token) throw new Error('No token');
       
-      const response = await apiClient.get('/auth/me');
+      const response = await apiClient.get('/auth/profile');
       setUser(response as unknown as User);
     } catch (error) {
       setUser(null);
       localStorage.removeItem('xonit_space_auth_token');
+      localStorage.removeItem('xonit_space_user_profile');
     }
   };
 
@@ -83,11 +84,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const logout = async () => {
     try {
-      await apiClient.post('/auth/logout');
-    } catch (error) {
-      console.error('Logout API failed', error);
+      await apiClient.post('/auth/logout', {});
+    } catch (error: any) {
+      // Gracefully handle logout failure (offline, CORS, network issues) to avoid spamming the console with loud red stack traces.
+      const status = error?.response?.status;
+      const message = error?.message || error?.response?.data?.message || 'Network error or server offline';
+      
+      if (!error?.response) {
+        console.warn(`[Auth] Logout API call skipped or server offline: ${message}. Local session cleared successfully.`);
+      } else {
+        console.warn(`[Auth] Logout API returned status ${status}: ${message}. Local session cleared successfully.`);
+      }
     } finally {
       localStorage.removeItem('xonit_space_auth_token');
+      localStorage.removeItem('xonit_space_user_profile');
       setUser(null);
       router.push('/login');
     }

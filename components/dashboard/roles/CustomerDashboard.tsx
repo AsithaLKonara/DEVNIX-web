@@ -44,8 +44,8 @@ export function CustomerDashboard() {
           <h3 className="font-semibold text-white mb-4">Invoices & Payments</h3>
           <div className="space-y-3">
             {[
-              { id: 'INV-2026-04', amount: '$5,000', status: 'Paid', date: 'Sep 01, 2026' },
-              { id: 'INV-2026-05', amount: '$5,000', status: 'Pending', date: 'Oct 01, 2026' },
+              { id: 'INV-2026-04', amount: 'LKR 5,000', status: 'Paid', date: 'Sep 01, 2026' },
+              { id: 'INV-2026-05', amount: 'LKR 5,000', status: 'Pending', date: 'Oct 01, 2026' },
             ].map((inv, i) => (
               <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-[#0f0f1a] border border-[#2d2d4e]">
                 <div>

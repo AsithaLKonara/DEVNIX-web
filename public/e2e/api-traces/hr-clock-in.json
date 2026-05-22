@@ -1,0 +1,13 @@
+{
+  "success": true,
+  "statusCode": 201,
+  "data": {
+    "id": "f0ce09f3-2ee9-4375-ac28-3c1cbe4d1a3d",
+    "employeeId": "f2ad9bcb-3f40-48c3-8c59-5db65b2fe6f1",
+    "clockIn": "2026-05-22T00:32:30.838Z",
+    "clockOut": null,
+    "workHours": null,
+    "ipAddress": "::1",
+    "createdAt": "2026-05-22T00:32:30.839Z"
+  }
+}

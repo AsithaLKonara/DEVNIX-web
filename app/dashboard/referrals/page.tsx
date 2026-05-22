@@ -4,9 +4,9 @@ import { useState } from 'react';
 import { Copy, Users, DollarSign, Award, ArrowUpRight, Share2, Check } from 'lucide-react';
 
 const referrals = [
-  { id: 'REF-001', client: 'Acme Corp', date: 'Oct 01, 2026', status: 'Converted', value: '$12,000', commission: '$1,200' },
+  { id: 'REF-001', client: 'Acme Corp', date: 'Oct 01, 2026', status: 'Converted', value: 'LKR 12,000', commission: 'LKR 1,200' },
   { id: 'REF-002', client: 'TechFlow', date: 'Oct 05, 2026', status: 'Pending', value: 'TBD', commission: 'TBD' },
-  { id: 'REF-003', client: 'Global Retail', date: 'Sep 15, 2026', status: 'Paid', value: '$25,000', commission: '$2,500' },
+  { id: 'REF-003', client: 'Global Retail', date: 'Sep 15, 2026', status: 'Paid', value: 'LKR 25,000', commission: 'LKR 2,500' },
 ];
 
 export default function ReferralDashboardPage() {
@@ -81,9 +81,9 @@ export default function ReferralDashboardPage() {
         <div className="bg-[#1a1a2e] border border-[#2d2d4e] rounded-xl p-5 relative overflow-hidden">
           <div className="absolute top-0 right-0 p-4 opacity-10 text-emerald-500"><DollarSign size={64} /></div>
           <p className="text-sm font-medium text-gray-400">Total Earned</p>
-          <p className="text-3xl font-bold text-white mt-2">$3,700</p>
+          <p className="text-3xl font-bold text-white mt-2">LKR 3,700</p>
           <div className="mt-4 flex items-center gap-2 text-sm">
-            <span className="text-emerald-400 font-medium">+$1,200</span>
+            <span className="text-emerald-400 font-medium">+LKR 1,200</span>
             <span className="text-gray-500">this month</span>
           </div>
         </div>
@@ -91,7 +91,7 @@ export default function ReferralDashboardPage() {
         <div className="bg-[#1a1a2e] border border-[#2d2d4e] rounded-xl p-5 relative overflow-hidden">
           <div className="absolute top-0 right-0 p-4 opacity-10 text-amber-500"><Award size={64} /></div>
           <p className="text-sm font-medium text-gray-400">Pending Commission</p>
-          <p className="text-3xl font-bold text-white mt-2">$1,200</p>
+          <p className="text-3xl font-bold text-white mt-2">LKR 1,200</p>
           <div className="mt-4 flex items-center gap-2 text-sm">
             <span className="text-amber-400 font-medium">Awaiting client payment</span>
           </div>

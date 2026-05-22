@@ -1,0 +1,44 @@
+{
+  "usersCount": 5,
+  "users": [
+    {
+      "id": "64354ebe-1293-42ef-9b8b-05bcf4c92541",
+      "email": "superadmin@xonit.space",
+      "role": "SUPER_ADMIN"
+    },
+    {
+      "id": "bdf75823-7daa-4b69-89d6-b1bd9c462bdc",
+      "email": "pm@xonit.space",
+      "role": "PROJECT_MANAGER"
+    },
+    {
+      "id": "16e4a2fd-774a-4313-b3f4-13d6a2c7fd2a",
+      "email": "dev@xonit.space",
+      "role": "EMPLOYEE"
+    },
+    {
+      "id": "c8b8f412-ef90-4262-949e-5251b802f513",
+      "email": "client@xonit.space",
+      "role": "CUSTOMER"
+    },
+    {
+      "id": "9e848f6e-ca20-47ae-8b57-b5af4e53ecb4",
+      "email": "hunter@xonit.space",
+      "role": "INFLUENCER"
+    }
+  ],
+  "uuidsAreValid": true,
+  "cascadeTestPassed": true,
+  "employeeMappings": [
+    {
+      "id": "f42a1783-b675-443c-a73d-5b313ca49071",
+      "userId": "bdf75823-7daa-4b69-89d6-b1bd9c462bdc",
+      "jobTitle": "Senior Project Manager"
+    },
+    {
+      "id": "f2ad9bcb-3f40-48c3-8c59-5db65b2fe6f1",
+      "userId": "16e4a2fd-774a-4313-b3f4-13d6a2c7fd2a",
+      "jobTitle": "Lead Software Engineer"
+    }
+  ]
+}

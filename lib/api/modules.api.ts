@@ -46,13 +46,13 @@ export interface LeaveRequest {
 
 export const crmApi = {
   listLeads: (): Promise<CrmLead[]> =>
-    apiClient.get('/crm') as unknown as Promise<CrmLead[]>,
+    apiClient.get('/crm/leads') as unknown as Promise<CrmLead[]>,
 
   createLead: (dto: Partial<CrmLead>): Promise<CrmLead> =>
-    apiClient.post('/crm', dto) as unknown as Promise<CrmLead>,
+    apiClient.post('/crm/leads', dto) as unknown as Promise<CrmLead>,
 
   updateLeadStage: (id: string, stage: string): Promise<CrmLead> =>
-    apiClient.patch(`/crm/${id}/stage?stage=${stage}`) as unknown as Promise<CrmLead>,
+    apiClient.patch(`/crm/leads/${id}/stage?stage=${stage}`) as unknown as Promise<CrmLead>,
 };
 
 export const financeApi = {
@@ -70,12 +70,50 @@ export const financeApi = {
 };
 
 export const hrApi = {
-  listEmployees: (): Promise<Employee[]> =>
-    apiClient.get('/hr/employees') as unknown as Promise<Employee[]>,
+  listEmployees: async (): Promise<Employee[]> => {
+    const data = await apiClient.get('/hr/employees') as any;
+    return (data || []).map((emp: any) => ({
+      id: emp.id,
+      name: emp.user ? `${emp.user.firstName} ${emp.user.lastName}` : 'Unknown',
+      email: emp.user?.email || '',
+      role: emp.jobTitle || 'Staff',
+      department: emp.department || 'N/A',
+      status: emp.user?.isActive ? 'Active' : 'Inactive',
+      avatar: emp.avatar || '',
+    }));
+  },
 
-  listLeaveRequests: (): Promise<LeaveRequest[]> =>
-    apiClient.get('/hr/leaves') as unknown as Promise<LeaveRequest[]>,
+  listLeaveRequests: async (): Promise<LeaveRequest[]> => {
+    const data = await apiClient.get('/hr/leaves') as any;
+    return (data || []).map((req: any) => ({
+      id: req.id,
+      employee: {
+        name: req.employee?.user ? `${req.employee.user.firstName} ${req.employee.user.lastName}` : 'Unknown',
+        role: req.employee?.jobTitle || 'Staff',
+      },
+      type: req.type ? req.type.charAt(0) + req.type.slice(1).toLowerCase() + ' Leave' : 'Annual Leave',
+      startDate: req.startDate ? req.startDate.split('T')[0] : '',
+      endDate: req.endDate ? req.endDate.split('T')[0] : '',
+      status: req.status ? req.status.charAt(0) + req.status.slice(1).toLowerCase() : 'Pending',
+      reason: req.reason || '',
+    }));
+  },
 
-  updateLeaveStatus: (id: string, status: string): Promise<LeaveRequest> =>
-    apiClient.patch(`/hr/leaves/${id}/status`, { status }) as unknown as Promise<LeaveRequest>,
+  updateLeaveStatus: async (id: string, status: string): Promise<LeaveRequest> => {
+    // Map status 'Approved' -> 'APPROVED', 'Rejected' -> 'REJECTED' to match backend enums
+    const backendStatus = status.toUpperCase();
+    const data = await apiClient.patch(`/hr/leaves/${id}/approve?status=${backendStatus}`) as any;
+    return {
+      id: data.id,
+      employee: {
+        name: data.employee?.user ? `${data.employee.user.firstName} ${data.employee.user.lastName}` : 'Unknown',
+        role: data.employee?.jobTitle || 'Staff',
+      },
+      type: data.type ? data.type.charAt(0) + data.type.slice(1).toLowerCase() + ' Leave' : 'Annual Leave',
+      startDate: data.startDate ? data.startDate.split('T')[0] : '',
+      endDate: data.endDate ? data.endDate.split('T')[0] : '',
+      status: data.status ? data.status.charAt(0) + data.status.slice(1).toLowerCase() : 'Pending',
+      reason: data.reason || '',
+    };
+  },
 };

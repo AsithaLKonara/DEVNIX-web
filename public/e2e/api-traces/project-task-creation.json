@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "statusCode": 201,
+  "data": {
+    "id": "cc317eca-e6cd-4484-bb89-947eaec5622f",
+    "projectId": "1646aaf5-926b-45e1-9d9d-d568f4266af1",
+    "title": "Implement Satellite Network Uplinks Protocol QA",
+    "description": "Zero-latency TCP socket synchronization.",
+    "status": "TODO",
+    "priority": "HIGH",
+    "estimationHours": null,
+    "loggedHours": 0,
+    "dueDate": "2026-05-27T00:32:30.639Z",
+    "assignedToId": "f2ad9bcb-3f40-48c3-8c59-5db65b2fe6f1",
+    "createdById": "bdf75823-7daa-4b69-89d6-b1bd9c462bdc",
+    "createdAt": "2026-05-22T00:32:30.712Z",
+    "updatedAt": "2026-05-22T00:32:30.712Z",
+    "deletedAt": null
+  }
+}

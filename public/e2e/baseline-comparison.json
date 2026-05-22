@@ -1,0 +1,93 @@
+{
+  "baselineVersion": 1,
+  "frozenAt": "2026-05-22T00:28:02.031Z",
+  "diffs": {
+    "Authentication & Role Mapping": {
+      "frozen": 1610,
+      "current": 1560,
+      "deltaPct": -3.11,
+      "direction": "STABLE"
+    },
+    "Prisma & Relational Database Integrity": {
+      "frozen": 254,
+      "current": 41,
+      "deltaPct": -83.86,
+      "direction": "IMPROVEMENT"
+    },
+    "API Penetration & Security Controls": {
+      "frozen": 198,
+      "current": 80,
+      "deltaPct": -59.6,
+      "direction": "IMPROVEMENT"
+    },
+    "WebSocket Realtime Messaging & Event Delivery": {
+      "frozen": 1364,
+      "current": 887,
+      "deltaPct": -34.97,
+      "direction": "IMPROVEMENT"
+    },
+    "CRM Lead Conversion & Automated Project Creation": {
+      "frozen": 265,
+      "current": 229,
+      "deltaPct": -13.58,
+      "direction": "IMPROVEMENT"
+    },
+    "Project Board Management & Kanban Sprint Execution": {
+      "frozen": 223,
+      "current": 158,
+      "deltaPct": -29.15,
+      "direction": "IMPROVEMENT"
+    },
+    "Human Resources (HRM) Attendance & Leave Management": {
+      "frozen": 312,
+      "current": 138,
+      "deltaPct": -55.77,
+      "direction": "IMPROVEMENT"
+    },
+    "Finance, Stripe Payment & Referral Payout Releases": {
+      "frozen": 272,
+      "current": 130,
+      "deltaPct": -52.21,
+      "direction": "IMPROVEMENT"
+    },
+    "Support Desk Help Ticket Lifecycle": {
+      "frozen": 68,
+      "current": 5,
+      "deltaPct": -92.65,
+      "direction": "IMPROVEMENT"
+    },
+    "Secure Files Management & S3 R2 Metadata Storage": {
+      "frozen": 62,
+      "current": 5,
+      "deltaPct": -91.94,
+      "direction": "IMPROVEMENT"
+    },
+    "Browser Interface, Form Submits & UI Visual Validations": {
+      "frozen": 53795,
+      "current": 59893,
+      "deltaPct": 11.34,
+      "direction": "STABLE"
+    },
+    "Dashboard Load Time": {
+      "frozen": 3619,
+      "current": 3938,
+      "deltaPct": 8.81,
+      "direction": "STABLE"
+    },
+    "API P95 Response Time": {
+      "frozen": 337,
+      "current": 191,
+      "deltaPct": -43.32,
+      "direction": "IMPROVEMENT"
+    },
+    "WebSocket Message Transit": {
+      "frozen": 67,
+      "current": 72,
+      "deltaPct": 7.46,
+      "direction": "STABLE"
+    }
+  },
+  "regressionCount": 0,
+  "improvementCount": 10,
+  "stableCount": 4
+}

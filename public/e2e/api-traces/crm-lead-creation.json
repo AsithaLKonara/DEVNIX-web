@@ -1,0 +1,15 @@
+{
+  "success": true,
+  "statusCode": 201,
+  "data": {
+    "id": "552e90cf-8f28-430f-a723-95367406d67c",
+    "title": "Global Satellite Defense Network QA",
+    "value": 95000,
+    "stage": "NEW",
+    "customerId": "697c085c-0145-4ccd-8e46-af7d76332dd8",
+    "assignedToId": null,
+    "createdAt": "2026-05-22T00:32:30.459Z",
+    "updatedAt": "2026-05-22T00:32:30.459Z",
+    "deletedAt": null
+  }
+}
