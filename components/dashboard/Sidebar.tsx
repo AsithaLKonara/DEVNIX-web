@@ -85,7 +85,7 @@ export function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (va
         flex flex-col h-screen
         ${isOpen ? 'translate-x-0' : '-translate-x-full'}
       `}>
-        <div className="flex items-center justify-between h-16 px-6 border-b border-[#2d2d4e]">
+        <div className="relative flex items-center justify-between h-16 px-6 border-b border-[#2d2d4e]">
           <Link href="/dashboard" className="flex items-center">
             <Image
               src="/logo/group-3.png"
@@ -98,7 +98,7 @@ export function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (va
           </Link>
           <button 
             onClick={() => setIsOpen(false)} 
-            className="lg:hidden p-2 text-gray-400 hover:text-white rounded-md hover:bg-[#2d2d4e]/50 transition-colors shrink-0"
+            className="lg:hidden absolute right-4 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-white rounded-md hover:bg-[#2d2d4e]/50 transition-colors shrink-0 z-50 cursor-pointer pointer-events-auto"
             aria-label="Close sidebar"
           >
             <X size={20} />
