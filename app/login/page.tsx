@@ -8,87 +8,15 @@ import {
   Lock, 
   ArrowRight, 
   Loader2, 
-  AlertCircle, 
-  ShieldCheck, 
-  Briefcase, 
-  Code, 
-  Building, 
-  Award,
-  Sparkles,
-  CheckCircle2
+  AlertCircle
 } from 'lucide-react';
 import { useAuth, User } from '@/components/providers/AuthProvider';
 import { apiClient } from '@/lib/apiClient';
-
-const DEMO_ROLES = [
-  {
-    role: 'SUPER_ADMIN',
-    label: 'Super Admin',
-    name: 'Alex Vance',
-    email: 'superadmin@xonit.space',
-    password: 'xonit123',
-    icon: ShieldCheck,
-    description: 'System configurations, billing controls, and full data access.',
-    color: 'from-indigo-500/20 to-purple-500/20 border-indigo-500/30 hover:border-indigo-500 active:border-indigo-400',
-    accentColor: '#6366f1',
-    glowColor: 'bg-indigo-500/10'
-  },
-  {
-    role: 'PROJECT_MANAGER',
-    label: 'Project Manager',
-    name: 'Sarah Connor',
-    email: 'pm@xonit.space',
-    password: 'xonit123',
-    icon: Briefcase,
-    description: 'Project scoping, Kanban boards, CRM pipeline, and meetings.',
-    color: 'from-cyan-500/20 to-blue-500/20 border-cyan-500/30 hover:border-cyan-500 active:border-cyan-400',
-    accentColor: '#06b6d4',
-    glowColor: 'bg-cyan-500/10'
-  },
-  {
-    role: 'EMPLOYEE',
-    label: 'Lead Developer',
-    name: 'Gordon Freeman',
-    email: 'dev@xonit.space',
-    password: 'xonit123',
-    icon: Code,
-    description: 'Task execution, daily time logs, leave requests, and payslips.',
-    color: 'from-emerald-500/20 to-teal-500/20 border-emerald-500/30 hover:border-emerald-500 active:border-emerald-400',
-    accentColor: '#10b981',
-    glowColor: 'bg-emerald-500/10'
-  },
-  {
-    role: 'CUSTOMER',
-    label: 'Client Portal',
-    name: 'Bruce Wayne',
-    email: 'client@xonit.space',
-    password: 'xonit123',
-    icon: Building,
-    description: 'Project status tracking, invoice clearance, and NDA contracts.',
-    color: 'from-amber-500/20 to-orange-500/20 border-amber-500/30 hover:border-amber-500 active:border-amber-400',
-    accentColor: '#f59e0b',
-    glowColor: 'bg-amber-500/10'
-  },
-  {
-    role: 'INFLUENCER',
-    label: 'Referral Partner',
-    name: 'John Wick',
-    email: 'hunter@xonit.space',
-    password: 'xonit123',
-    icon: Award,
-    description: 'Lead recommendations, commission rates, and payouts tracking.',
-    color: 'from-pink-500/20 to-rose-500/20 border-pink-500/30 hover:border-pink-500 active:border-pink-400',
-    accentColor: '#ec4899',
-    glowColor: 'bg-pink-500/10'
-  }
-];
-
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [activeRole, setActiveRole] = useState<string | null>(null);
   const { login } = useAuth();
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -117,21 +45,12 @@ export default function LoginPage() {
     }
   };
 
-  const handleQuickSelect = (roleInfo: typeof DEMO_ROLES[0]) => {
-    setEmail(roleInfo.email);
-    setPassword(roleInfo.password);
-    setActiveRole(roleInfo.role);
-    setError(null);
-  };
-
   const handleInputChange = (field: 'email' | 'password', value: string) => {
     if (field === 'email') {
       setEmail(value);
     } else {
       setPassword(value);
     }
-    // Clear active role highlight if credentials are typed manually
-    setActiveRole(null);
   };
 
   return (
@@ -140,82 +59,8 @@ export default function LoginPage() {
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-indigo-500/10 rounded-full blur-[140px] -mr-96 -mt-96 pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-[140px] -ml-96 -mb-96 pointer-events-none"></div>
       
-      <div className="w-full max-w-5xl relative z-10 my-auto">
-        <div className="grid md:grid-cols-12 gap-8 items-stretch">
-          
-          {/* Left Column - Sandbox Quick Roles Selector (order-2 on mobile, order-1 on desktop) */}
-          <div className="md:col-span-7 flex flex-col justify-between bg-[#131124]/60 backdrop-blur-xl border border-white/5 rounded-2xl p-6 md:p-8 shadow-2xl order-2 md:order-1 transition-all duration-300">
-            <div>
-              <div className="flex items-center gap-2 mb-3">
-                <Sparkles className="text-indigo-400 w-5 h-5 animate-pulse" />
-                <span className="text-xs font-semibold tracking-wider text-indigo-300 uppercase">Sandbox Mode</span>
-              </div>
-              <h2 className="text-2xl font-bold text-white mb-2 tracking-tight">Demo Accounts</h2>
-              <p className="text-gray-400 text-sm mb-6 leading-relaxed">
-                Experience Xonit Space through different system perspectives. Click any role profile below to auto-fill its corresponding sandbox credentials.
-              </p>
-
-              <div className="space-y-3.5">
-                {DEMO_ROLES.map((roleInfo) => {
-                  const IconComponent = roleInfo.icon;
-                  const isActive = activeRole === roleInfo.role;
-                  return (
-                    <button
-                      key={roleInfo.role}
-                      onClick={() => handleQuickSelect(roleInfo)}
-                      type="button"
-                      className={`w-full text-left flex gap-4 p-4 rounded-xl border transition-all duration-300 bg-gradient-to-r relative overflow-hidden group ${
-                        isActive 
-                          ? `${roleInfo.color} border-opacity-100 shadow-[0_0_20px_rgba(99,102,241,0.15)] scale-[1.01]` 
-                          : 'bg-[#18162b]/40 border-white/5 hover:bg-[#1f1d36]/60 hover:scale-[1.005]'
-                      }`}
-                    >
-                      {/* Active indicator border */}
-                      {isActive && (
-                        <div 
-                          className="absolute left-0 top-0 bottom-0 w-1" 
-                          style={{ backgroundColor: roleInfo.accentColor }}
-                        />
-                      )}
-
-                      {/* Icon */}
-                      <div className={`p-2.5 rounded-lg shrink-0 transition-colors duration-300 ${
-                        isActive ? 'bg-white/10 text-white' : 'bg-white/5 text-gray-400 group-hover:text-white'
-                      }`}>
-                        <IconComponent size={20} />
-                      </div>
-
-                      {/* Content */}
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center justify-between gap-2">
-                          <span className="font-semibold text-white text-sm">{roleInfo.label}</span>
-                          <span className="text-[11px] text-gray-500 font-mono hidden sm:inline">{roleInfo.email}</span>
-                        </div>
-                        <p className="text-xs text-gray-400 mt-1 leading-snug">{roleInfo.description}</p>
-                      </div>
-
-                      {/* Checkmark or quick status */}
-                      <div className="flex items-center justify-center shrink-0 pl-1">
-                        {isActive ? (
-                          <CheckCircle2 size={18} style={{ color: roleInfo.accentColor }} className="animate-scale-in" />
-                        ) : (
-                          <span className="text-[10px] text-indigo-400/60 font-semibold group-hover:text-indigo-400 transition-colors duration-300 uppercase tracking-wider hidden sm:block">Quick Fill</span>
-                        )}
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between text-xs text-gray-500">
-              <span>Current Sandbox Version: v1.2.0</span>
-              <span>Secure DB Seed Data</span>
-            </div>
-          </div>
-
-          {/* Right Column - Login Form (order-1 on mobile, order-2 on desktop) */}
-          <div className="md:col-span-5 bg-[#131124]/90 backdrop-blur-xl border border-white/5 rounded-2xl p-6 md:p-8 shadow-2xl flex flex-col justify-center order-1 md:order-2 relative transition-all duration-300">
+      <div className="w-full max-w-md relative z-10 my-auto">
+        <div className="bg-[#131124]/90 backdrop-blur-xl border border-white/5 rounded-2xl p-6 md:p-8 shadow-2xl flex flex-col justify-center relative transition-all duration-300">
             <div className="text-center mb-8">
               <Link href="/" className="inline-block text-2xl font-black tracking-tighter text-white mb-6 hover:opacity-90 transition-opacity">
                 XONIT<span className="text-indigo-500">.</span>
@@ -292,8 +137,6 @@ export default function LoginPage() {
                 Create workspace
               </Link>
             </p>
-          </div>
-
         </div>
       </div>
     </div>
