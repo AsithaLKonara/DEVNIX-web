@@ -11,7 +11,7 @@ const SolutionSection = () => {
       description: "A complete ecosystem for modern hospitality—from booking to billing.",
       features: ["Real-time Bookings", "Inventory Sync", "Guest Management"],
       icon: <Hotel className="w-6 h-6" />,
-      image: "/projects/smart-hotel-os.webp"
+      image: "/projects/smart-hotel-os.png"
     },
     {
       title: "Smart LMS",
