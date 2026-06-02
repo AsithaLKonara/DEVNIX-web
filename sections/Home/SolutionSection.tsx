@@ -7,18 +7,18 @@ import { Hotel, GraduationCap, CreditCard, CheckCircle2 } from 'lucide-react';
 const SolutionSection = () => {
   const solutions = [
     {
+      title: "Smart Hotel OS",
+      description: "A complete ecosystem for modern hospitality—from booking to billing.",
+      features: ["Real-time Bookings", "Inventory Sync", "Guest Management"],
+      icon: <Hotel className="w-6 h-6" />,
+      image: "/projects/smart-hotel-os.webp"
+    },
+    {
       title: "Smart LMS",
       description: "An interactive learning management system for schools and corporate training with virtual classrooms.",
       features: ["Live Streaming", "Quiz Engine", "Student Tracking"],
       icon: <GraduationCap className="w-6 h-6" />,
       image: "/projects/smart-lms.webp"
-    },
-    {
-      title: "Smart Hotel 2",
-      description: "A complete ecosystem for modern hospitality—from booking to billing.",
-      features: ["Real-time Bookings", "Inventory Sync", "Guest Management"],
-      icon: <Hotel className="w-6 h-6" />,
-      image: "/projects/smart-hotel-2.webp"
     },
     {
       title: "Smart POS System",

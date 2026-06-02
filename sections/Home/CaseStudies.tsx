@@ -2,13 +2,13 @@ import React from 'react';
 
 const CaseStudies = () => {
   const projects = [
+    { title: 'Smart Hotel OS', category: 'Hospitality SaaS', href: 'https://smarthotelos.vercel.app/', image: '/projects/smart-hotel-os.webp' },
     { title: 'Weddinglk', category: 'Directory Platform', href: 'https://wedding-lk.vercel.app/', image: '/projects/weddinglk.webp' },
     { title: 'Task nest', category: 'Task Management', href: 'https://task-nest-gamma.vercel.app/', image: '/projects/task-nest.webp' },
     { title: 'Classified ad web', category: 'Classified Ads', href: 'https://ai-powered-classified-ad-web.vercel.app/', image: '/projects/classified-ad.webp' },
     { title: 'Ride taxi web', category: 'Transport', href: 'https://ride-x-taxi-web.vercel.app/', image: '/projects/ride-taxi.webp' },
     { title: 'A zone CNC web', category: 'Corporate', href: 'https://a-zone-cnc-web.vercel.app/', image: '/projects/azone-cnc.webp' },
     { title: 'Smart LMS', category: 'EdTech SaaS', href: 'https://smart-lms-saas.vercel.app/', image: '/projects/smart-lms.webp' },
-    { title: 'Smart Hotel 2', category: 'Hospitality SaaS', href: 'https://smart-hotel-2.vercel.app/', image: '/projects/smart-hotel-2.webp' },
     { title: 'Car sale', category: 'Automotive', href: 'https://car-sale-web.vercel.app/', image: '/projects/car-sale.webp' },
     { title: 'Ominichat', category: 'Communication', href: 'https://universal-chatbot-psi.vercel.app/', image: '/projects/ominichat.webp' },
     { title: 'Smart Store', category: 'E-commerce SaaS', href: 'https://smart-store-saas-demo.vercel.app/', image: '/projects/smart-store.webp' },

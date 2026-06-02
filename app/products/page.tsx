@@ -4,13 +4,13 @@ import CTA from '@/sections/Home/CTA';
 
 const ProductsPage = () => {
   const products = [
+    { name: 'Smart Hotel OS', description: 'A complete ecosystem for modern hospitality—from booking to billing.', href: 'https://smarthotelos.vercel.app/', image: '/projects/smart-hotel-os.webp', features: ['Hospitality SaaS', 'Next.js', 'TypeScript', 'Prisma'] },
     { name: 'Weddinglk', description: 'A premium directory platform for wedding services, vendors, and couples.', href: 'https://wedding-lk.vercel.app/', image: '/projects/weddinglk.webp', features: ['Directory Platform', 'Next.js', 'Tailwind', 'Vercel'] },
     { name: 'Task nest', description: 'An intuitive task management system built for teams to collaborate efficiently.', href: 'https://task-nest-gamma.vercel.app/', image: '/projects/task-nest.webp', features: ['Task Management', 'React', 'Node.js', 'PostgreSQL'] },
     { name: 'Classified ad web', description: 'AI-powered classified ad platform with smart categorization and search.', href: 'https://ai-powered-classified-ad-web.vercel.app/', image: '/projects/classified-ad.webp', features: ['Classified Ads', 'Next.js', 'AI', 'Tailwind'] },
     { name: 'Ride taxi web', description: 'A modern ride-hailing and taxi booking web application.', href: 'https://ride-x-taxi-web.vercel.app/', image: '/projects/ride-taxi.webp', features: ['Transport', 'React', 'Maps API', 'Firebase'] },
     { name: 'A zone CNC web', description: 'Corporate website for a CNC manufacturing and engineering company.', href: 'https://a-zone-cnc-web.vercel.app/', image: '/projects/azone-cnc.webp', features: ['Corporate', 'Next.js', 'Framer Motion', 'Vercel'] },
     { name: 'Smart LMS', description: 'An interactive learning management system for schools and corporate training.', href: 'https://smart-lms-saas.vercel.app/', image: '/projects/smart-lms.webp', features: ['EdTech SaaS', 'React', 'NestJS', 'PostgreSQL'] },
-    { name: 'Smart Hotel 2', description: 'A complete ecosystem for modern hospitality—from booking to billing.', href: 'https://smart-hotel-2.vercel.app/', image: '/projects/smart-hotel-2.webp', features: ['Hospitality SaaS', 'Next.js', 'TypeScript', 'Prisma'] },
     { name: 'Car sale', description: 'A comprehensive automotive marketplace for buying and selling vehicles.', href: 'https://car-sale-web.vercel.app/', image: '/projects/car-sale.webp', features: ['Automotive', 'React', 'Supabase', 'Tailwind'] },
     { name: 'Ominichat', description: 'Universal chatbot and communication platform for customer support.', href: 'https://universal-chatbot-psi.vercel.app/', image: '/projects/ominichat.webp', features: ['Communication', 'Next.js', 'OpenAI', 'WebSockets'] },
     { name: 'Smart Store', description: 'A powerful e-commerce platform for retail businesses to manage sales online.', href: 'https://smart-store-saas-demo.vercel.app/', image: '/projects/smart-store.webp', features: ['E-commerce SaaS', 'Next.js', 'Stripe', 'Prisma'] },
