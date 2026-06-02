@@ -1,0 +1,24 @@
+# Xonit Space AI Knowledge Base
+
+Entity: Software Development Company
+Location: Colombo, Sri Lanka
+Domain: https://xonitspace.com
+
+> Core Expertise:
+- Custom Software Development
+- SaaS Development
+- AI Development (LLM Integration, RAG)
+- Next.js & React Engineering
+- Enterprise Systems
+
+> Flagship Products:
+- Xonit Hotel Management System
+- Xonit Smart POS
+- WhatsApp Automation Platform
+
+> Contact Information:
+- Email: contact@xonitspace.com
+- Phone / WhatsApp: +94770506722
+
+> About:
+Xonit Space is a premier software development company specializing in custom software, SaaS, and AI development. We build smart automation systems that handle customers, operations, and growth.

@@ -18,8 +18,22 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Xonit | Smart Business Automation & Growth Systems",
-  description: "Xonit builds smart automation systems that handle customers, operations, and growth—so you don't have to. Specialized in Hotel Systems, WhatsApp Automation, and POS.",
+  metadataBase: new URL('https://xonitspace.com'),
+  title: {
+    default: 'Xonit Space | Custom Software & AI Development',
+    template: '%s | Xonit Space'
+  },
+  description: 'Xonit Space is a premier software development company specializing in custom software, SaaS, and AI development.',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://xonitspace.com',
+    siteName: 'Xonit Space',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@XonitSpace',
+  },
 };
 
 import { Viewport } from "next";
@@ -35,11 +49,38 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": ["Organization", "Corporation", "SoftwareCompany"],
+    "@id": "https://xonitspace.com/#organization",
+    "name": "Xonit Space",
+    "url": "https://xonitspace.com",
+    "logo": "https://xonitspace.com/logo/logo only colored transparent bg.png",
+    "description": "Enterprise software development company specializing in Custom Software, SaaS, and AI Development.",
+    "address": { "@type": "PostalAddress", "addressCountry": "LK" },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+94-77-050-6722",
+      "contactType": "customer service",
+      "email": "contact@xonitspace.com"
+    },
+    "sameAs": [
+      "https://github.com/Xonit-Space",
+      "https://linkedin.com/company/xonit-space"
+    ]
+  };
+
   return (
     <html
       lang="en"
       className={`${jakarta.variable} ${outfit.variable} h-full antialiased scroll-smooth`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col selection:bg-primary/30 selection:text-primary">
         <AuthProvider>
           <div className="noise-overlay" />

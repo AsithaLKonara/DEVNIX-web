@@ -36,7 +36,7 @@ const CTASection = () => {
               </Link>
               
               <Link 
-                href="https://wa.me/yournumber"
+                href="https://wa.me/94770506722"
                 className="px-10 py-5 rounded-2xl glass border border-white/10 text-white font-black uppercase tracking-widest text-sm hover:bg-white/5 transition-all"
               >
                 WhatsApp Chat

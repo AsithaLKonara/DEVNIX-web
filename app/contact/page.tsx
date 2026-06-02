@@ -42,7 +42,7 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-lg text-white">Email Us</h4>
-                  <p className="text-light/50">info@xonit.space</p>
+                  <p className="text-light/50">contact@xonitspace.com</p>
                 </div>
               </div>
 

@@ -25,7 +25,7 @@ const Footer = () => {
       { name: 'Partner with Us', href: '/contact' },
     ],
     contact: [
-      { name: 'hello@xonit.space', href: 'mailto:hello@xonit.space' },
+      { name: 'contact@xonitspace.com', href: 'mailto:contact@xonitspace.com' },
       { name: '+94 77 050 6722', href: 'tel:+94770506722' },
       { name: 'WhatsApp Support', href: 'https://wa.me/94770506722' },
       { name: 'Colombo, Sri Lanka', href: '#' },
