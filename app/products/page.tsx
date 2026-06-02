@@ -4,7 +4,7 @@ import CTA from '@/sections/Home/CTA';
 
 const ProductsPage = () => {
   const products = [
-    { name: 'Smart Hotel OS', description: 'A complete ecosystem for modern hospitality—from booking to billing.', href: 'https://smarthotelos.vercel.app/', image: '/projects/smart-hotel-os.webp', features: ['Hospitality SaaS', 'Next.js', 'TypeScript', 'Prisma'] },
+    { name: 'Smart Hotel OS', description: 'A complete ecosystem for modern hospitality—from booking to billing.', href: 'https://smarthotelos.vercel.app/', image: '/projects/smart-hotel-os.png', features: ['Hospitality SaaS', 'Next.js', 'TypeScript', 'Prisma'] },
     { name: 'Weddinglk', description: 'A premium directory platform for wedding services, vendors, and couples.', href: 'https://wedding-lk.vercel.app/', image: '/projects/weddinglk.webp', features: ['Directory Platform', 'Next.js', 'Tailwind', 'Vercel'] },
     { name: 'Task nest', description: 'An intuitive task management system built for teams to collaborate efficiently.', href: 'https://task-nest-gamma.vercel.app/', image: '/projects/task-nest.webp', features: ['Task Management', 'React', 'Node.js', 'PostgreSQL'] },
     { name: 'Classified ad web', description: 'AI-powered classified ad platform with smart categorization and search.', href: 'https://ai-powered-classified-ad-web.vercel.app/', image: '/projects/classified-ad.webp', features: ['Classified Ads', 'Next.js', 'AI', 'Tailwind'] },

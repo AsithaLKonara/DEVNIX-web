@@ -2,7 +2,7 @@ import React from 'react';
 
 const CaseStudies = () => {
   const projects = [
-    { title: 'Smart Hotel OS', category: 'Hospitality SaaS', href: 'https://smarthotelos.vercel.app/', image: '/projects/smart-hotel-os.webp' },
+    { title: 'Smart Hotel OS', category: 'Hospitality SaaS', href: 'https://smarthotelos.vercel.app/', image: '/projects/smart-hotel-os.png' },
     { title: 'Weddinglk', category: 'Directory Platform', href: 'https://wedding-lk.vercel.app/', image: '/projects/weddinglk.webp' },
     { title: 'Task nest', category: 'Task Management', href: 'https://task-nest-gamma.vercel.app/', image: '/projects/task-nest.webp' },
     { title: 'Classified ad web', category: 'Classified Ads', href: 'https://ai-powered-classified-ad-web.vercel.app/', image: '/projects/classified-ad.webp' },

@@ -5,7 +5,7 @@ import CTASection from '@/sections/Home/CTASection';
 
 const ProjectsPage = () => {
   const projects = [
-    { title: 'Smart Hotel OS', category: 'Hospitality SaaS', href: 'https://smarthotelos.vercel.app/', image: '/projects/smart-hotel-os.webp', description: 'A complete ecosystem for modern hospitality—from booking to billing.', tags: ['Next.js', 'TypeScript', 'Prisma'] },
+    { title: 'Smart Hotel OS', category: 'Hospitality SaaS', href: 'https://smarthotelos.vercel.app/', image: '/projects/smart-hotel-os.png', description: 'A complete ecosystem for modern hospitality—from booking to billing.', tags: ['Next.js', 'TypeScript', 'Prisma'] },
     { title: 'Weddinglk', category: 'Directory Platform', href: 'https://wedding-lk.vercel.app/', image: '/projects/weddinglk.webp', description: 'A premium directory platform for wedding services, vendors, and couples.', tags: ['Next.js', 'Tailwind', 'Vercel'] },
     { title: 'Task nest', category: 'Task Management', href: 'https://task-nest-gamma.vercel.app/', image: '/projects/task-nest.webp', description: 'An intuitive task management system built for teams to collaborate efficiently.', tags: ['React', 'Node.js', 'PostgreSQL'] },
     { title: 'Classified ad web', category: 'Classified Ads', href: 'https://ai-powered-classified-ad-web.vercel.app/', image: '/projects/classified-ad.webp', description: 'AI-powered classified ad platform with smart categorization and search.', tags: ['Next.js', 'AI', 'Tailwind'] },
