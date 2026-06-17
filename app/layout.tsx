@@ -24,6 +24,7 @@ export const metadata: Metadata = {
     template: '%s | Xonit Space'
   },
   description: 'Xonit Space is a premier software development company specializing in custom software, SaaS, and AI development.',
+  keywords: ['xonit', 'xonit space', 'xonitspace', 'custom software', 'SaaS', 'AI development', 'software company', 'Sri Lanka'],
   openGraph: {
     type: 'website',
     locale: 'en_US',
